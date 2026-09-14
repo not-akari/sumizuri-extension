@@ -1,0 +1,71 @@
+﻿{
+  "name": "Akari's Sumizuri Sources",
+  "sources": [
+    {
+      "id": "asurascans",
+      "name": "Asura Scans",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://asurascans.com/icons/apple-touch-icon.png",
+      "baseUrl": "https://api.asurascans.com",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/asurascans.json"
+    },
+    {
+      "id": "chikari",
+      "name": "Chikari",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://chikari.moe/icon-192.png",
+      "baseUrl": "https://chikari.moe",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/chikari.json"
+    },
+    {
+      "id": "divascans_comics",
+      "name": "Diva Scans (Comics)",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://divascans.org/icon-192.png",
+      "baseUrl": "https://divascans.org",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/divascans_comics.json"
+    },
+    {
+      "id": "divascans_novels",
+      "name": "Diva Scans (Novels)",
+      "lang": "en",
+      "mediaType": "novel",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://divascans.org/icon-192.png",
+      "baseUrl": "https://divascans.org",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/divascans_novels.json"
+    },
+    {
+      "id": "galaxymanga",
+      "name": "Galaxy Manga",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://galaxymanga.io/wp-content/uploads/2025/07/cropped-GALAXY-SHOUJO-LOGO-PIC-192x192.png",
+      "baseUrl": "https://galaxymanga.io",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/galaxymanga.json"
+    },
+    {
+      "id": "novelfire",
+      "name": "Novel Fire",
+      "lang": "en",
+      "mediaType": "novel",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://novelfire.net/favicon.ico",
+      "baseUrl": "https://novelfire.net",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/novelfire.json"
+    }
+  ]
+}

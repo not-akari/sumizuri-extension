@@ -1,0 +1,124 @@
+{
+  "name": "Galaxy Manga",
+  "lang": "en",
+  "baseUrl": "https://galaxymanga.io",
+  "iconUrl": "https://galaxymanga.io/wp-content/uploads/2025/07/cropped-GALAXY-SHOUJO-LOGO-PIC-192x192.png",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  },
+  "popular": {
+    "url": "{baseUrl}/manga/?page={page}&order=popular",
+    "itemSelector": "div.bsx",
+    "fields": {
+      "url": { "selector": "a", "attr": "href", "resolve": true },
+      "title": { "selector": ".tt", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": "img", "attr": "src" },
+          { "selector": "img", "attr": "data-src" },
+          { "selector": "img", "attr": "data-lazy-src" }
+        ],
+        "resolve": true
+      },
+      "rating": { "selector": ".numscore", "attr": "text", "transform": "number", "round": 1 }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/manga/?page={page}&order=update",
+    "itemSelector": "div.bsx",
+    "fields": {
+      "url": { "selector": "a", "attr": "href", "resolve": true },
+      "title": { "selector": ".tt", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": "img", "attr": "src" },
+          { "selector": "img", "attr": "data-src" },
+          { "selector": "img", "attr": "data-lazy-src" }
+        ],
+        "resolve": true
+      },
+      "rating": { "selector": ".numscore", "attr": "text", "transform": "number", "round": 1 }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/manga/?page={page}&title={query}",
+    "itemSelector": "div.bsx",
+    "fields": {
+      "url": { "selector": "a", "attr": "href", "resolve": true },
+      "title": { "selector": ".tt", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": "img", "attr": "src" },
+          { "selector": "img", "attr": "data-src" },
+          { "selector": "img", "attr": "data-lazy-src" }
+        ],
+        "resolve": true
+      },
+      "rating": { "selector": ".numscore", "attr": "text", "transform": "number", "round": 1 }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "itemSelector": "#chapterlist ul li",
+    "sort": { "by": "number", "order": "desc" },
+    "fields": {
+      "url": { "selector": "a", "attr": "href", "resolve": true },
+      "title": { "selector": ".chapternum", "attr": "text", "transform": "trim" },
+      "number": { "selector": ".chapternum", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
+      "dateUploaded": {
+        "js": "host.query(element.html, '.chapterdate').then(function (m) { return m[0] ? date.parse(m[0].text) : null; })"
+      }
+    }
+  },
+  "pages": {
+    "script": "async function (ctx) { var res = await ctx.host.fetch(ctx.chapterUrl); var match = res.body.match(/ts_reader\\.run\\((\\{[\\s\\S]+?\\})\\);/); if (!match) return []; var data = JSON.parse(match[1]); var src = data.sources && data.sources[0]; if (!src || !Array.isArray(src.images)) return []; return src.images.map(function (u, i) { return { index: i, imageUrl: u }; }); }"
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": { "js": "entryUrl" },
+      "title": { "selector": "h1.entry-title", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": ".thumb img", "attr": "src" },
+          { "selector": ".thumb img", "attr": "data-src" },
+          { "selector": ".thumb img", "attr": "data-lazy-src" }
+        ],
+        "resolve": true
+      },
+      "bannerUrl": {
+        "or": [
+          { "selector": ".bigbanner", "attr": "style", "regex": "url\\(['\"]?([^'\")]+)['\"]?\\)" },
+          { "selector": ".thumb img", "attr": "src" }
+        ],
+        "resolve": true
+      },
+      "description": { "selector": ".entry-content p", "attr": "text", "transform": "trim" },
+      "rating": { "selector": ".rating .numscore", "attr": "text", "transform": "number", "round": 1 },
+      "status": { "selector": ".tsinfo", "attr": "text", "regex": "Status\\s+([A-Za-z]+)", "transform": "capitalize" },
+      "genres": {
+        "js": "host.query(element.html, '.mgen a').then(function (matches) { return matches.map(function (m) { return m.text; }); })"
+      }
+    }
+  },
+  "comments": {
+    "url": "{entryUrl}",
+    "itemSelector": "#comments .comment-body, .commentlist li",
+    "fields": {
+      "author": { "selector": ".fn, .author", "attr": "text", "transform": "trim" },
+      "text": { "selector": ".comment-content, p", "attr": "text", "transform": "trim" },
+      "avatarUrl": { "selector": "img.avatar", "attr": "src", "resolve": true },
+      "date": { "selector": "time", "attr": "datetime" }
+    }
+  },
+  "chapterComments": {
+    "url": "{chapterUrl}",
+    "itemSelector": "#comments .comment-body, .commentlist li",
+    "fields": {
+      "author": { "selector": ".fn, .author", "attr": "text", "transform": "trim" },
+      "text": { "selector": ".comment-content, p", "attr": "text", "transform": "trim" },
+      "avatarUrl": { "selector": "img.avatar", "attr": "src", "resolve": true },
+      "date": { "selector": "time", "attr": "datetime" }
+    }
+  }
+}

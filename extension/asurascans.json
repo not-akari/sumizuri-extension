@@ -1,0 +1,120 @@
+{
+  "name": "Asura Scans",
+  "lang": "en",
+  "baseUrl": "https://api.asurascans.com",
+  "iconUrl": "https://asurascans.com/icons/apple-touch-icon.png",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  },
+  "popular": {
+    "url": "{baseUrl}/api/series?sort=popular&order=desc&limit={pageSize}&offset={offset}",
+    "pageSize": 20,
+    "itemsPath": "data",
+    "fields": {
+      "url": { "template": "{baseUrl}/api/series/{slug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover" },
+      "bannerUrl": { "or": [ { "path": "banner" }, { "path": "cover" } ] },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" },
+      "genres": { "path": "genres", "map": "name" }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/api/series?sort=update&order=desc&limit={pageSize}&offset={offset}",
+    "pageSize": 20,
+    "itemsPath": "data",
+    "fields": {
+      "url": { "template": "{baseUrl}/api/series/{slug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover" },
+      "bannerUrl": { "or": [ { "path": "banner" }, { "path": "cover" } ] },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" },
+      "genres": { "path": "genres", "map": "name" }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/api/series?search={query}&limit={pageSize}&offset={offset}",
+    "pageSize": 20,
+    "itemsPath": "data",
+    "fields": {
+      "url": { "template": "{baseUrl}/api/series/{slug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover" },
+      "bannerUrl": { "or": [ { "path": "banner" }, { "path": "cover" } ] },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" },
+      "genres": { "path": "genres", "map": "name" }
+    }
+  },
+  "chapters": {
+    "url": "{baseUrl}/api/series/{entrySlug}/chapters",
+    "itemsPath": "data",
+    "sort": { "by": "number", "order": "desc" },
+    "fields": {
+      "url": { "template": "{baseUrl}/api/series/{series_slug}/chapters/{slug}" },
+      "title": {
+        "if": { "path": "title", "is": "truthy" },
+        "then": { "template": "Chapter {number} - {title}" },
+        "else": { "template": "Chapter {number}" }
+      },
+      "number": { "path": "number" },
+      "dateUploaded": { "path": "published_at" },
+      "locked": { "path": "is_premium" },
+      "unlocksAt": { "path": "early_access_until" }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "itemsPath": "data.chapter.pages",
+    "fields": {
+      "imageUrl": { "path": "url" }
+    }
+  },
+  "details": {
+    "url": "{baseUrl}/api/series/{entrySlug}",
+    "itemsPath": "series",
+    "fields": {
+      "url": { "template": "{baseUrl}/api/series/{entrySlug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover" },
+      "bannerUrl": { "or": [ { "path": "banner" }, { "path": "cover" } ] },
+      "author": { "path": "author" },
+      "description": { "path": "description" },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" },
+      "genres": { "path": "genres", "map": "name" }
+    }
+  },
+  "comments": {
+    "resolve": {
+      "url": "{baseUrl}/api/series/{entrySlug}",
+      "path": "series.id",
+      "as": "seriesId"
+    },
+    "url": "{baseUrl}/api/series/{seriesId}/comments?sort={sort}",
+    "itemsPath": "data",
+    "fields": {
+      "author": { "path": "user.username", "default": "Anonymous" },
+      "text": { "or": [ { "path": "content" }, { "path": "gif_url" } ], "default": "" },
+      "avatarUrl": { "path": "user.profile_picture_url" },
+      "date": { "path": "created_at" }
+    }
+  },
+  "chapterComments": {
+    "resolve": {
+      "url": "{chapterUrl}",
+      "path": "data.chapter.id",
+      "as": "chapterId"
+    },
+    "url": "{baseUrl}/api/chapters/{chapterId}/comments?sort={sort}",
+    "itemsPath": "data",
+    "fields": {
+      "author": { "path": "user.username", "default": "Anonymous" },
+      "text": { "or": [ { "path": "content" }, { "path": "gif_url" } ], "default": "" },
+      "avatarUrl": { "path": "user.profile_picture_url" },
+      "date": { "path": "created_at" }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "Diva Scans (Comics)",
+  "lang": "en",
+  "baseUrl": "https://divascans.org",
+  "iconUrl": "https://divascans.org/icon-192.png",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://divascans.org/",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9"
+  },
+  "popular": {
+    "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=popular",
+    "itemsPath": "data",
+    "fields": {
+      "url": { "template": "{baseUrl}/series/comic/{slug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "coverImage", "resolve": true },
+      "rating": { "path": "rating" },
+      "status": { "path": "status", "transform": "capitalize" }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=latest",
+    "itemsPath": "data",
+    "fields": {
+      "url": { "template": "{baseUrl}/series/comic/{slug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "coverImage", "resolve": true },
+      "rating": { "path": "rating" },
+      "status": { "path": "status", "transform": "capitalize" }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/api/series?q={query}&page={page}&type=MANHWA",
+    "itemsPath": "data",
+    "fields": {
+      "url": { "template": "{baseUrl}/series/comic/{slug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "coverImage", "resolve": true },
+      "rating": { "path": "rating" },
+      "status": { "path": "status", "transform": "capitalize" }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": { "template": "{entryUrl}" },
+      "title": { "selector": "h1", "attr": "text", "transform": "trim" },
+      "coverUrl": { "selector": "meta[property=\"og:image\"]", "attr": "content" },
+      "description": { "selector": "meta[property=\"og:description\"]", "attr": "content" },
+      "rating": { "selector": "span:has(svg.lucide-star)", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
+      "genres": {
+        "js": "host.query(element.html, 'a[href*=\"genre=\"]').then(function (matches) { return matches.map(function (m) { return m.text.trim(); }); })"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "itemSelector": "a.grid[href*='/chapter/']",
+    "sort": { "by": "number", "order": "desc" },
+    "fields": {
+      "url": { "attr": "href", "resolve": true },
+      "title": { "selector": "span.font-medium", "attr": "text", "transform": "trim" },
+      "number": { "selector": "span.font-medium", "regex": "(?:Chapter|Ch\\.?)\\s*([0-9.]+)", "transform": "number" }
+    }
+  },
+  "pages": {
+    "script": "async function (ctx) { var res = await ctx.host.fetch(ctx.chapterUrl, { headers: ctx.headers }); var regex = /\\\\?\"imageUrl\\\\?\":\\\\?\"(https:[^\"\\\\]+)/g; var pages = []; var m; while ((m = regex.exec(res.body)) !== null) { pages.push({ imageUrl: m[1].replace(/\\\\\\//g, '/') }); } return pages; }"
+  }
+}

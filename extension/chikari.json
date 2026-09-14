@@ -1,0 +1,103 @@
+{
+  "name": "Chikari",
+  "lang": "en",
+  "baseUrl": "https://chikari.moe",
+  "iconUrl": "https://chikari.moe/icon-192.png",
+  "popular": {
+    "url": "{baseUrl}/api/series?sort=popular&offset={offset}&limit={pageSize}",
+    "pageSize": 24,
+    "itemsPath": "items",
+    "fields": {
+      "url": { "template": "/series/{slug}", "resolve": true },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover_url" },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/api/series?offset={offset}&limit={pageSize}",
+    "pageSize": 24,
+    "itemsPath": "items",
+    "fields": {
+      "url": { "template": "/series/{slug}", "resolve": true },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover_url" },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/api/series?q={query}&offset={offset}&limit={pageSize}",
+    "pageSize": 24,
+    "itemsPath": "items",
+    "fields": {
+      "url": { "template": "/series/{slug}", "resolve": true },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover_url" },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" }
+    }
+  },
+  "chapters": {
+    "url": "{baseUrl}/api/series/{entrySlug}/chapters?limit=200",
+    "itemsPath": "items",
+    "sort": { "by": "number", "order": "desc" },
+    "fields": {
+      "url": { "template": "{baseUrl}/api/series/{entrySlug}/chapters/{number}" },
+      "title": {
+        "if": { "path": "title", "is": "truthy" },
+        "then": { "template": "Chapter {number} - {title}" },
+        "else": { "template": "Chapter {number}" }
+      },
+      "number": { "path": "number" },
+      "dateUploaded": { "path": "created_at" }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "itemsPath": "pages",
+    "fields": {
+      "imageUrl": {
+        "if": "string",
+        "then": { "path": "" },
+        "else": { "path": "url" }
+      }
+    }
+  },
+  "details": {
+    "url": "{baseUrl}/api/series/{entrySlug}",
+    "itemsPath": "",
+    "fields": {
+      "url": { "template": "{baseUrl}/series/{entrySlug}" },
+      "title": { "path": "title" },
+      "coverUrl": { "path": "cover_url" },
+      "bannerUrl": { "or": [ { "path": "banner_url" }, { "path": "cover_url" } ] },
+      "description": { "path": "description" },
+      "author": { "or": [ { "path": "authors.0.name" }, { "path": "author" } ] },
+      "rating": { "path": "rating", "round": 1 },
+      "status": { "path": "status", "transform": "capitalize" },
+      "genres": { "path": "genres", "map": "name" }
+    }
+  },
+  "comments": {
+    "url": "{baseUrl}/api/series/{entrySlug}/comments?sort={sort}",
+    "itemsPath": "comments",
+    "fields": {
+      "author": { "path": "author.username", "default": "Anonymous" },
+      "text": { "path": "body" },
+      "date": { "path": "created_at" },
+      "avatarUrl": { "path": "author.avatar_url" }
+    }
+  },
+  "chapterComments": {
+    "url": "{chapterUrl}/comments?sort={sort}",
+    "itemsPath": "comments",
+    "fields": {
+      "author": { "path": "author.username", "default": "Anonymous" },
+      "text": { "path": "body" },
+      "date": { "path": "created_at" },
+      "avatarUrl": { "path": "author.avatar_url" }
+    }
+  }
+}

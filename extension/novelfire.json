@@ -1,0 +1,87 @@
+{
+  "name": "Novel Fire",
+  "lang": "en",
+  "baseUrl": "https://novelfire.net",
+  "iconUrl": "https://novelfire.net/favicon.ico",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+  },
+  "popular": {
+    "url": "{baseUrl}/genre-all/sort-popular/status-all/all-novel?page={page}",
+    "itemSelector": "ul.novel-list li.novel-item",
+    "fields": {
+      "url": { "selector": "a", "attr": "href", "resolve": true },
+      "title": { "selector": ".novel-title", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": "figure.novel-cover img", "attr": "data-src", "resolve": true },
+          { "selector": "figure.novel-cover img", "attr": "src", "resolve": true }
+        ]
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/genre-all/sort-latest-release/status-all/all-novel?page={page}",
+    "itemSelector": "ul.novel-list li.novel-item",
+    "fields": {
+      "url": { "selector": "a", "attr": "href", "resolve": true },
+      "title": { "selector": ".novel-title", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": "figure.novel-cover img", "attr": "data-src", "resolve": true },
+          { "selector": "figure.novel-cover img", "attr": "src", "resolve": true }
+        ]
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/search?keyword={query}&page={page}",
+    "itemSelector": "ul.novel-list li.novel-item",
+    "fields": {
+      "url": { "selector": "a", "attr": "href", "resolve": true },
+      "title": { "selector": ".novel-title", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": "figure.novel-cover img", "attr": "data-src", "resolve": true },
+          { "selector": "figure.novel-cover img", "attr": "src", "resolve": true }
+        ]
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": { "template": "{entryUrl}" },
+      "title": { "selector": "h1.novel-title", "attr": "text", "transform": "trim" },
+      "coverUrl": { "selector": "figure.cover img", "attr": "src", "resolve": true },
+      "author": { "selector": "span[itemprop=\"author\"]", "attr": "text", "transform": "trim" },
+      "description": { "selector": "div.summary div.content", "attr": "html", "transform": "htmlToText" },
+      "status": { "selector": ".header-stats strong.ongoing, .header-stats strong.completed", "attr": "text", "transform": "trim" },
+      "rating": { "selector": ".main-head .rating strong.nub", "attr": "text", "transform": "number" },
+      "genres": {
+        "js": "host.query(element.html, '.categories ul li a').then(function (matches) { return matches.map(function (m) { return m.text.trim(); }); })"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{baseUrl}/book/{entrySlug}/chapters",
+    "itemSelector": "ul.chapter-list li a",
+    "pagination": {
+      "nextSelector": "a[rel=\"next\"]",
+      "maxPages": 50
+    },
+    "fields": {
+      "url": { "attr": "href", "resolve": true },
+      "title": { "selector": ".chapter-title", "attr": "text", "transform": "trim" },
+      "number": { "selector": ".chapter-no", "attr": "text", "transform": "number" },
+      "dateUploaded": { "selector": ".chapter-update", "attr": "datetime" }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "itemSelector": "div#content",
+    "fields": {
+      "text": { "attr": "html", "transform": "htmlToText" }
+    }
+  }
+}

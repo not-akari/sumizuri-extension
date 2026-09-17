@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "Akari's Sumizuri Sources",
   "sources": [
     {
@@ -11,6 +11,17 @@
       "iconUrl": "https://asurascans.com/icons/apple-touch-icon.png",
       "baseUrl": "https://api.asurascans.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/asurascans.json"
+    },
+    {
+      "id": "atsumaru",
+      "name": "Atsumaru",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://atsu.moe/favicon/apple-touch-icon.png",
+      "baseUrl": "https://atsu.moe",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/atsumaru.json"
     },
     {
       "id": "chikari",

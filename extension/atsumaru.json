@@ -1,0 +1,130 @@
+{
+  "name": "Atsumaru",
+  "lang": "en",
+  "baseUrl": "https://atsu.moe",
+  "iconUrl": "https://atsu.moe/favicon/apple-touch-icon.png",
+  "rateLimitMs": 250,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://atsu.moe/"
+  },
+  "popular": {
+    "url": "{baseUrl}/api/home2/popular?limit={pageSize}&offset={offset}",
+    "pageSize": 24,
+    "itemsPath": "items",
+    "fields": {
+      "url": { "template": "/manga/{id}", "resolve": true },
+      "title": { "path": "title" },
+      "coverUrl": {
+        "or": [
+          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "image" }], "separator": "/" },
+          { "path": "image" }
+        ]
+      },
+      "rating": { "path": "mbRating", "round": 1 }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/api/home2/recentlyUpdated?limit={pageSize}&offset={offset}",
+    "pageSize": 24,
+    "itemsPath": "items",
+    "fields": {
+      "url": { "template": "/manga/{id}", "resolve": true },
+      "title": { "path": "title" },
+      "coverUrl": {
+        "or": [
+          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "image" }], "separator": "/" },
+          { "path": "image" }
+        ]
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/collections/manga/documents/search?q={query}&query_by=title,englishTitle,otherNames,authors,acronyms&page={page}&per_page={pageSize}",
+    "pageSize": 20,
+    "itemsPath": "hits",
+    "fields": {
+      "url": {
+        "join": [
+          { "template": "{baseUrl}/manga" },
+          { "path": "document.id" }
+        ],
+        "separator": "/"
+      },
+      "title": { "path": "document.title" },
+      "coverUrl": {
+        "or": [
+          { "join": [{ "template": "https://cdn.atsu.moe" }, { "path": "document.poster" }], "separator": "" },
+          { "path": "document.poster" }
+        ]
+      },
+      "rating": { "path": "document.mbRating", "round": 1 },
+      "status": { "path": "document.status" }
+    }
+  },
+  "details": {
+    "url": "{baseUrl}/api/manga/page?id={entrySlug}",
+    "itemsPath": "mangaPage",
+    "fields": {
+      "url": { "template": "{baseUrl}/manga/{entrySlug}" },
+      "title": { "path": "title" },
+      "coverUrl": {
+        "join": [
+          { "template": "https://cdn.atsu.moe/static" },
+          { "path": "poster.image" }
+        ],
+        "separator": "/"
+      },
+      "bannerUrl": {
+        "or": [
+          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "banner.url" }], "separator": "/" },
+          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "poster.image" }], "separator": "/" }
+        ]
+      },
+      "description": { "path": "synopsis" },
+      "author": { "or": [{ "path": "authors.0.name" }, { "path": "author" }] },
+      "rating": { "path": "avgRating", "round": 1 },
+      "status": { "path": "status" },
+      "genres": { "path": "genres", "map": "name" }
+    }
+  },
+  "chapters": {
+    "url": "{baseUrl}/api/manga/allChapters?mangaId={entrySlug}",
+    "itemsPath": "chapters",
+    "sort": { "by": "number", "order": "desc" },
+    "fields": {
+      "url": { "template": "{baseUrl}/api/read/chapter?mangaId={entrySlug}&chapterId={id}" },
+      "title": {
+        "or": [
+          { "path": "title" },
+          { "template": "Chapter {number}" }
+        ]
+      },
+      "number": { "path": "number" },
+      "dateUploaded": { "path": "createdAt", "transform": "unixTimestamp" }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "itemsPath": "readChapter.pages",
+    "fields": {
+      "imageUrl": {
+        "join": [
+          { "template": "https://cdn.atsu.moe" },
+          { "path": "image" }
+        ],
+        "separator": ""
+      }
+    }
+  },
+  "comments": {
+    "url": "{baseUrl}/api/comments/v2/threads?sectionId=manga:{entrySlug}&maxDepth=2&sort=top",
+    "itemsPath": "comments",
+    "fields": {
+      "author": { "path": "user.usernameDisplay", "default": "Anonymous" },
+      "text": { "path": "content" },
+      "date": { "path": "createdAt", "transform": "unixTimestamp" },
+      "avatarUrl": { "path": "user.pfp" }
+    }
+  }
+}

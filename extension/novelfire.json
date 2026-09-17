@@ -59,7 +59,10 @@
       "status": { "selector": ".header-stats strong.ongoing, .header-stats strong.completed", "attr": "text", "transform": "trim" },
       "rating": { "selector": ".main-head .rating strong.nub", "attr": "text", "transform": "number" },
       "genres": {
-        "js": "host.query(element.html, '.categories ul li a').then(function (matches) { return matches.map(function (m) { return m.text.trim(); }); })"
+        "selector": ".categories ul li a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
       }
     }
   },

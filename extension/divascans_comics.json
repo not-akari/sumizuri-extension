@@ -51,7 +51,10 @@
       "description": { "selector": "meta[property=\"og:description\"]", "attr": "content" },
       "rating": { "selector": "span:has(svg.lucide-star)", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
       "genres": {
-        "js": "host.query(element.html, 'a[href*=\"genre=\"]').then(function (matches) { return matches.map(function (m) { return m.text.trim(); }); })"
+        "selector": "a[href*=\"genre=\"]",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
       }
     }
   },
@@ -66,6 +69,16 @@
     }
   },
   "pages": {
-    "script": "async function (ctx) { var res = await ctx.host.fetch(ctx.chapterUrl, { headers: ctx.headers }); var regex = /\\\\?\"imageUrl\\\\?\":\\\\?\"(https:[^\"\\\\]+)/g; var pages = []; var m; while ((m = regex.exec(res.body)) !== null) { pages.push({ imageUrl: m[1].replace(/\\\\\\//g, '/') }); } return pages; }"
+    "url": "{chapterUrl}",
+    "itemSelector": "div.reader-image img, div#reader img, img.chapter-image, div.page-image img",
+    "fields": {
+      "imageUrl": {
+        "or": [
+          { "attr": "data-src" },
+          { "attr": "src" }
+        ],
+        "resolve": true
+      }
+    }
   }
 }

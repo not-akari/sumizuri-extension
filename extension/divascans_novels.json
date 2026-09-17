@@ -51,7 +51,10 @@
       "description": { "selector": "meta[property=\"og:description\"]", "attr": "content" },
       "rating": { "selector": "span:has(svg.lucide-star)", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
       "genres": {
-        "js": "host.query(element.html, 'a[href*=\"genre=\"]').then(function (matches) { return matches.map(function (m) { return m.text.trim(); }); })"
+        "selector": "a[href*=\"genre=\"]",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
       }
     }
   },

@@ -66,17 +66,29 @@
       "title": { "selector": ".chapternum", "attr": "text", "transform": "trim" },
       "number": { "selector": ".chapternum", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
       "dateUploaded": {
-        "js": "host.query(element.html, '.chapterdate').then(function (m) { return m[0] ? date.parse(m[0].text) : null; })"
+        "selector": ".chapterdate",
+        "attr": "text",
+        "transform": "parseDate"
       }
     }
   },
   "pages": {
-    "script": "async function (ctx) { var res = await ctx.host.fetch(ctx.chapterUrl); var match = res.body.match(/ts_reader\\.run\\((\\{[\\s\\S]+?\\})\\);/); if (!match) return []; var data = JSON.parse(match[1]); var src = data.sources && data.sources[0]; if (!src || !Array.isArray(src.images)) return []; return src.images.map(function (u, i) { return { index: i, imageUrl: u }; }); }"
+    "url": "{chapterUrl}",
+    "itemSelector": "#readerarea img, .readerarea img",
+    "fields": {
+      "imageUrl": {
+        "or": [
+          { "attr": "data-src" },
+          { "attr": "src" }
+        ],
+        "resolve": true
+      }
+    }
   },
   "details": {
     "url": "{entryUrl}",
     "fields": {
-      "url": { "js": "entryUrl" },
+      "url": { "template": "{entryUrl}" },
       "title": { "selector": "h1.entry-title", "attr": "text", "transform": "trim" },
       "coverUrl": {
         "or": [
@@ -97,7 +109,10 @@
       "rating": { "selector": ".rating .numscore", "attr": "text", "transform": "number", "round": 1 },
       "status": { "selector": ".tsinfo", "attr": "text", "regex": "Status\\s+([A-Za-z]+)", "transform": "capitalize" },
       "genres": {
-        "js": "host.query(element.html, '.mgen a').then(function (matches) { return matches.map(function (m) { return m.text; }); })"
+        "selector": ".mgen a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
       }
     }
   },

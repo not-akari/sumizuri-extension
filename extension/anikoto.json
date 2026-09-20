@@ -182,7 +182,7 @@
     "resolve": [
       {
         "url": "{chapterUrl}",
-        "htmlPath": "*",
+        "path": "result",
         "regex": "data-link-id=\"([^\"]*)\"",
         "as": "linkId"
       },

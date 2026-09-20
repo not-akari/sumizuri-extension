@@ -204,7 +204,7 @@
         "headers": {
           "Referer": "{baseUrl}/"
         },
-        "regex": "id=\"megaplay-player\"[^>]*data-id=\"([^\"]*)\"",
+        "regex": "id=\"megaplay-player\"[^>]*data-realid=\"([^\"]*)\"",
         "as": "megaId"
       }
     ],

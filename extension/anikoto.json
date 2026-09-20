@@ -142,6 +142,7 @@
   },
   "chapters": {
     "url": "{baseUrl}/ajax/episode/list/{entrySlug}",
+    "htmlPath": "*",
     "itemSelector": "li a[data-id]",
     "fields": {
       "url": {

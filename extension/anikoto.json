@@ -143,12 +143,12 @@
   "chapters": {
     "url": "{baseUrl}/ajax/episode/list/{entrySlug}",
     "htmlPath": "*",
-    "itemSelector": "li a[data-id]",
+    "itemSelector": "li a[data-ids]",
     "fields": {
       "url": {
         "join": [
-          { "template": "https://megaplay.buzz/stream/getSources?id=" },
-          { "attr": "data-id", "regex": "([0-9]+)" }
+          { "template": "{baseUrl}/ajax/server/list?servers=" },
+          { "attr": "data-ids" }
         ],
         "separator": ""
       },
@@ -179,12 +179,36 @@
     }
   },
   "videos": {
-    "url": "{chapterUrl}",
-    "itemsPath": "tracks",
+    "resolve": [
+      {
+        "url": "{chapterUrl}",
+        "htmlPath": "*",
+        "regex": "data-link-id=\"([^\"]*)\"",
+        "as": "linkId"
+      },
+      {
+        "url": "{baseUrl}/ajax/server?get={linkId}",
+        "path": "result.url",
+        "as": "embedUrl"
+      },
+      {
+        "url": "{embedUrl}",
+        "headers": {
+          "Referer": "{baseUrl}/"
+        },
+        "regex": "id=\"megaplay-player\"[^>]*data-id=\"([^\"]*)\"",
+        "as": "megaId"
+      }
+    ],
+    "url": "https://megaplay.buzz/stream/getSources?id={megaId}",
+    "headers": {
+      "Referer": "https://megaplay.buzz/"
+    },
+    "itemsPath": "",
     "fields": {
       "url": {
         "join": [
-          { "path": "file", "regex": "^(https?://[^/]+/anime/[^/]+/[^/]+)" },
+          { "path": "tracks.0.file", "regex": "^(https?://[^/]+/anime/[^/]+/[^/]+)" },
           { "template": "/master.m3u8" }
         ],
         "separator": ""
@@ -193,6 +217,7 @@
         "template": "1080p (Auto)"
       }
     },
+    "expandPlaylists": true,
     "videoHeaders": {
       "Referer": "https://megaplay.buzz/"
     },

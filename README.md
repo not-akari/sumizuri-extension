@@ -57,6 +57,6 @@ Then list it in `index.json` with `"mediaType": "anime"` like any other source:
 }
 ```
 
-Video links can be a plain file (`.mp4`, `.mkv`) or an HLS/DASH playlist (`.m3u8`, `.mpd`). Both play; only plain files can be downloaded for offline viewing. Subtitles, extra audio tracks and the request headers the video host needs (`videoHeaders`) are all optional. The full schema is in the Sumizuri docs: `docs/json_extension.md` (section "videos (anime)") and, for sources that need real code, `docs/js_extension.md` (`getVideoList`).
+Video links can be a plain file (`.mp4`, `.mkv`) or an HLS/DASH playlist (`.m3u8`, `.mpd`). Both play; only plain files can be downloaded for offline viewing. Subtitles, extra audio tracks and the request headers the video host needs (`videoHeaders`) are all optional. Everything about anime sources (all the `videos` options, seasons, skip intro, finding a hidden stream, testing) is in the Sumizuri docs: `docs/anime_extension.md`. The rest of the JSON schema is `docs/json_extension.md`, and sources that need real code use `docs/js_extension.md`.
 
 Bump `version` in `index.json` whenever a source's file changes, so Sumizuri offers the update.

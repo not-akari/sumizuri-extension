@@ -204,7 +204,7 @@
         "headers": {
           "Referer": "{baseUrl}/"
         },
-        "regex": "id=\"megaplay-player\"[^>]*data-realid=\"([^\"]*)\"",
+        "regex": "id=\"megaplay-player\"[^>]*data-id=\"([^\"]*)\"",
         "as": "megaId"
       }
     ],
@@ -215,12 +215,21 @@
     "itemsPath": "",
     "fields": {
       "url": {
-        "join": [
-          { "path": "tracks.0.file", "regex": "^(https?://[^/]+/anime/[^/]+/[^/]+)" },
-          { "template": "/master.m3u8" }
-        ],
-        "separator": "",
-        "requireAll": true
+        "or": [
+          {
+            "path": "enc",
+            "decode": "megaplay",
+            "regex": "\"file\":\"([^\"]+)\""
+          },
+          {
+            "join": [
+              { "path": "tracks.0.file", "regex": "^(https?://[^/]+/anime/[^/]+/[^/]+)" },
+              { "template": "/master.m3u8" }
+            ],
+            "separator": "",
+            "requireAll": true
+          }
+        ]
       },
       "quality": {
         "template": "1080p (Auto)"

@@ -7,7 +7,7 @@
       "lang": "en",
       "mediaType": "anime",
       "engineKind": "json",
-      "version": 7,
+      "version": 8,
       "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
       "baseUrl": "https://anikototv.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/anikoto.json"

@@ -2,12 +2,23 @@
   "name": "Akari's Sumizuri Sources",
   "sources": [
     {
+      "id": "anikoto",
+      "name": "Anikoto",
+      "lang": "en",
+      "mediaType": "anime",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
+      "baseUrl": "https://anikototv.to",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/anikoto.json"
+    },
+    {
       "id": "asurascans",
       "name": "Asura Scans",
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
+      "version": 2,
       "iconUrl": "https://asurascans.com/icons/apple-touch-icon.png",
       "baseUrl": "https://api.asurascans.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/asurascans.json"

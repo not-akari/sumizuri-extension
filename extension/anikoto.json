@@ -1,0 +1,207 @@
+{
+  "name": "Anikoto",
+  "lang": "en",
+  "baseUrl": "https://anikototv.to",
+  "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
+  "rateLimitMs": 500,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "X-Requested-With": "XMLHttpRequest",
+    "Referer": "https://anikototv.to/"
+  },
+  "popular": {
+    "url": "{baseUrl}/most-viewed?page={page}",
+    "itemSelector": "div#list-items .item",
+    "fields": {
+      "url": {
+        "join": [
+          { "template": "{baseUrl}/ajax/anime/tooltip" },
+          { "selector": "div.tip", "attr": "data-tip" }
+        ],
+        "separator": "/"
+      },
+      "webUrl": {
+        "selector": "a.name.d-title",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a.name.d-title",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": ".poster img",
+        "attr": "src",
+        "resolve": true
+      },
+      "rating": {
+        "selector": ".rated span",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/latest-updated?page={page}",
+    "itemSelector": "div#list-items .item",
+    "fields": {
+      "url": {
+        "join": [
+          { "template": "{baseUrl}/ajax/anime/tooltip" },
+          { "selector": "div.tip", "attr": "data-tip" }
+        ],
+        "separator": "/"
+      },
+      "webUrl": {
+        "selector": "a.name.d-title",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a.name.d-title",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": ".poster img",
+        "attr": "src",
+        "resolve": true
+      },
+      "rating": {
+        "selector": ".rated span",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/filter?keyword={query}&page={page}",
+    "itemSelector": "div#list-items .item",
+    "fields": {
+      "url": {
+        "join": [
+          { "template": "{baseUrl}/ajax/anime/tooltip" },
+          { "selector": "div.tip", "attr": "data-tip" }
+        ],
+        "separator": "/"
+      },
+      "webUrl": {
+        "selector": "a.name.d-title",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a.name.d-title",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": ".poster img",
+        "attr": "src",
+        "resolve": true
+      },
+      "rating": {
+        "selector": ".rated span",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": ".title.d-title",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "description": {
+        "selector": ".synopsis",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": ".meta-bl a[href*='/genre/']",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      },
+      "webUrl": {
+        "selector": ".actions a.watch",
+        "attr": "href",
+        "resolve": true
+      }
+    }
+  },
+  "chapters": {
+    "url": "{baseUrl}/ajax/episode/list/{entrySlug}",
+    "itemSelector": "li a[data-id]",
+    "fields": {
+      "url": {
+        "join": [
+          { "template": "https://megaplay.buzz/stream/getSources?id=" },
+          { "attr": "data-id", "regex": "([0-9]+)" }
+        ],
+        "separator": ""
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "span",
+            "attr": "text",
+            "transform": "trim"
+          },
+          {
+            "selector": "b",
+            "attr": "text",
+            "transform": "trim"
+          }
+        ]
+      },
+      "number": {
+        "attr": "data-num",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "attr": "data-timestamp",
+        "regex": "([0-9]+)",
+        "transform": "unixTimestamp"
+      }
+    }
+  },
+  "videos": {
+    "url": "{chapterUrl}",
+    "itemsPath": "tracks",
+    "fields": {
+      "url": {
+        "join": [
+          { "path": "file", "regex": "^(https?://[^/]+/anime/[^/]+/[^/]+)" },
+          { "template": "/master.m3u8" }
+        ],
+        "separator": ""
+      },
+      "quality": {
+        "template": "1080p (Auto)"
+      }
+    },
+    "videoHeaders": {
+      "Referer": "https://megaplay.buzz/"
+    },
+    "subtitles": {
+      "itemsPath": "tracks",
+      "fields": {
+        "url": { "path": "file" },
+        "label": { "path": "label" },
+        "language": { "path": "label", "transform": "lowercase" }
+      }
+    }
+  }
+}

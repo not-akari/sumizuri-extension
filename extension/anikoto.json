@@ -192,6 +192,10 @@
       },
       {
         "url": "{baseUrl}/ajax/server?get={linkId}",
+        "headers": {
+          "X-Requested-With": "XMLHttpRequest",
+          "Referer": "{baseUrl}/"
+        },
         "path": "result.url",
         "as": "embedUrl"
       },

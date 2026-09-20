@@ -182,6 +182,10 @@
     "resolve": [
       {
         "url": "{chapterUrl}",
+        "headers": {
+          "X-Requested-With": "XMLHttpRequest",
+          "Referer": "{baseUrl}/"
+        },
         "path": "result",
         "regex": "data-link-id=\"([^\"]*)\"",
         "as": "linkId"

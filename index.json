@@ -95,7 +95,7 @@
       "lang": "all",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
+      "version": 2,
       "iconUrl": "https://nhentai.net/favicon.png",
       "baseUrl": "https://nhentai.net",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/nhentai.json"

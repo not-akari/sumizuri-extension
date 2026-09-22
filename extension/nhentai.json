@@ -9,8 +9,9 @@
     "Referer": "https://nhentai.net/"
   },
   "popular": {
-    "url": "{baseUrl}/api/v2/galleries/popular",
-    "itemsPath": "",
+    "url": "{baseUrl}/api/v2/search?query=*&sort=popular&page={page}",
+    "pageSize": 25,
+    "itemsPath": "result",
     "fields": {
       "url": { "template": "{baseUrl}/g/{id}" },
       "title": {

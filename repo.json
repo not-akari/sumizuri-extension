@@ -88,6 +88,17 @@
       "iconUrl": "https://novelfire.net/favicon.ico",
       "baseUrl": "https://novelfire.net",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/novelfire.json"
+    },
+    {
+      "id": "nhentai",
+      "name": "nhentai",
+      "lang": "all",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://nhentai.net/favicon.png",
+      "baseUrl": "https://nhentai.net",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/nhentai.json"
     }
   ]
 }

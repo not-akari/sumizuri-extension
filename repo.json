@@ -134,17 +134,6 @@
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangazin.json"
     },
     {
-      "id": "manhuatop",
-      "name": "ManhuaTop",
-      "lang": "en",
-      "mediaType": "manga",
-      "engineKind": "json",
-      "version": 1,
-      "iconUrl": "https://manhuatop.org/favicon.ico",
-      "baseUrl": "https://manhuatop.org",
-      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhuatop.json"
-    },
-    {
       "id": "toonily",
       "name": "Toonily",
       "lang": "en",

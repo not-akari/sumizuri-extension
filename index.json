@@ -110,6 +110,50 @@
       "iconUrl": "https://weebcentral.com/static/images/apple-touch-icon.png",
       "baseUrl": "https://weebcentral.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/weebcentral.json"
+    },
+    {
+      "id": "kuramanga",
+      "name": "Kura Manga",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://kuramanga.com/apple-touch-icon.png",
+      "baseUrl": "https://kuramanga.com",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/kuramanga.json"
+    },
+    {
+      "id": "mangazin",
+      "name": "MangaZin",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mangazin.org/wp-content/uploads/2020/02/cropped-IMG_20200222_225535-192x192.jpg",
+      "baseUrl": "https://mangazin.org",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangazin.json"
+    },
+    {
+      "id": "manhuatop",
+      "name": "ManhuaTop",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://manhuatop.org/favicon.ico",
+      "baseUrl": "https://manhuatop.org",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhuatop.json"
+    },
+    {
+      "id": "toonily",
+      "name": "Toonily",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://toonily.com/favicon.ico",
+      "baseUrl": "https://toonily.com",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/toonily.json"
     }
   ]
 }

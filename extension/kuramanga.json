@@ -1,0 +1,185 @@
+{
+  "name": "Kura Manga",
+  "lang": "en",
+  "baseUrl": "https://kuramanga.com",
+  "iconUrl": "https://kuramanga.com/apple-touch-icon.png",
+  "rateLimitMs": 500,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://kuramanga.com/"
+  },
+  "popular": {
+    "url": "{baseUrl}/search?ajax=1&page={page}",
+    "headers": {
+      "X-Requested-With": "XMLHttpRequest"
+    },
+    "pageSize": 18,
+    "itemsPath": "data",
+    "fields": {
+      "url": {
+        "template": "{baseUrl}/{normalized_title}"
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "thumb"
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/?page={page}",
+    "pageSize": 18,
+    "itemSelector": "div.update-row",
+    "fields": {
+      "url": {
+        "selector": "a.update-series-link",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a.update-series-link",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "a.update-thumb img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/search?ajax=1&name={query}&page={page}",
+    "headers": {
+      "X-Requested-With": "XMLHttpRequest"
+    },
+    "pageSize": 18,
+    "itemsPath": "data",
+    "fields": {
+      "url": {
+        "template": "{baseUrl}/{normalized_title}"
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "thumb"
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "h1",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "meta[property=\"og:image\"]",
+            "attr": "content"
+          },
+          {
+            "selector": ".cover-image img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "or": [
+          {
+            "selector": "div#summary-text",
+            "attr": "text",
+            "transform": "trim"
+          },
+          {
+            "selector": "meta[property=\"og:description\"]",
+            "attr": "content"
+          }
+        ]
+      },
+      "author": {
+        "or": [
+          {
+            "selector": ".mp-byline .mp-cred-v",
+            "attr": "text",
+            "transform": "trim"
+          },
+          {
+            "selector": "script[type='application/ld+json']",
+            "attr": "text",
+            "regex": "\"author\":\\s*\\{[^}]*\"name\":\\s*\"([^\"]+)\""
+          }
+        ]
+      },
+      "genres": {
+        "selector": "div.genre-list a.genre-chip",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "itemSelector": "div.chapter-item",
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
+    "fields": {
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "selector": "a",
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "selector": "time",
+        "attr": "text",
+        "transform": "parseDate"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "itemSelector": "section#chapterImages img",
+    "fields": {
+      "imageUrl": {
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  }
+}

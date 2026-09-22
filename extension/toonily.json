@@ -1,0 +1,236 @@
+{
+  "name": "Toonily",
+  "lang": "en",
+  "baseUrl": "https://toonily.com",
+  "iconUrl": "https://toonily.com/favicon.ico",
+  "rateLimitMs": 1000,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://toonily.com/",
+    "Cookie": "toonily-mature=1"
+  },
+  "popular": {
+    "url": "{baseUrl}/serie/page/{page}/?m_orderby=views",
+    "itemSelector": "div.page-item-detail.manga, div.page-item-detail",
+    "fields": {
+      "url": {
+        "selector": ".post-title a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".post-title a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "rating": {
+        "selector": ".score",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/serie/page/{page}/?m_orderby=latest",
+    "itemSelector": "div.page-item-detail.manga, div.page-item-detail",
+    "fields": {
+      "url": {
+        "selector": ".post-title a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".post-title a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "rating": {
+        "selector": ".score",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/page/{page}/?s={query}&post_type=wp-manga",
+    "itemSelector": "div.c-tabs-item__content, div.page-item-detail.manga, div.page-item-detail",
+    "fields": {
+      "url": {
+        "selector": ".post-title a, h3.h4 a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".post-title a, h3.h4 a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "rating": {
+        "selector": ".score",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "div.post-title h1",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "div.summary_image img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "meta[property=\"og:image\"]",
+            "attr": "content"
+          },
+          {
+            "selector": "div.summary_image img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "or": [
+          {
+            "selector": "div.content-area div.summary__content",
+            "attr": "text",
+            "transform": "trim"
+          },
+          {
+            "selector": "div.description-summary",
+            "attr": "text",
+            "transform": "trim"
+          },
+          {
+            "selector": "meta[property=\"og:description\"]",
+            "attr": "content"
+          }
+        ]
+      },
+      "author": {
+        "selector": "div.author-content a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "status": {
+        "selector": "div.post-status div.summary-content",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": "div.genres-content a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{baseUrl}/serie/{entrySlug}/ajax/chapters/",
+    "method": "POST",
+    "headers": {
+      "X-Requested-With": "XMLHttpRequest"
+    },
+    "itemSelector": "li.wp-manga-chapter",
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
+    "fields": {
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "selector": "a",
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "selector": "span.chapter-release-date",
+        "attr": "text",
+        "transform": "parseDate"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "itemSelector": "div.reading-content img, div.page-break img",
+    "fields": {
+      "imageUrl": {
+        "or": [
+          {
+            "attr": "data-src"
+          },
+          {
+            "attr": "data-lazy-src"
+          },
+          {
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      }
+    }
+  }
+}

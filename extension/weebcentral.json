@@ -1,0 +1,165 @@
+{
+  "name": "Weeb Central",
+  "lang": "en",
+  "baseUrl": "https://weebcentral.com",
+  "iconUrl": "https://weebcentral.com/static/images/apple-touch-icon.png",
+  "rateLimitMs": 500,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+  },
+  "popular": {
+    "url": "{baseUrl}/search/data?sort=Popularity&order=Descending&display_mode=Full+Display&limit={pageSize}&offset={offset}",
+    "pageSize": 32,
+    "itemSelector": "article.bg-base-300",
+    "fields": {
+      "url": {
+        "selector": "a[href*='/series/']",
+        "attr": "href",
+        "regex": "(https?://[^/]+/series/[0-9A-Z]+)",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a.link-hover[href*='/series/']",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          { "selector": "picture source[type='image/webp']", "attr": "srcset", "regex": "(https?://[^\\s]+)" },
+          { "selector": "img[alt*='cover']", "attr": "src" }
+        ],
+        "resolve": true
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/search/data?sort=Latest+Updates&order=Descending&display_mode=Full+Display&limit={pageSize}&offset={offset}",
+    "pageSize": 32,
+    "itemSelector": "article.bg-base-300",
+    "fields": {
+      "url": {
+        "selector": "a[href*='/series/']",
+        "attr": "href",
+        "regex": "(https?://[^/]+/series/[0-9A-Z]+)",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a.link-hover[href*='/series/']",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          { "selector": "picture source[type='image/webp']", "attr": "srcset", "regex": "(https?://[^\\s]+)" },
+          { "selector": "img[alt*='cover']", "attr": "src" }
+        ],
+        "resolve": true
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/search/data?text={query}&display_mode=Full+Display&limit={pageSize}&offset={offset}",
+    "pageSize": 32,
+    "itemSelector": "article.bg-base-300",
+    "fields": {
+      "url": {
+        "selector": "a[href*='/series/']",
+        "attr": "href",
+        "regex": "(https?://[^/]+/series/[0-9A-Z]+)",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a.link-hover[href*='/series/']",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          { "selector": "picture source[type='image/webp']", "attr": "srcset", "regex": "(https?://[^\\s]+)" },
+          { "selector": "img[alt*='cover']", "attr": "src" }
+        ],
+        "resolve": true
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": { "template": "{entryUrl}" },
+      "title": { "selector": "h1", "attr": "text", "transform": "trim" },
+      "coverUrl": {
+        "or": [
+          { "selector": "picture source[type='image/webp']", "attr": "srcset", "regex": "(https?://[^\\s]+)" },
+          { "selector": "img[alt*='cover']", "attr": "src" }
+        ],
+        "resolve": true
+      },
+      "bannerUrl": {
+        "or": [
+          { "selector": "picture source[type='image/webp']", "attr": "srcset", "regex": "(https?://[^\\s]+)" },
+          { "selector": "img[alt*='cover']", "attr": "src" }
+        ],
+        "resolve": true
+      },
+      "description": { "selector": "p.whitespace-pre-wrap", "attr": "text", "transform": "trim" },
+      "author": { "selector": "a[href*='/search?author=']", "attr": "text", "transform": "trim" },
+      "status": { "selector": "a[href*='included_status=']", "attr": "text", "transform": "trim" },
+      "genres": {
+        "selector": "a[href*='included_tag=']",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}/full-chapter-list",
+    "itemSelector": "a[href*='/chapters/']",
+    "sort": { "by": "number", "order": "desc" },
+    "fields": {
+      "url": { "attr": "href", "resolve": true },
+      "title": { "selector": "span.grow span", "attr": "text", "transform": "trim" },
+      "number": { "selector": "span.grow span", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
+      "dateUploaded": { "selector": "time", "attr": "datetime", "transform": "parseDate" }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}/images",
+    "itemSelector": "section#chapter-images img",
+    "fields": {
+      "imageUrl": { "attr": "src", "resolve": true }
+    }
+  },
+  "comments": {
+    "url": "{baseUrl}/comments/contents/{entrySlug}?content_type=series",
+    "itemSelector": "article[id^='comment-']",
+    "fields": {
+      "author": { "selector": "a[href*='/users/'] span", "attr": "text", "transform": "trim" },
+      "text": { "selector": "p.whitespace-pre-wrap", "attr": "text", "transform": "trim" },
+      "date": { "selector": "time.text-datetime", "attr": "datetime" },
+      "avatarUrl": {
+        "or": [
+          { "selector": ".avatar picture source", "attr": "srcset", "regex": "(https?://[^\\s]+)" },
+          { "selector": ".avatar img", "attr": "src" }
+        ],
+        "resolve": true
+      }
+    }
+  },
+  "chapterComments": {
+    "url": "{baseUrl}/comments/contents/{chapterSlug}?content_type=chapter",
+    "itemSelector": "article[id^='comment-']",
+    "fields": {
+      "author": { "selector": "a[href*='/users/'] span", "attr": "text", "transform": "trim" },
+      "text": { "selector": "p.whitespace-pre-wrap", "attr": "text", "transform": "trim" },
+      "date": { "selector": "time.text-datetime", "attr": "datetime" },
+      "avatarUrl": {
+        "or": [
+          { "selector": ".avatar picture source", "attr": "srcset", "regex": "(https?://[^\\s]+)" },
+          { "selector": ".avatar img", "attr": "src" }
+        ],
+        "resolve": true
+      }
+    }
+  }
+}

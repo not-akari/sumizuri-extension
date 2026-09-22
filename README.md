@@ -10,9 +10,15 @@ An official collection of community sources for [Sumizuri](https://github.com/no
 
 Tap the button below on a device with Sumizuri installed to add this repository automatically:
 
-[![Add to Sumizuri](https://img.shields.io/badge/Add%20to-Sumizuri-b5432a?style=for-the-badge)](https://not-akari.github.io/sumizuri/add-repo.html?url=https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/index.json)
+[![Add to Sumizuri](https://img.shields.io/badge/Add%20to-Sumizuri-b5432a?style=for-the-badge)](https://not-akari.github.io/Sumizuri-Extension/add-repo.html?url=https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/index.json)
 
-**[👉 Click here to Add this Repo to Sumizuri](https://not-akari.github.io/sumizuri/add-repo.html?url=https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/index.json)**
+**[👉 Click here to Add this Repo to Sumizuri](https://not-akari.github.io/Sumizuri-Extension/add-repo.html?url=https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/index.json)**
+
+> [!TIP]
+> **Enabling the Web Button (GitHub Pages)**:
+> If this is your first time using the redirect button, enable GitHub Pages for this repository in 2 clicks:
+> 1. Go to repository **Settings** > **Pages** (or visit [`settings/pages`](https://github.com/not-akari/Sumizuri-Extension/settings/pages)).
+> 2. Under **Build and deployment**, select Source: **Deploy from a branch**, Branch: **`main`**, Folder: **`/docs`**, then click **Save**.
 
 ### Manual Setup
 1. In Sumizuri, navigate to **Browse** > **Repos** > **Add repo** (`+`).

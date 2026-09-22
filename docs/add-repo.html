@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add to Sumizuri</title>
+<style>
+  :root { color-scheme: light dark; --paper: #f4efe3; --ink: #1d1913; --ash: #6d6455; --seal: #b5432a; --card: #ffffff; }
+  @media (prefers-color-scheme: dark) { :root { --paper: #17130f; --ink: #e9dfc6; --ash: #8d8272; --seal: #c33a1e; --card: #221d17; } }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--paper); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, sans-serif; }
+  main { max-width: 34rem; margin: 1rem; padding: 2rem; background: var(--card); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
+  h1 { margin: 0 0 .5rem; font-size: 1.4rem; color: var(--ink); }
+  p { margin: .5rem 0; color: var(--ash); font-size: 0.95rem; }
+  code { display: block; margin: 1rem 0; padding: .75rem 1rem; overflow-wrap: anywhere; background: var(--paper); color: var(--ink); border-radius: 6px; font-size: 0.85rem; text-align: left; }
+  a.button { display: inline-block; margin-top: 1rem; padding: .75rem 1.5rem; background: var(--seal); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1rem; transition: opacity 0.2s; }
+  a.button:hover { opacity: 0.9; }
+  .help { margin-top: 1.5rem; font-size: 0.85rem; color: var(--ash); border-top: 1px solid rgba(128,128,128,0.2); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Add this Repository to Sumizuri</h1>
+  <p id="message">Opening Sumizuri to add repository...</p>
+  <code id="repo" hidden></code>
+  <a class="button" id="open" href="#" hidden>Open in Sumizuri</a>
+  <p class="help" id="help" hidden>
+    <strong>Didn't open?</strong> Make sure <a href="https://github.com/not-akari/sumizuri" style="color:var(--seal)">Sumizuri</a> is installed on your device. You can also copy the repository URL above and add it under <strong>Browse</strong> &gt; <strong>Repos</strong> &gt; <strong>Add repo</strong>.
+  </p>
+</main>
+<script>
+  var params = new URLSearchParams(location.search);
+  var defaultRepo = 'https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/index.json';
+  var repo = (params.get('url') || defaultRepo).trim();
+  var valid = /^https?:\/\/[^\s]+$/i.test(repo);
+  var message = document.getElementById('message');
+  if (!valid) {
+    message.textContent = 'This link has an invalid repository address.';
+  } else {
+    var link = 'sumizuri://add-repo?url=' + encodeURIComponent(repo);
+    var repoBox = document.getElementById('repo');
+    repoBox.textContent = repo;
+    repoBox.hidden = false;
+    var open = document.getElementById('open');
+    open.href = link;
+    open.hidden = false;
+    document.getElementById('help').hidden = false;
+    // Attempt automatic protocol launch
+    location.href = link;
+  }
+</script>
+</body>
+</html>

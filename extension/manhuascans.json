@@ -1,0 +1,91 @@
+{
+  "name": "ManhuaScans",
+  "lang": "en",
+  "baseUrl": "https://manhuascans.org",
+  "iconUrl": "https://manhuascans.org/assets/images/Logo.png",
+  "rateLimitMs": 800,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+  },
+  "popular": {
+    "url": "{baseUrl}/hots/page/{page}",
+    "itemSelector": "div.cardlist > div",
+    "fields": {
+      "url": { "selector": "a", "attr": "href" },
+      "title": { "selector": "h3.cardtitle", "attr": "text", "transform": "trim" },
+      "coverUrl": { "selector": "img", "attr": "src" }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/dayup/page/{page}",
+    "itemSelector": "div.cardlist > div",
+    "fields": {
+      "url": { "selector": "a", "attr": "href" },
+      "title": { "selector": "h3.cardtitle", "attr": "text", "transform": "trim" },
+      "coverUrl": { "selector": "img", "attr": "src" }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/s/{query}",
+    "itemSelector": "div.cardlist > div",
+    "fields": {
+      "url": { "selector": "a", "attr": "href" },
+      "title": { "selector": "h3.cardtitle", "attr": "text", "transform": "trim" },
+      "coverUrl": { "selector": "img", "attr": "src" }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": { "template": "{entryUrl}" },
+      "title": {
+        "or": [
+          { "selector": "h1", "attr": "text" },
+          { "selector": "meta[property=\"og:title\"]", "attr": "content" }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          { "selector": "meta[property=\"og:image\"]", "attr": "content" }
+        ]
+      },
+      "description": {
+        "selector": "p.text-medium.line-clamp-4",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": "a[href*=\"/manga-tag/\"]",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "chapters": {
+    "resolve": { "url": "{entryUrl}", "selector": "#mangachapters", "attr": "data-mid", "as": "mid" },
+    "url": "{baseUrl}/manga/get?mid={mid}",
+    "itemSelector": "#chapterListDesc .chapteritem a",
+    "fields": {
+      "url": { "attr": "href", "resolve": true },
+      "title": { "attr": "data-ct", "transform": "trim" },
+      "number": { "attr": "data-ct", "regex": "([0-9.]+)", "transform": "number" },
+      "dateUploaded": { "selector": "span.italic", "attr": "text", "transform": "parseDate" }
+    }
+  },
+  "pages": {
+    "resolve": [
+      { "url": "{chapterUrl}", "selector": "#chapterContent", "attr": "data-ms", "as": "mid" },
+      { "url": "{chapterUrl}", "selector": "#chapterContent", "attr": "data-cs", "as": "cid" }
+    ],
+    "url": "{baseUrl}/chapter/getcontent?m={mid}&c={cid}",
+    "itemSelector": "#chapcontent img",
+    "fields": {
+      "imageUrl": {
+        "or": [{ "attr": "data-src" }, { "attr": "src" }],
+        "resolve": true
+      }
+    }
+  }
+}

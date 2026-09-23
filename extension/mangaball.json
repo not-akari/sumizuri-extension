@@ -1,0 +1,222 @@
+{
+  "name": "MangaBall",
+  "lang": "en",
+  "baseUrl": "https://mangaball.net",
+  "iconUrl": "https://mangaball.net/favicon.ico",
+  "rateLimitMs": 1000,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://mangaball.net/"
+  },
+  "popular": {
+    "url": "{baseUrl}/",
+    "render": true,
+    "itemSelector": "div.grid-item-new-chapter, div.grid-item-no-chapter, div[class*=\"grid-item\"]",
+    "fields": {
+      "url": {
+        "selector": "a.position-relative, a[href*=\"/title/\"], a[href*=\"/manga/\"]",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "h6.card-title",
+            "attr": "text"
+          },
+          {
+            "selector": "img",
+            "attr": "alt"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img.card-img-top, img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/recently-updated-chapter/",
+    "render": true,
+    "itemSelector": "div.grid-item-new-chapter, div.grid-item-no-chapter, div[class*=\"grid-item\"]",
+    "fields": {
+      "url": {
+        "selector": "a.position-relative, a[href*=\"/title/\"], a[href*=\"/manga/\"]",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "h6.card-title",
+            "attr": "text"
+          },
+          {
+            "selector": "img",
+            "attr": "alt"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img.card-img-top, img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/search-advanced/?q={query}",
+    "render": true,
+    "itemSelector": "div.grid-item-new-chapter, div.grid-item-no-chapter, div[class*=\"grid-item\"], .smartsearch-item",
+    "fields": {
+      "url": {
+        "or": [
+          {
+            "selector": "a.position-relative, a[href*=\"/title/\"], a[href*=\"/manga/\"]",
+            "attr": "href"
+          },
+          {
+            "attr": "onclick",
+            "regex": "location\\.href='([^']+)'"
+          }
+        ],
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "h6.card-title",
+            "attr": "text"
+          },
+          {
+            "selector": "img",
+            "attr": "alt"
+          },
+          {
+            "selector": "span, a",
+            "attr": "text"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "render": true,
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "h1",
+            "attr": "text"
+          },
+          {
+            "selector": "meta[property=\"og:title\"]",
+            "attr": "content"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".comic-cover img, .cover img",
+            "attr": "src"
+          },
+          {
+            "selector": "meta[property=\"og:image\"]",
+            "attr": "content"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "or": [
+          {
+            "selector": ".description, .synopsis",
+            "attr": "text"
+          },
+          {
+            "selector": "meta[property=\"og:description\"]",
+            "attr": "content"
+          }
+        ],
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": "a[href*=\"/genres/\"], a[href*=\"/genre/\"]",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      },
+      "status": {
+        "selector": ".status, .status-indicator",
+        "attr": "text",
+        "transform": "capitalize",
+        "default": "Ongoing"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "render": true,
+    "itemSelector": "a[href*=\"/chapter/\"], a.dropdown-item[href*=\"/chapter/\"], button[onclick*=\"chapter\"]",
+    "fields": {
+      "url": {
+        "or": [
+          {
+            "attr": "href"
+          },
+          {
+            "attr": "onclick",
+            "regex": "location\\.href='([^']+)'"
+          }
+        ],
+        "resolve": true
+      },
+      "title": {
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "render": true,
+    "itemSelector": "img.chapter-img, img.reader-img, div.reader-body img, #sumizuri-captured a, img",
+    "fields": {
+      "imageUrl": {
+        "or": [
+          {
+            "attr": "data-src"
+          },
+          {
+            "attr": "src"
+          },
+          {
+            "attr": "href"
+          }
+        ],
+        "resolve": true
+      }
+    }
+  }
+}

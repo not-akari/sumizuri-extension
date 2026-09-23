@@ -209,6 +209,61 @@
       "iconUrl": "https://mangakatana.com/static/img/fav.png",
       "baseUrl": "https://mangakatana.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangakatana.json"
+    },
+    {
+      "id": "mangak",
+      "name": "MangaK",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mangak.io/static/sites/mangak/icons/android-chrome-192x192.png",
+      "baseUrl": "https://mangak.io",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangak.json"
+    },
+    {
+      "id": "mangataro",
+      "name": "MangaTaro",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mangataro.org/wp-content/uploads/2024/07/cropped-cropped-fav-192x192.png",
+      "baseUrl": "https://mangataro.org",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangataro.json"
+    },
+    {
+      "id": "mkissa",
+      "name": "MKissa",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mkissa.to/favicon.ico",
+      "baseUrl": "https://api.mkissa.net/api",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mkissa.json"
+    },
+    {
+      "id": "mangaball",
+      "name": "MangaBall",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mangaball.net/favicon.ico",
+      "baseUrl": "https://mangaball.net",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangaball.json"
+    },
+    {
+      "id": "weloma",
+      "name": "WeLoMa",
+      "lang": "ja",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://weloma.net/favicon.ico",
+      "baseUrl": "https://weloma.net",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/weloma.json"
     }
   ]
 }

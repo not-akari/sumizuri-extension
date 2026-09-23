@@ -1,0 +1,172 @@
+{
+  "name": "MangaK",
+  "lang": "en",
+  "baseUrl": "https://mangak.io",
+  "iconUrl": "https://mangak.io/static/sites/mangak/icons/android-chrome-192x192.png",
+  "rateLimitMs": 800,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://mangak.io/"
+  },
+  "popular": {
+    "url": "{baseUrl}/trending/manga",
+    "itemSelector": "article",
+    "fields": {
+      "url": {
+        "selector": "a[title]",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a[title] span",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img[src*=\"resmk.org\"], img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/latest?page={page}",
+    "itemSelector": "article",
+    "fields": {
+      "url": {
+        "selector": "a[title]",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a[title] span",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img[src*=\"resmk.org\"], img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/search?q={query}",
+    "render": true,
+    "itemSelector": "article, div.grid > div",
+    "fields": {
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "a[title] span",
+            "attr": "text"
+          },
+          {
+            "selector": "a[title]",
+            "attr": "title"
+          },
+          {
+            "selector": "h2, h3, a",
+            "attr": "text"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "h1",
+            "attr": "text"
+          },
+          {
+            "selector": "meta[property=\"og:title\"]",
+            "attr": "content"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "meta[property=\"og:image\"]",
+            "attr": "content"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "or": [
+          {
+            "selector": "meta[property=\"og:description\"]",
+            "attr": "content"
+          }
+        ],
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": "a[href*=\"/genres/\"]",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      },
+      "status": {
+        "selector": "meta[property=\"books:status\"], .status",
+        "attr": "content",
+        "transform": "capitalize",
+        "default": "Ongoing"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "render": true,
+    "itemSelector": "a[href*=\"/chapter-\"]",
+    "fields": {
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "span",
+            "attr": "text"
+          },
+          {
+            "attr": "text"
+          }
+        ],
+        "transform": "trim"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "render": true,
+    "itemSelector": "img[src*=\"qvzr\"], img[src*=\"resmk\"], div.reader-page img, div.reading-content img",
+    "fields": {
+      "imageUrl": {
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "name": "MKissa",
+  "lang": "en",
+  "baseUrl": "https://api.mkissa.net/api",
+  "webBaseUrl": "https://mkissa.to",
+  "iconUrl": "https://mkissa.to/favicon.ico",
+  "rateLimitMs": 800,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Origin": "https://mkissa.to",
+    "Referer": "https://mkissa.to/"
+  },
+  "popular": {
+    "url": "{baseUrl}",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"query\":\"query { mangas(limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}",
+    "itemsPath": "data.mangas.edges",
+    "fields": {
+      "url": {
+        "template": "https://mkissa.to/manga/{_id}"
+      },
+      "title": {
+        "path": "name",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "template": "https://aln.youtube-anime.com/{thumbnail}",
+        "resolve": true
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize",
+        "default": "Ongoing"
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"query\":\"query { mangas(limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}",
+    "itemsPath": "data.mangas.edges",
+    "fields": {
+      "url": {
+        "template": "https://mkissa.to/manga/{_id}"
+      },
+      "title": {
+        "path": "name",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "template": "https://aln.youtube-anime.com/{thumbnail}",
+        "resolve": true
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize",
+        "default": "Ongoing"
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"query\":\"query { mangas(search: {name: \\\"{query}\\\"}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}",
+    "itemsPath": "data.mangas.edges",
+    "fields": {
+      "url": {
+        "template": "https://mkissa.to/manga/{_id}"
+      },
+      "title": {
+        "path": "name",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "template": "https://aln.youtube-anime.com/{thumbnail}",
+        "resolve": true
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize",
+        "default": "Ongoing"
+      }
+    }
+  },
+  "details": {
+    "url": "{baseUrl}",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"query\":\"query { manga(_id: \\\"{entrySlug}\\\") { _id name englishName thumbnail description authors genres status score } }\"}",
+    "itemsPath": "data.manga",
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "path": "name",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "template": "https://aln.youtube-anime.com/{thumbnail}",
+        "resolve": true
+      },
+      "description": {
+        "path": "description",
+        "transform": "htmlToText"
+      },
+      "genres": {
+        "path": "genres"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize",
+        "default": "Ongoing"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "render": true,
+    "itemSelector": "a[href*=\"/chapter-\"], a[href*=\"/ch-\"]",
+    "fields": {
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "render": true,
+    "itemSelector": "img[src*=\"aln.youtube-anime\"], img[src*=\"youtube-anime\"], #sumizuri-captured a[href*=\"aln.youtube-anime\"], div.reader img, img",
+    "fields": {
+      "imageUrl": {
+        "or": [
+          {
+            "attr": "src"
+          },
+          {
+            "attr": "href"
+          }
+        ],
+        "resolve": true
+      }
+    }
+  }
+}

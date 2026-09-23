@@ -1,0 +1,212 @@
+{
+  "name": "WeLoMa",
+  "lang": "ja",
+  "baseUrl": "https://weloma.net",
+  "iconUrl": "https://weloma.net/favicon.ico",
+  "rateLimitMs": 800,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://weloma.net/"
+  },
+  "popular": {
+    "url": "{baseUrl}/l/0OYCn?&sort=views&page={page}",
+    "itemSelector": "div.thumb-item-flow",
+    "fields": {
+      "url": {
+        "selector": ".series-title a, a[href*=\"/m/\"]",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": ".series-title a",
+            "attr": "title"
+          },
+          {
+            "selector": ".series-title a",
+            "attr": "text"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".img-in-ratio",
+            "attr": "style",
+            "regex": "url\\(['\"]?([^'\")]+)['\"]?\\)"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/l/0OYCn?&sort=last_update&page={page}",
+    "itemSelector": "div.thumb-item-flow",
+    "fields": {
+      "url": {
+        "selector": ".series-title a, a[href*=\"/m/\"]",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": ".series-title a",
+            "attr": "title"
+          },
+          {
+            "selector": ".series-title a",
+            "attr": "text"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".img-in-ratio",
+            "attr": "style",
+            "regex": "url\\(['\"]?([^'\")]+)['\"]?\\)"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/l/0OYCn?keyword={query}&page={page}",
+    "itemSelector": "div.thumb-item-flow",
+    "fields": {
+      "url": {
+        "selector": ".series-title a, a[href*=\"/m/\"]",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": ".series-title a",
+            "attr": "title"
+          },
+          {
+            "selector": ".series-title a",
+            "attr": "text"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".img-in-ratio",
+            "attr": "style",
+            "regex": "url\\(['\"]?([^'\")]+)['\"]?\\)"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "ol.breadcrumb li:last-child",
+            "attr": "text"
+          },
+          {
+            "selector": "h1",
+            "attr": "text"
+          },
+          {
+            "selector": "meta[property=\"og:title\"]",
+            "attr": "content"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "img.thumbnail",
+            "attr": "src"
+          },
+          {
+            "selector": "meta[property=\"og:image\"]",
+            "attr": "content"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "or": [
+          {
+            "selector": ".series-synopsis",
+            "attr": "text"
+          },
+          {
+            "selector": "meta[property=\"og:description\"]",
+            "attr": "content"
+          }
+        ],
+        "transform": "trim"
+      },
+      "status": {
+        "selector": ".series-status",
+        "attr": "text",
+        "transform": "capitalize",
+        "default": "Ongoing"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "itemSelector": "a[href*=\"/c/\"]",
+    "fields": {
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "itemSelector": "img.chapter-img, img[data-img]",
+    "fields": {
+      "imageUrl": {
+        "attr": "data-img",
+        "decode": "base64",
+        "resolve": true
+      }
+    }
+  }
+}

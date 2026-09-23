@@ -1,0 +1,237 @@
+{
+  "name": "MangaKatana",
+  "lang": "en",
+  "baseUrl": "https://mangakatana.com",
+  "iconUrl": "https://mangakatana.com/static/img/fav.png",
+  "rateLimitMs": 1000,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://mangakatana.com/"
+  },
+  "popular": {
+    "url": "{baseUrl}/manga/page/{page}",
+    "itemSelector": "#book_list .item",
+    "fields": {
+      "url": {
+        "selector": ".title a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".title a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".wrap_img img",
+            "attr": "data-src"
+          },
+          {
+            "selector": ".wrap_img img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "selector": ".summary",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "status": {
+        "selector": ".status",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": ".genres a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/latest/page/{page}",
+    "itemSelector": "#book_list .item",
+    "fields": {
+      "url": {
+        "selector": ".title a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".title a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".wrap_img img",
+            "attr": "data-src"
+          },
+          {
+            "selector": ".wrap_img img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "selector": ".summary",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "status": {
+        "selector": ".status",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": ".genres a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/page/{page}?search={query}&search_by=book_name",
+    "itemSelector": "#book_list .item",
+    "fields": {
+      "url": {
+        "selector": ".title a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".title a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".wrap_img img",
+            "attr": "data-src"
+          },
+          {
+            "selector": ".wrap_img img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "selector": ".summary",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "status": {
+        "selector": ".status",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": ".genres a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "h1.heading",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": ".media .cover img",
+            "attr": "data-src"
+          },
+          {
+            "selector": ".media .cover img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "selector": ".summary",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "author": {
+        "selector": ".authors a.author",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "status": {
+        "selector": ".value.status",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": ".genres a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "itemSelector": ".chapters table tr",
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
+    "fields": {
+      "url": {
+        "selector": ".chapter a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".chapter a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "selector": ".chapter a",
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "selector": ".update_time",
+        "attr": "text",
+        "transform": "parseDate"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "render": {
+      "waitFor": "#imgs .wrap_img img[data-src*='http']"
+    },
+    "itemSelector": "#imgs .wrap_img img",
+    "fields": {
+      "imageUrl": {
+        "attr": "data-src",
+        "resolve": true
+      }
+    }
+  }
+}

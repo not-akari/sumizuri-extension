@@ -134,6 +134,50 @@
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangazin.json"
     },
     {
+      "id": "mangagg",
+      "name": "MangaGG",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mangagg.com/wp-content/uploads/2023/07/cropped-Favicon@1.5x-192x192.png",
+      "baseUrl": "https://mangagg.com",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangagg.json"
+    },
+    {
+      "id": "madaradex",
+      "name": "MadaraDex",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://madaradex.org/wp-content/uploads/cropped-logo.png",
+      "baseUrl": "https://madaradex.org",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/madaradex.json"
+    },
+    {
+      "id": "manhwatop",
+      "name": "ManhwaTop",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://manhwatop.com/wp-content/uploads/2021/03/sharefacebook.jpg",
+      "baseUrl": "https://manhwatop.com",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatop.json"
+    },
+    {
+      "id": "manhwatoon",
+      "name": "Manhwa Toon",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://cdn.manhwatoon.me/2026/06/manhwatoon-M-300x300.png",
+      "baseUrl": "https://www.manhwatoon.me",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatoon.json"
+    },
+    {
       "id": "toonily",
       "name": "Toonily",
       "lang": "en",
@@ -143,6 +187,17 @@
       "iconUrl": "https://toonily.com/favicon.ico",
       "baseUrl": "https://toonily.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/toonily.json"
+    },
+    {
+      "id": "mangakatana",
+      "name": "MangaKatana",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mangakatana.com/static/img/fav.png",
+      "baseUrl": "https://mangakatana.com",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangakatana.json"
     }
   ]
 }

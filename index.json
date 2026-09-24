@@ -272,7 +272,7 @@
       "mediaType": "manga",
       "engineKind": "json",
       "version": 1,
-      "iconUrl": "https://mangafire.to/assets/mangafire/favicon.svg",
+      "iconUrl": "https://mangafire.to/assets/mangafire/logo-sm.png",
       "baseUrl": "https://mangafire.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangafire.json"
     }

@@ -2,7 +2,7 @@
   "name": "MangaFire",
   "lang": "en",
   "baseUrl": "https://mangafire.to",
-  "iconUrl": "https://mangafire.to/assets/mangafire/favicon.svg",
+  "iconUrl": "https://mangafire.to/assets/mangafire/logo-sm.png",
   "rateLimitMs": 1000,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",

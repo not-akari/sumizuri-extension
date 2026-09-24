@@ -5,7 +5,8 @@
   "webBaseUrl": "https://asurascans.com",
   "iconUrl": "https://asurascans.com/icons/apple-touch-icon.png",
   "headers": {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+    "Referer": "https://asurascans.com/"
   },
   "popular": {
     "url": "{baseUrl}/api/series?sort=popular&order=desc&limit={pageSize}&offset={offset}",

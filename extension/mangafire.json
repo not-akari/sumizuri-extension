@@ -71,7 +71,7 @@
     }
   },
   "search": {
-    "url": "{baseUrl}/browse?keyword={query}&page={page}",
+    "url": "{baseUrl}/browse?keyword={query}&sort=relevance:desc&page={page}",
     "render": {
       "waitFor": "a.title-rows__link, a.title-grid__link"
     },
@@ -84,7 +84,7 @@
       "title": {
         "or": [
           {
-            "selector": "div.title-row-card__title, span.title-row-card__title, div.manga-card__title",
+            "selector": "div.title-row-card__title, span.title-row-card__title, div.manga-card__title, .card__title",
             "attr": "text"
           },
           {
@@ -159,6 +159,10 @@
       "title": {
         "or": [
           {
+            "selector": "span.title-detail__row-sub",
+            "attr": "text"
+          },
+          {
             "selector": "span.title-detail__row-name",
             "attr": "text"
           },
@@ -185,9 +189,10 @@
   "pages": {
     "url": "{chapterUrl}",
     "render": {
-      "waitFor": "img.reader-img, div.reader__page"
+      "waitFor": ".reader__strip, .reader__paged, .reader-swiper, .reader__page",
+      "script": "(function(){var el=document.querySelector('.reader,.reader__strip,.reader__paged,.reader__page');if(!el)return;var k=Object.keys(el).find(function(x){return x.startsWith('__reactFiber$')||x.startsWith('__reactInternalInstance$');});var f=k?el[k]:null;var pages=null;var visited=new Set();function search(node,depth){if(!node||depth>20||visited.has(node)||pages)return;visited.add(node);var h=node.memoizedState;while(h){var s=h.memoizedState;if(s){if(Array.isArray(s.pages)&&s.pages.length>0&&(s.pages[0].url||typeof s.pages[0]==='string')){pages=s.pages;return;}if(Array.isArray(s)&&s.length>0&&(s[0].url||typeof s[0]==='string')){pages=s;return;}}h=h.next;}var p=node.memoizedProps;if(p&&Array.isArray(p.pages)&&p.pages.length>0&&(p.pages[0].url||typeof p.pages[0]==='string')){pages=p.pages;return;}if(node.return)search(node.return,depth+1);if(node.child)search(node.child,depth+1);if(node.sibling)search(node.sibling,depth+1);}search(f,0);var wrap=document.getElementById('sumizuri-pages');if(!wrap){wrap=document.createElement('div');wrap.id='sumizuri-pages';document.body.appendChild(wrap);}wrap.innerHTML='';if(pages&&pages.length>0){pages.forEach(function(item){var img=document.createElement('img');img.className='reader-img';img.src=item.url||item;wrap.appendChild(img);});var r=document.querySelector('.reader');if(r)r.remove();}else{var els=document.querySelectorAll('.reader__page,.reader-swiper__slide');els.forEach(function(slide){var k2=Object.keys(slide).find(function(x){return x.startsWith('__reactFiber$')||x.startsWith('__reactInternalInstance$');});var f2=k2?slide[k2]:null;while(f2&&(!f2.memoizedProps||!(f2.memoizedProps.page||(f2.memoizedProps.children&&f2.memoizedProps.children.props&&f2.memoizedProps.children.props.page)))){f2=f2.return;}var p2=f2&&f2.memoizedProps?(f2.memoizedProps.page||(f2.memoizedProps.children&&f2.memoizedProps.children.props&&f2.memoizedProps.children.props.page)):null;var url=p2&&p2.url?p2.url:(Array.isArray(p2)&&p2[0]&&p2[0].url?p2[0].url:null);if(url){var img=document.createElement('img');img.className='reader-img';img.src=url;wrap.appendChild(img);}});if(wrap.children.length>0){var r=document.querySelector('.reader');if(r)r.remove();}}})();"
     },
-    "itemSelector": "img.reader-img, div.reader__page img",
+    "itemSelector": "#sumizuri-pages img, .reader__page img.reader-img, .reader-swiper__slide img.reader-img, img.reader-img",
     "fields": {
       "imageUrl": {
         "attr": "src",

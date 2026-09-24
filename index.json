@@ -107,7 +107,7 @@
       "mediaType": "manga",
       "engineKind": "json",
       "version": 1,
-      "iconUrl": "https://weebcentral.com/static/images/apple-touch-icon.png",
+      "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/weebcentral.png",
       "baseUrl": "https://weebcentral.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/weebcentral.json"
     },

@@ -7,7 +7,7 @@
       "lang": "en",
       "mediaType": "anime",
       "engineKind": "json",
-      "version": 8,
+      "version": 9,
       "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
       "baseUrl": "https://anikototv.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/anikoto.json"
@@ -40,7 +40,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
+      "version": 2,
       "iconUrl": "https://chikari.moe/icon-192.png",
       "baseUrl": "https://chikari.moe",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/chikari.json"
@@ -95,7 +95,7 @@
       "lang": "all",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 2,
+      "version": 3,
       "iconUrl": "https://nhentai.net/favicon.png",
       "baseUrl": "https://nhentai.net",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/nhentai.json"
@@ -271,7 +271,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 3,
+      "version": 4,
       "iconUrl": "https://mangafire.to/assets/mangafire/logo-sm.png",
       "baseUrl": "https://mangafire.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangafire.json"

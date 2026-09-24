@@ -212,6 +212,7 @@
     "headers": {
       "Referer": "https://megaplay.buzz/"
     },
+    "itemsPath": "",
     "fields": {
       "url": {
         "or": [

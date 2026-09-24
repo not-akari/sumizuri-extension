@@ -264,6 +264,17 @@
       "iconUrl": "https://weloma.net/favicon.ico",
       "baseUrl": "https://weloma.net",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/weloma.json"
+    },
+    {
+      "id": "mangafire",
+      "name": "MangaFire",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://mangafire.to/assets/mangafire/favicon.svg",
+      "baseUrl": "https://mangafire.to",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangafire.json"
     }
   ]
 }

@@ -67,7 +67,6 @@
   },
   "details": {
     "url": "{baseUrl}/api/series/{entrySlug}",
-    "itemsPath": "",
     "fields": {
       "url": { "template": "{baseUrl}/series/{entrySlug}" },
       "title": { "path": "title" },

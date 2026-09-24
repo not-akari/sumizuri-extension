@@ -73,7 +73,6 @@
   },
   "details": {
     "url": "{baseUrl}/api/v2/galleries/{entrySlug}",
-    "itemsPath": "",
     "fields": {
       "url": { "template": "{baseUrl}/g/{id}" },
       "title": {
@@ -101,7 +100,6 @@
   },
   "chapters": {
     "url": "{baseUrl}/api/v2/galleries/{entrySlug}",
-    "itemsPath": "",
     "fields": {
       "url": { "template": "{baseUrl}/api/v2/galleries/{id}" },
       "title": {

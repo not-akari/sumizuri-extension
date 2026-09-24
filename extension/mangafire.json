@@ -1,0 +1,198 @@
+{
+  "name": "MangaFire",
+  "lang": "en",
+  "baseUrl": "https://mangafire.to",
+  "iconUrl": "https://mangafire.to/assets/mangafire/favicon.svg",
+  "rateLimitMs": 1000,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://mangafire.to/"
+  },
+  "popular": {
+    "url": "{baseUrl}/browse?sort=views_7d:desc&page={page}",
+    "render": {
+      "waitFor": "a.title-rows__link, a.title-grid__link"
+    },
+    "itemSelector": "a.title-rows__link, a.title-grid__link",
+    "fields": {
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "div.title-row-card__title, span.title-row-card__title, div.manga-card__title",
+            "attr": "text"
+          },
+          {
+            "selector": "img",
+            "attr": "alt"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img.title-row-card__poster, img.manga-card__img, img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "latest": {
+    "url": "{baseUrl}/browse?sort=chapter_updated_at:desc&page={page}",
+    "render": {
+      "waitFor": "a.title-rows__link, a.title-grid__link"
+    },
+    "itemSelector": "a.title-rows__link, a.title-grid__link",
+    "fields": {
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "div.title-row-card__title, span.title-row-card__title, div.manga-card__title",
+            "attr": "text"
+          },
+          {
+            "selector": "img",
+            "attr": "alt"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img.title-row-card__poster, img.manga-card__img, img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "search": {
+    "url": "{baseUrl}/browse?keyword={query}&page={page}",
+    "render": {
+      "waitFor": "a.title-rows__link, a.title-grid__link"
+    },
+    "itemSelector": "a.title-rows__link, a.title-grid__link",
+    "fields": {
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "div.title-row-card__title, span.title-row-card__title, div.manga-card__title",
+            "attr": "text"
+          },
+          {
+            "selector": "img",
+            "attr": "alt"
+          }
+        ],
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "img.title-row-card__poster, img.manga-card__img, img",
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  },
+  "details": {
+    "url": "{entryUrl}",
+    "render": {
+      "waitFor": "h1.title-detail__title, div.title-detail__info"
+    },
+    "fields": {
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "h1.title-detail__title, h1",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "or": [
+          {
+            "selector": "div.title-detail__poster img",
+            "attr": "src"
+          },
+          {
+            "selector": "div.title-detail__banner-img",
+            "attr": "src"
+          }
+        ],
+        "resolve": true
+      },
+      "description": {
+        "selector": "div.title-detail__synopsis",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "status": {
+        "selector": "span.badge--status",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": "a.title-detail__tag",
+        "attr": "text",
+        "transform": "trim"
+      }
+    }
+  },
+  "chapters": {
+    "url": "{entryUrl}",
+    "render": {
+      "waitFor": "a.title-detail__row-link, div.title-detail__row"
+    },
+    "itemSelector": "a.title-detail__row-link",
+    "fields": {
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "or": [
+          {
+            "selector": "span.title-detail__row-name",
+            "attr": "text"
+          },
+          {
+            "selector": "span.title-detail__row-num",
+            "attr": "text"
+          }
+        ],
+        "transform": "trim"
+      },
+      "number": {
+        "selector": "span.title-detail__row-num",
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "selector": "span.title-detail__row-date",
+        "attr": "text",
+        "transform": "parseDate"
+      }
+    }
+  },
+  "pages": {
+    "url": "{chapterUrl}",
+    "render": {
+      "waitFor": "img.reader-img, div.reader__page"
+    },
+    "itemSelector": "img.reader-img, div.reader__page img",
+    "fields": {
+      "imageUrl": {
+        "attr": "src",
+        "resolve": true
+      }
+    }
+  }
+}

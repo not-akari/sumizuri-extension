@@ -18,7 +18,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 2,
+      "version": 3,
       "iconUrl": "https://asurascans.com/icons/apple-touch-icon.png",
       "baseUrl": "https://api.asurascans.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/asurascans.json"
@@ -106,7 +106,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
+      "version": 2,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/weebcentral.png",
       "baseUrl": "https://weebcentral.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/weebcentral.json"
@@ -271,7 +271,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
+      "version": 2,
       "iconUrl": "https://mangafire.to/assets/mangafire/logo-sm.png",
       "baseUrl": "https://mangafire.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangafire.json"

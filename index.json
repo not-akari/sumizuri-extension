@@ -211,6 +211,17 @@
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangakatana.json"
     },
     {
+      "id": "mangahub",
+      "name": "MangaHub",
+      "lang": "en",
+      "mediaType": "manga",
+      "engineKind": "js",
+      "version": 1,
+      "iconUrl": "https://mangahub.io/apple-touch-icon.png",
+      "baseUrl": "https://mangahub.io",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangahub.js"
+    },
+    {
       "id": "mangak",
       "name": "MangaK",
       "lang": "en",

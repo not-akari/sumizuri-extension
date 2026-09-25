@@ -29,10 +29,21 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
+      "version": 2,
       "iconUrl": "https://atsu.moe/favicon/apple-touch-icon.png",
       "baseUrl": "https://atsu.moe",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/atsumaru.json"
+    },
+    {
+      "id": "atsumaru_novels",
+      "name": "Atsumaru (Novels)",
+      "lang": "en",
+      "mediaType": "novel",
+      "engineKind": "json",
+      "version": 1,
+      "iconUrl": "https://atsu.moe/favicon/apple-touch-icon.png",
+      "baseUrl": "https://atsu.moe",
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/atsumaru_novels.json"
     },
     {
       "id": "chikari",

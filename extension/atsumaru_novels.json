@@ -1,5 +1,5 @@
 {
-  "name": "Atsumaru",
+  "name": "Atsumaru (Novels)",
   "lang": "en",
   "baseUrl": "https://atsu.moe",
   "iconUrl": "https://atsu.moe/favicon/apple-touch-icon.png",
@@ -9,11 +9,11 @@
     "Referer": "https://atsu.moe/"
   },
   "popular": {
-    "url": "{baseUrl}/api/home2/popular?limit={pageSize}&offset={offset}&mediums=Comic",
+    "url": "{baseUrl}/api/home2/popular?limit={pageSize}&offset={offset}&mediums=Novel",
     "pageSize": 24,
     "itemsPath": "items",
     "fields": {
-      "url": { "template": "/manga/{id}", "resolve": true },
+      "url": { "template": "/novel/{id}", "resolve": true },
       "title": { "path": "title" },
       "coverUrl": {
         "or": [
@@ -25,11 +25,11 @@
     }
   },
   "latest": {
-    "url": "{baseUrl}/api/home2/recentlyUpdated?limit={pageSize}&offset={offset}&mediums=Comic",
+    "url": "{baseUrl}/api/home2/recentlyUpdated?limit={pageSize}&offset={offset}&mediums=Novel",
     "pageSize": 24,
     "itemsPath": "items",
     "fields": {
-      "url": { "template": "/manga/{id}", "resolve": true },
+      "url": { "template": "/novel/{id}", "resolve": true },
       "title": { "path": "title" },
       "coverUrl": {
         "or": [
@@ -40,13 +40,13 @@
     }
   },
   "search": {
-    "url": "{baseUrl}/collections/manga/documents/search?q={query}&query_by=title,englishTitle,otherNames,authors,acronyms&filter_by=medium:=[Comic]&page={page}&per_page={pageSize}",
+    "url": "{baseUrl}/collections/manga/documents/search?q={query}&query_by=title,englishTitle,otherNames,authors,acronyms&filter_by=medium:=[Novel]&page={page}&per_page={pageSize}",
     "pageSize": 20,
     "itemsPath": "hits",
     "fields": {
       "url": {
         "join": [
-          { "template": "{baseUrl}/manga" },
+          { "template": "{baseUrl}/novel" },
           { "path": "document.id" }
         ],
         "separator": "/"
@@ -66,7 +66,7 @@
     "url": "{baseUrl}/api/manga/page?id={entrySlug}",
     "itemsPath": "mangaPage",
     "fields": {
-      "url": { "template": "{baseUrl}/manga/{entrySlug}" },
+      "url": { "template": "{baseUrl}/novel/{entrySlug}" },
       "title": { "path": "title" },
       "coverUrl": {
         "join": [
@@ -93,7 +93,7 @@
     "itemsPath": "chapters",
     "sort": { "by": "number", "order": "desc" },
     "fields": {
-      "url": { "template": "{baseUrl}/api/read/chapter?mangaId={entrySlug}&chapterId={id}" },
+      "url": { "template": "{baseUrl}/api/read/novelChapter?mangaId={entrySlug}&chapterId={id}" },
       "title": {
         "or": [
           { "path": "title" },
@@ -106,15 +106,9 @@
   },
   "pages": {
     "url": "{chapterUrl}",
-    "itemsPath": "readChapter.pages",
+    "itemsPath": "readNovelChapter.paragraphs",
     "fields": {
-      "imageUrl": {
-        "join": [
-          { "template": "https://cdn.atsu.moe" },
-          { "path": "image" }
-        ],
-        "separator": ""
-      }
+      "text": { "path": "" }
     }
   },
   "comments": {

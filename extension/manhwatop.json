@@ -2,7 +2,7 @@
   "name": "ManhwaTop",
   "lang": "en",
   "baseUrl": "https://manhwatop.com",
-  "iconUrl": "https://manhwatop.com/wp-content/uploads/2021/03/sharefacebook.jpg",
+  "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/manhwatop.jpg",
   "rateLimitMs": 1000,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",

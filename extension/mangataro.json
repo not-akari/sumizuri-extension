@@ -2,7 +2,7 @@
   "name": "MangaTaro",
   "lang": "en",
   "baseUrl": "https://mangataro.org",
-  "iconUrl": "https://mangataro.org/wp-content/uploads/2024/07/cropped-cropped-fav-192x192.png",
+  "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangataro.png",
   "rateLimitMs": 800,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",

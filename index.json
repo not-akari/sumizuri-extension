@@ -150,8 +150,8 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
-      "iconUrl": "https://mangagg.com/wp-content/uploads/2023/07/cropped-Favicon@1.5x-192x192.png",
+      "version": 2,
+      "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangagg.png",
       "baseUrl": "https://mangagg.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangagg.json"
     },
@@ -172,8 +172,8 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
-      "iconUrl": "https://manhwatop.com/wp-content/uploads/2021/03/sharefacebook.jpg",
+      "version": 2,
+      "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/manhwatop.jpg",
       "baseUrl": "https://manhwatop.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatop.json"
     },
@@ -227,8 +227,8 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "js",
-      "version": 1,
-      "iconUrl": "https://mangahub.io/apple-touch-icon.png",
+      "version": 3,
+      "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangahub.png",
       "baseUrl": "https://mangahub.io",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangahub.js"
     },
@@ -249,8 +249,8 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 1,
-      "iconUrl": "https://mangataro.org/wp-content/uploads/2024/07/cropped-cropped-fav-192x192.png",
+      "version": 2,
+      "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangataro.png",
       "baseUrl": "https://mangataro.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangataro.json"
     },

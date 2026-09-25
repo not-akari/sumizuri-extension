@@ -54,6 +54,9 @@ async function graphql(query, withToken) {
     method: "POST",
     headers: headers,
     body: JSON.stringify({ query: query }),
+    // When a bot check sends this through the app's browser, load a bare page
+    // to make the request from: the home page takes seconds, this takes ms.
+    browserPage: BASE + "/robots.txt",
   });
   var json = JSON.parse(response.body);
   if (json.errors && json.errors.length) {
@@ -124,7 +127,7 @@ var extension = {
   name: "MangaHub",
   lang: "en",
   baseUrl: BASE,
-  iconUrl: BASE + "/apple-touch-icon.png",
+  iconUrl: "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangahub.png",
   rateLimitMs: 1500,
 
   search: function (query, page) {

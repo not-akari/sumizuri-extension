@@ -2,7 +2,7 @@
   "name": "MangaGG",
   "lang": "en",
   "baseUrl": "https://mangagg.com",
-  "iconUrl": "https://mangagg.com/wp-content/uploads/2023/07/cropped-Favicon@1.5x-192x192.png",
+  "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangagg.png",
   "rateLimitMs": 1000,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",

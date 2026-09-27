@@ -29,17 +29,17 @@ async function fetchOrRender(url, waitFor) {
   try {
     var res = await host.fetch(url, {
       headers: HEADERS,
-      browserPage: url,
+      browserPage: BASE + "/",
     });
     if (res.body) {
       if (res.body.includes("Just a moment...") || res.body.includes("cf_chl")) {
-        throw new Error("__CHALLENGE__:" + url);
+        throw new Error("__CHALLENGE__:" + BASE + "/");
       }
       return { html: res.body, fromFetch: true };
     }
   } catch (e) {
     if (e && e.message && e.message.includes("__CHALLENGE__")) {
-      throw e;
+      throw new Error("__CHALLENGE__:" + BASE + "/");
     }
   }
 
@@ -58,7 +58,7 @@ async function fetchOrRender(url, waitFor) {
         err.message.includes("WebErrorStatus") ||
         err.message.includes("__CHALLENGE__"))
     ) {
-      throw new Error("__CHALLENGE__:" + url);
+      throw new Error("__CHALLENGE__:" + BASE + "/");
     }
     throw err;
   }
@@ -133,7 +133,7 @@ var extension = {
       try {
         var apiRes = await host.fetch(BASE + "/api/v2/series/" + seriesId, {
           headers: Object.assign({}, HEADERS, { Accept: "application/json" }),
-          browserPage: fullUrl,
+          browserPage: BASE + "/",
         });
         if (apiRes.body && apiRes.body.startsWith("{")) {
           var data = JSON.parse(apiRes.body);
@@ -162,7 +162,9 @@ var extension = {
           }
         }
       } catch (e) {
-        if (e && e.message && e.message.includes("__CHALLENGE__")) throw e;
+        if (e && e.message && e.message.includes("__CHALLENGE__")) {
+          throw new Error("__CHALLENGE__:" + BASE + "/");
+        }
       }
     }
 
@@ -200,7 +202,7 @@ var extension = {
       try {
         var apiRes = await host.fetch(BASE + "/api/v2/series/" + seriesId, {
           headers: Object.assign({}, HEADERS, { Accept: "application/json" }),
-          browserPage: fullUrl,
+          browserPage: BASE + "/",
         });
         if (apiRes.body && apiRes.body.startsWith("{")) {
           var data = JSON.parse(apiRes.body);
@@ -211,7 +213,8 @@ var extension = {
             });
             return books.map(function (b) {
               var bookId = b.book_id || b.bookId;
-              var chUrl = BASE + "/series/" + seriesId + "/reader/" + bookId;
+              // Kagane uses /reader/[bookId] directly
+              var chUrl = BASE + "/reader/" + bookId;
               var num = b.sort_no !== undefined ? Number(b.sort_no) : parseFloat(b.chapter_no);
               return {
                 url: chUrl,
@@ -223,7 +226,9 @@ var extension = {
           }
         }
       } catch (e) {
-        if (e && e.message && e.message.includes("__CHALLENGE__")) throw e;
+        if (e && e.message && e.message.includes("__CHALLENGE__")) {
+          throw new Error("__CHALLENGE__:" + BASE + "/");
+        }
       }
     }
 
@@ -244,7 +249,7 @@ var extension = {
       var titleText = (a.text || "").trim();
       var numMatch = titleText.match(/(\d+(?:\.\d+)?)/);
       var num = numMatch ? parseFloat(numMatch[1]) : undefined;
-      var chFull = href.startsWith("http") ? href : (BASE + (href.startsWith("/") ? "" : "/") + href);
+      var chFull = BASE + "/reader/" + bookId;
 
       chapters.push({
         url: chFull,
@@ -258,27 +263,27 @@ var extension = {
 
   getPageList: async function (chapterUrl) {
     var bookId = extractBookId(chapterUrl);
-    var seriesId = extractSeriesId(chapterUrl);
-    var fullUrl = chapterUrl.startsWith("http") ? chapterUrl : (BASE + chapterUrl);
+    // Normalize to direct reader URL
+    var fullUrl = bookId ? (BASE + "/reader/" + bookId) : (chapterUrl.startsWith("http") ? chapterUrl : (BASE + chapterUrl));
 
     // 1. Probe host.fetch first.
-    // If Cloudflare is active and not yet solved, this throws __CHALLENGE__ so Sumizuri
-    // can display the interactive browser solver screen.
+    // If Cloudflare is active and not yet solved, this throws __CHALLENGE__ pointing to BASE + "/"
+    // so Sumizuri displays the interactive browser solver at https://kagane.to/
     var pageHtml = null;
     try {
       var probe = await host.fetch(fullUrl, {
         headers: HEADERS,
-        browserPage: fullUrl,
+        browserPage: BASE + "/",
       });
       if (probe.body) {
         if (probe.body.includes("Just a moment...") || probe.body.includes("cf_chl")) {
-          throw new Error("__CHALLENGE__:" + fullUrl);
+          throw new Error("__CHALLENGE__:" + BASE + "/");
         }
         pageHtml = probe.body;
       }
     } catch (e) {
       if (e && e.message && e.message.includes("__CHALLENGE__")) {
-        throw e;
+        throw new Error("__CHALLENGE__:" + BASE + "/");
       }
     }
 
@@ -337,7 +342,7 @@ var extension = {
       try {
         var apiRes = await host.fetch(BASE + "/api/v2/books/" + bookId, {
           headers: Object.assign({}, HEADERS, { Accept: "application/json" }),
-          browserPage: fullUrl,
+          browserPage: BASE + "/",
         });
         if (apiRes.body && apiRes.body.startsWith("{")) {
           var bData = JSON.parse(apiRes.body);
@@ -363,7 +368,9 @@ var extension = {
           }
         }
       } catch (e) {
-        if (e && e.message && e.message.includes("__CHALLENGE__")) throw e;
+        if (e && e.message && e.message.includes("__CHALLENGE__")) {
+          throw new Error("__CHALLENGE__:" + BASE + "/");
+        }
       }
     }
 
@@ -419,7 +426,7 @@ var extension = {
           err.message.includes("WebErrorStatus") ||
           err.message.includes("__CHALLENGE__"))
       ) {
-        throw new Error("__CHALLENGE__:" + fullUrl);
+        throw new Error("__CHALLENGE__:" + BASE + "/");
       }
       throw err;
     }
@@ -481,7 +488,7 @@ var extension = {
     }
 
     if (imageUrls.length === 0) {
-      throw new Error("__CHALLENGE__:" + fullUrl);
+      throw new Error("__CHALLENGE__:" + BASE + "/");
     }
 
     return imageUrls.map(function (url, index) {

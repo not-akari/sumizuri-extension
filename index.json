@@ -183,7 +183,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://cdn.manhwatoon.me/2026/06/manhwatoon-M-300x300.png",
       "baseUrl": "https://www.manhwatoon.me",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatoon.json"
@@ -304,7 +304,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "js",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://kagane.to/favicon.ico",
       "baseUrl": "https://kagane.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/kagane.js"

@@ -16,6 +16,7 @@
       "title": { "selector": ".post-title a", "attr": "text", "transform": "trim" },
       "coverUrl": {
         "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       },
       "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
@@ -29,6 +30,7 @@
       "title": { "selector": ".post-title a", "attr": "text", "transform": "trim" },
       "coverUrl": {
         "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       },
       "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
@@ -42,6 +44,7 @@
       "title": { "selector": ".post-title a, h3.h4 a", "attr": "text", "transform": "trim" },
       "coverUrl": {
         "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       },
       "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
@@ -58,6 +61,7 @@
           { "selector": "meta[property=\"og:image\"]", "attr": "content" },
           { "selector": "div.summary_image img", "attr": "src" }
         ],
+        "transform": "trim",
         "resolve": true
       },
       "description": {
@@ -87,10 +91,11 @@
   },
   "pages": {
     "url": "{chapterUrl}",
-    "itemSelector": "div.reading-content img, div.page-break img",
+    "itemSelector": "div.reading-content img, div.page-break img, img.wp-manga-chapter-img",
     "fields": {
       "imageUrl": {
         "or": [{ "attr": "data-src" }, { "attr": "data-lazy-src" }, { "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       }
     }

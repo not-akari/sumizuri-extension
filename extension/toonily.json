@@ -80,7 +80,7 @@
     }
   },
   "search": {
-    "url": "{baseUrl}/page/{page}/?s={query}&post_type=wp-manga",
+    "url": "{baseUrl}/search/{query}/page/{page}/?m_orderby={order}{status}{genre}",
     "itemSelector": "div.c-tabs-item__content, div.page-item-detail.manga, div.page-item-detail",
     "fields": {
       "url": {
@@ -112,8 +112,231 @@
         "transform": "number",
         "round": 1
       }
-    }
+    },
+    "emptyQueryUrl": "{baseUrl}/search/page/{page}/?m_orderby={order}{status}{genre}"
   },
+  "filters": [
+    {
+      "key": "order",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Relevance",
+          "value": ""
+        },
+        {
+          "label": "Latest update",
+          "value": "latest"
+        },
+        {
+          "label": "Most views",
+          "value": "views"
+        },
+        {
+          "label": "Trending",
+          "value": "trending"
+        },
+        {
+          "label": "Rating",
+          "value": "rating"
+        },
+        {
+          "label": "New",
+          "value": "new-manga"
+        },
+        {
+          "label": "A to Z",
+          "value": "alphabet"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Ongoing",
+          "value": "&status[]=on-going"
+        },
+        {
+          "label": "Completed",
+          "value": "&status[]=end"
+        },
+        {
+          "label": "Hiatus",
+          "value": "&status[]=on-hold"
+        },
+        {
+          "label": "Canceled",
+          "value": "&status[]=canceled"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genres",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Action",
+          "value": "&genre[]=action"
+        },
+        {
+          "label": "Adventure",
+          "value": "&genre[]=adventure"
+        },
+        {
+          "label": "Comedy",
+          "value": "&genre[]=comedy"
+        },
+        {
+          "label": "Crime",
+          "value": "&genre[]=crime"
+        },
+        {
+          "label": "Drama",
+          "value": "&genre[]=drama"
+        },
+        {
+          "label": "Fantasy",
+          "value": "&genre[]=fantasy"
+        },
+        {
+          "label": "Gossip",
+          "value": "&genre[]=gossip"
+        },
+        {
+          "label": "Historical",
+          "value": "&genre[]=historical"
+        },
+        {
+          "label": "Horror",
+          "value": "&genre[]=horror"
+        },
+        {
+          "label": "Isekai",
+          "value": "&genre[]=isekai"
+        },
+        {
+          "label": "Josei",
+          "value": "&genre[]=josei"
+        },
+        {
+          "label": "Magic",
+          "value": "&genre[]=magic"
+        },
+        {
+          "label": "Mature",
+          "value": "&genre[]=mature"
+        },
+        {
+          "label": "Mystery",
+          "value": "&genre[]=mystery"
+        },
+        {
+          "label": "Psychological",
+          "value": "&genre[]=psychological"
+        },
+        {
+          "label": "Romance",
+          "value": "&genre[]=romance"
+        },
+        {
+          "label": "School Life",
+          "value": "&genre[]=school-life"
+        },
+        {
+          "label": "Sci-Fi",
+          "value": "&genre[]=scifi-webtoon"
+        },
+        {
+          "label": "Seinen",
+          "value": "&genre[]=seinen"
+        },
+        {
+          "label": "Shoujo",
+          "value": "&genre[]=shoujo"
+        },
+        {
+          "label": "Shounen",
+          "value": "&genre[]=shounen"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "&genre[]=slice-of-life"
+        },
+        {
+          "label": "Sports",
+          "value": "&genre[]=sports"
+        },
+        {
+          "label": "Supernatural",
+          "value": "&genre[]=supernatural"
+        },
+        {
+          "label": "Thriller",
+          "value": "&genre[]=thriller"
+        },
+        {
+          "label": "Tragedy",
+          "value": "&genre[]=tragedy"
+        },
+        {
+          "label": "Villainess",
+          "value": "&genre[]=villainess"
+        },
+        {
+          "label": "Wuxia",
+          "value": "&genre[]=wuxia"
+        },
+        {
+          "label": "Yaoi",
+          "value": "&genre[]=yaoi"
+        },
+        {
+          "label": "Yuri",
+          "value": "&genre[]=yuri"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "trending",
+      "name": "Trending",
+      "url": "{baseUrl}/serie/page/{page}/?m_orderby=trending"
+    },
+    {
+      "id": "new",
+      "name": "New",
+      "url": "{baseUrl}/serie/page/{page}/?m_orderby=new-manga"
+    },
+    {
+      "id": "rating",
+      "name": "Top rated",
+      "url": "{baseUrl}/serie/page/{page}/?m_orderby=rating"
+    },
+    {
+      "id": "alphabet",
+      "name": "A to Z",
+      "url": "{baseUrl}/serie/page/{page}/?m_orderby=alphabet"
+    },
+    {
+      "id": "completed",
+      "name": "Completed",
+      "filters": {
+        "status": "&status[]=end",
+        "order": "latest"
+      }
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {

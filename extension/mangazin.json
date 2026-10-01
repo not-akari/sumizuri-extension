@@ -78,6 +78,28 @@
       }
     }
   },
+  "catalogs": [
+    {
+      "id": "trending",
+      "name": "Trending",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=trending"
+    },
+    {
+      "id": "new",
+      "name": "New",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=new-manga"
+    },
+    {
+      "id": "rating",
+      "name": "Top rated",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=rating"
+    },
+    {
+      "id": "alphabet",
+      "name": "A to Z",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=alphabet"
+    }
+  ],
   "search": {
     "url": "{baseUrl}/page/{page}/?s={query}&post_type=wp-manga",
     "itemSelector": "div.c-tabs-item__content, div.page-item-detail",

@@ -1,221 +1,262 @@
 {
   "name": "MangaBall",
   "lang": "en",
-  "baseUrl": "https://mangaball.net",
-  "iconUrl": "https://mangaball.net/favicon.ico",
+  "baseUrl": "https://api.mangaball.com/api/v1",
+  "webBaseUrl": "https://mangaball.com",
+  "iconUrl": "https://mangaball.com/images/favicon.png",
   "rateLimitMs": 1000,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Referer": "https://mangaball.net/"
+    "Referer": "https://mangaball.com/"
   },
   "popular": {
-    "url": "{baseUrl}/",
-    "render": true,
-    "itemSelector": "div.grid-item-new-chapter, div.grid-item-no-chapter, div[class*=\"grid-item\"]",
+    "url": "{baseUrl}/title/search-advanced?sort_by=views&page={page}&limit=20",
+    "itemsPath": "data",
     "fields": {
       "url": {
-        "selector": "a.position-relative, a[href*=\"/title/\"], a[href*=\"/manga/\"]",
-        "attr": "href",
-        "resolve": true
+        "template": "{baseUrl}/title/detail/{id}"
       },
       "title": {
-        "or": [
-          {
-            "selector": "h6.card-title",
-            "attr": "text"
-          },
-          {
-            "selector": "img",
-            "attr": "alt"
-          }
-        ],
+        "path": "name",
         "transform": "trim"
       },
       "coverUrl": {
-        "selector": "img.card-img-top, img",
-        "attr": "src",
-        "resolve": true
+        "or": [
+          {
+            "join": [
+              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
+              { "path": "image.cover.name" }
+            ],
+            "separator": "",
+            "requireAll": true
+          },
+          {
+            "path": "image.cdn_mangadex"
+          },
+          {
+            "path": "image.file"
+          }
+        ]
+      },
+      "rating": {
+        "path": "ratings.rating_average",
+        "round": 1
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      },
+      "genres": {
+        "path": "tags",
+        "map": "name"
+      },
+      "webUrl": {
+        "template": "https://mangaball.com/title-detail/{id}"
       }
     }
   },
   "latest": {
-    "url": "{baseUrl}/recently-updated-chapter/",
-    "render": true,
-    "itemSelector": "div.grid-item-new-chapter, div.grid-item-no-chapter, div[class*=\"grid-item\"]",
+    "url": "{baseUrl}/title/recently-updated?page={page}&limit=20",
+    "itemsPath": "data",
     "fields": {
       "url": {
-        "selector": "a.position-relative, a[href*=\"/title/\"], a[href*=\"/manga/\"]",
-        "attr": "href",
-        "resolve": true
+        "template": "{baseUrl}/title/detail/{id}"
       },
       "title": {
-        "or": [
-          {
-            "selector": "h6.card-title",
-            "attr": "text"
-          },
-          {
-            "selector": "img",
-            "attr": "alt"
-          }
-        ],
+        "path": "name",
         "transform": "trim"
       },
       "coverUrl": {
-        "selector": "img.card-img-top, img",
-        "attr": "src",
-        "resolve": true
+        "or": [
+          {
+            "join": [
+              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
+              { "path": "image.cover.name" }
+            ],
+            "separator": "",
+            "requireAll": true
+          },
+          {
+            "path": "image.cdn_mangadex"
+          },
+          {
+            "path": "image.file"
+          }
+        ]
+      },
+      "rating": {
+        "path": "ratings.rating_average",
+        "round": 1
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      },
+      "genres": {
+        "path": "tags",
+        "map": "name"
+      },
+      "webUrl": {
+        "template": "https://mangaball.com/title-detail/{id}"
       }
     }
   },
   "search": {
-    "url": "{baseUrl}/search-advanced/?q={query}",
-    "render": true,
-    "itemSelector": "div.grid-item-new-chapter, div.grid-item-no-chapter, div[class*=\"grid-item\"], .smartsearch-item",
+    "url": "{baseUrl}/title/search-advanced?keyword={query}&page={page}&limit=20",
+    "itemsPath": "data",
     "fields": {
       "url": {
-        "or": [
-          {
-            "selector": "a.position-relative, a[href*=\"/title/\"], a[href*=\"/manga/\"]",
-            "attr": "href"
-          },
-          {
-            "attr": "onclick",
-            "regex": "location\\.href='([^']+)'"
-          }
-        ],
-        "resolve": true
+        "template": "{baseUrl}/title/detail/{id}"
       },
       "title": {
-        "or": [
-          {
-            "selector": "h6.card-title",
-            "attr": "text"
-          },
-          {
-            "selector": "img",
-            "attr": "alt"
-          },
-          {
-            "selector": "span, a",
-            "attr": "text"
-          }
-        ],
+        "path": "name",
         "transform": "trim"
       },
       "coverUrl": {
-        "selector": "img",
-        "attr": "src",
-        "resolve": true
+        "or": [
+          {
+            "join": [
+              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
+              { "path": "image.cover.name" }
+            ],
+            "separator": "",
+            "requireAll": true
+          },
+          {
+            "path": "image.cdn_mangadex"
+          },
+          {
+            "path": "image.file"
+          }
+        ]
+      },
+      "rating": {
+        "path": "ratings.rating_average",
+        "round": 1
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      },
+      "genres": {
+        "path": "tags",
+        "map": "name"
+      },
+      "webUrl": {
+        "template": "https://mangaball.com/title-detail/{id}"
       }
     }
   },
   "details": {
     "url": "{entryUrl}",
-    "render": true,
+    "itemsPath": "data",
     "fields": {
       "url": {
         "template": "{entryUrl}"
       },
       "title": {
-        "or": [
-          {
-            "selector": "h1",
-            "attr": "text"
-          },
-          {
-            "selector": "meta[property=\"og:title\"]",
-            "attr": "content"
-          }
-        ],
+        "path": "name",
         "transform": "trim"
       },
       "coverUrl": {
         "or": [
           {
-            "selector": ".comic-cover img, .cover img",
-            "attr": "src"
+            "join": [
+              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
+              { "path": "image.cover.name" }
+            ],
+            "separator": "",
+            "requireAll": true
           },
           {
-            "selector": "meta[property=\"og:image\"]",
-            "attr": "content"
+            "path": "image.cdn_mangadex"
+          },
+          {
+            "path": "image.file"
           }
-        ],
-        "resolve": true
+        ]
       },
       "description": {
         "or": [
           {
-            "selector": ".description, .synopsis",
-            "attr": "text"
+            "path": "description.0",
+            "transform": "trim"
           },
           {
-            "selector": "meta[property=\"og:description\"]",
-            "attr": "content"
+            "path": "description",
+            "transform": "trim"
           }
-        ],
-        "transform": "trim"
+        ]
       },
-      "genres": {
-        "selector": "a[href*=\"/genres/\"], a[href*=\"/genre/\"]",
-        "attr": "text",
-        "all": true,
+      "author": {
+        "path": "authors.0.name",
         "transform": "trim"
       },
       "status": {
-        "selector": ".status, .status-indicator",
-        "attr": "text",
-        "transform": "capitalize",
-        "default": "Ongoing"
+        "path": "status",
+        "transform": "capitalize"
+      },
+      "rating": {
+        "path": "ratings.rating_average",
+        "round": 1
+      },
+      "genres": {
+        "path": "tags",
+        "map": "name"
+      },
+      "webUrl": {
+        "template": "https://mangaball.com/title-detail/{id}"
       }
     }
   },
   "chapters": {
-    "url": "{entryUrl}",
-    "render": true,
-    "itemSelector": "a[href*=\"/chapter/\"], a.dropdown-item[href*=\"/chapter/\"], button[onclick*=\"chapter\"]",
+    "url": "{baseUrl}/title/chapter-listing?title_id={entrySlug}&page=1&limit=2000&group_by=flat&sort_order=desc&language=en",
+    "itemsPath": "data",
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
     "fields": {
       "url": {
-        "or": [
-          {
-            "attr": "href"
-          },
-          {
-            "attr": "onclick",
-            "regex": "location\\.href='([^']+)'"
-          }
-        ],
-        "resolve": true
+        "template": "{baseUrl}/chapter-detail?chapter_id={id}"
       },
       "title": {
-        "attr": "text",
-        "transform": "trim"
+        "or": [
+          {
+            "path": "name",
+            "transform": "trim"
+          },
+          {
+            "template": "Chapter {number}"
+          }
+        ]
       },
       "number": {
-        "attr": "text",
-        "regex": "([0-9.]+)",
+        "path": "number",
         "transform": "number"
+      },
+      "dateUploaded": {
+        "path": "created_at",
+        "transform": "parseDate"
+      },
+      "scanlator": {
+        "path": "group.name",
+        "transform": "trim"
       }
     }
   },
   "pages": {
     "url": "{chapterUrl}",
-    "render": true,
-    "itemSelector": "img.chapter-img, img.reader-img, div.reader-body img, #sumizuri-captured a, img",
+    "itemsPath": "data.chapter.pages",
     "fields": {
       "imageUrl": {
-        "or": [
-          {
-            "attr": "data-src"
-          },
-          {
-            "attr": "src"
-          },
-          {
-            "attr": "href"
-          }
-        ],
-        "resolve": true
+        "if": "string",
+        "then": {
+          "path": ""
+        },
+        "else": {
+          "path": "url"
+        }
       }
     }
   }

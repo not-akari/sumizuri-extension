@@ -16,6 +16,7 @@
       "title": { "selector": ".post-title a", "attr": "text", "transform": "trim" },
       "coverUrl": {
         "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       },
       "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
@@ -29,11 +30,18 @@
       "title": { "selector": ".post-title a", "attr": "text", "transform": "trim" },
       "coverUrl": {
         "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       },
       "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
     }
   },
+  "catalogs": [
+    { "id": "trending", "name": "Trending", "url": "{baseUrl}/all/page/{page}/?m_orderby=trending" },
+    { "id": "new", "name": "New", "url": "{baseUrl}/all/page/{page}/?m_orderby=new-manga" },
+    { "id": "rating", "name": "Top rated", "url": "{baseUrl}/all/page/{page}/?m_orderby=rating" },
+    { "id": "alphabet", "name": "A to Z", "url": "{baseUrl}/all/page/{page}/?m_orderby=alphabet" }
+  ],
   "search": {
     "url": "{baseUrl}/page/{page}/?s={query}&post_type=wp-manga",
     "itemSelector": "div.c-tabs-item__content, div.page-item-detail.manga, div.page-item-detail",
@@ -42,6 +50,7 @@
       "title": { "selector": ".post-title a, h3.h4 a", "attr": "text", "transform": "trim" },
       "coverUrl": {
         "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       },
       "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
@@ -58,6 +67,7 @@
           { "selector": "meta[property=\"og:image\"]", "attr": "content" },
           { "selector": "div.summary_image img", "attr": "src" }
         ],
+        "transform": "trim",
         "resolve": true
       },
       "description": {
@@ -87,10 +97,11 @@
   },
   "pages": {
     "url": "{chapterUrl}",
-    "itemSelector": "div.reading-content img, div.page-break img",
+    "itemSelector": "div.reading-content img, div.page-break img, img.wp-manga-chapter-img",
     "fields": {
       "imageUrl": {
         "or": [{ "attr": "data-src" }, { "attr": "data-lazy-src" }, { "attr": "src" }],
+        "transform": "trim",
         "resolve": true
       }
     }

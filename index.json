@@ -139,7 +139,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://mangazin.org/wp-content/uploads/2020/02/cropped-IMG_20200222_225535-192x192.jpg",
       "baseUrl": "https://mangazin.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangazin.json"
@@ -150,7 +150,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangagg.png",
       "baseUrl": "https://mangagg.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangagg.json"
@@ -161,7 +161,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://madaradex.org/wp-content/uploads/cropped-logo.png",
       "baseUrl": "https://madaradex.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/madaradex.json"
@@ -172,7 +172,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/manhwatop.jpg",
       "baseUrl": "https://manhwatop.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatop.json"
@@ -183,7 +183,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://cdn.manhwatoon.me/2026/06/manhwatoon-M-300x300.png",
       "baseUrl": "https://www.manhwatoon.me",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatoon.json"
@@ -194,10 +194,11 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://toonily.com/favicon.ico",
       "baseUrl": "https://toonily.com",
-      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/toonily.json"
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/toonily.json",
+      "minEngine": 2
     },
     {
       "id": "manhuascans",
@@ -271,9 +272,9 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
-      "iconUrl": "https://mangaball.net/favicon.ico",
-      "baseUrl": "https://mangaball.net",
+      "version": 11,
+      "iconUrl": "https://mangaball.com/images/favicon.png",
+      "baseUrl": "https://api.mangaball.com/api/v1",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangaball.json"
     },
     {

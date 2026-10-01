@@ -78,23 +78,6 @@
       }
     }
   },
-  "catalogs": [
-    {
-      "id": "new",
-      "name": "New",
-      "url": "{baseUrl}/manga/page/{page}/?m_orderby=new-manga"
-    },
-    {
-      "id": "rating",
-      "name": "Top rated",
-      "url": "{baseUrl}/manga/page/{page}/?m_orderby=rating"
-    },
-    {
-      "id": "alphabet",
-      "name": "A to Z",
-      "url": "{baseUrl}/manga/page/{page}/?m_orderby=alphabet"
-    }
-  ],
   "search": {
     "url": "{baseUrl}/page/{page}/?s={query}&post_type=wp-manga",
     "itemSelector": "div.c-tabs-item__content, div.page-item-detail.manga, div.page-item-detail",
@@ -128,8 +111,356 @@
         "transform": "number",
         "round": 1
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/page/{page}/?s={queryPlus}&post_type=wp-manga{order}{status}{genre}"
     }
   },
+  "filters": [
+    {
+      "key": "order",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Relevance",
+          "value": ""
+        },
+        {
+          "label": "Latest update",
+          "value": "&m_orderby=latest"
+        },
+        {
+          "label": "Most views",
+          "value": "&m_orderby=views"
+        },
+        {
+          "label": "Trending",
+          "value": "&m_orderby=trending"
+        },
+        {
+          "label": "Rating",
+          "value": "&m_orderby=rating"
+        },
+        {
+          "label": "New",
+          "value": "&m_orderby=new-manga"
+        },
+        {
+          "label": "A to Z",
+          "value": "&m_orderby=alphabet"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Ongoing",
+          "value": "&status%5B%5D=on-going"
+        },
+        {
+          "label": "Completed",
+          "value": "&status%5B%5D=end"
+        },
+        {
+          "label": "Canceled",
+          "value": "&status%5B%5D=canceled"
+        },
+        {
+          "label": "On hold",
+          "value": "&status%5B%5D=on-hold"
+        },
+        {
+          "label": "Upcoming",
+          "value": "&status%5B%5D=upcoming"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genres",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Action",
+          "value": "&genre%5B%5D=genre-action-new-genre"
+        },
+        {
+          "label": "Adaptation",
+          "value": "&genre%5B%5D=adaptation"
+        },
+        {
+          "label": "Adult",
+          "value": "&genre%5B%5D=adult"
+        },
+        {
+          "label": "Adventure",
+          "value": "&genre%5B%5D=adventure-genre-hot"
+        },
+        {
+          "label": "Childhood Friends",
+          "value": "&genre%5B%5D=childhood-friends"
+        },
+        {
+          "label": "Comedy",
+          "value": "&genre%5B%5D=genre-comedy"
+        },
+        {
+          "label": "Comic",
+          "value": "&genre%5B%5D=comic-new-genre"
+        },
+        {
+          "label": "Complete",
+          "value": "&genre%5B%5D=completed-new"
+        },
+        {
+          "label": "Crime",
+          "value": "&genre%5B%5D=crime"
+        },
+        {
+          "label": "Doujinshi",
+          "value": "&genre%5B%5D=doujinshi-new-genre"
+        },
+        {
+          "label": "Drama",
+          "value": "&genre%5B%5D=genre-drama"
+        },
+        {
+          "label": "Ecchi",
+          "value": "&genre%5B%5D=ecchi-genre-hot"
+        },
+        {
+          "label": "Fantasy",
+          "value": "&genre%5B%5D=fantasy-genre-hot"
+        },
+        {
+          "label": "Full Color",
+          "value": "&genre%5B%5D=full-color"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "&genre%5B%5D=gender-bender-genre-hot"
+        },
+        {
+          "label": "Girl Power",
+          "value": "&genre%5B%5D=girl-power"
+        },
+        {
+          "label": "Harem",
+          "value": "&genre%5B%5D=harem-new"
+        },
+        {
+          "label": "Historical",
+          "value": "&genre%5B%5D=historical-new-genre"
+        },
+        {
+          "label": "Horror",
+          "value": "&genre%5B%5D=horror-genres-new"
+        },
+        {
+          "label": "Isekai",
+          "value": "&genre%5B%5D=isekai-new-genres"
+        },
+        {
+          "label": "Josei",
+          "value": "&genre%5B%5D=josei-new-genre"
+        },
+        {
+          "label": "Live action",
+          "value": "&genre%5B%5D=live-action-new-genre"
+        },
+        {
+          "label": "Lolicon",
+          "value": "&genre%5B%5D=lolicon-new-genres"
+        },
+        {
+          "label": "Magic",
+          "value": "&genre%5B%5D=magic"
+        },
+        {
+          "label": "Manga",
+          "value": "&genre%5B%5D=manga-new"
+        },
+        {
+          "label": "Manhua",
+          "value": "&genre%5B%5D=manhua-new"
+        },
+        {
+          "label": "Manhwa",
+          "value": "&genre%5B%5D=manhwa-new"
+        },
+        {
+          "label": "Manhwa Hot",
+          "value": "&genre%5B%5D=manhwa-hot"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "&genre%5B%5D=martial-arts-genre-hot"
+        },
+        {
+          "label": "Mature",
+          "value": "&genre%5B%5D=mature"
+        },
+        {
+          "label": "Mecha",
+          "value": "&genre%5B%5D=mecha-new-genres"
+        },
+        {
+          "label": "Military",
+          "value": "&genre%5B%5D=military"
+        },
+        {
+          "label": "Murim",
+          "value": "&genre%5B%5D=murim"
+        },
+        {
+          "label": "Mystery",
+          "value": "&genre%5B%5D=mystery-new-genres"
+        },
+        {
+          "label": "Necromancer",
+          "value": "&genre%5B%5D=necromancer"
+        },
+        {
+          "label": "Office Workers",
+          "value": "&genre%5B%5D=office-workers"
+        },
+        {
+          "label": "Overpowered",
+          "value": "&genre%5B%5D=overpowered"
+        },
+        {
+          "label": "Psychological",
+          "value": "&genre%5B%5D=psychological-genre-hot"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "&genre%5B%5D=reincarnation"
+        },
+        {
+          "label": "Romance",
+          "value": "&genre%5B%5D=romance-genre-hot"
+        },
+        {
+          "label": "Royal family",
+          "value": "&genre%5B%5D=royal-family"
+        },
+        {
+          "label": "School Life",
+          "value": "&genre%5B%5D=school-life-genres"
+        },
+        {
+          "label": "Sci-fi",
+          "value": "&genre%5B%5D=sci-fi-genre-hot"
+        },
+        {
+          "label": "Seinen",
+          "value": "&genre%5B%5D=seinen-genre-hot"
+        },
+        {
+          "label": "Shoujo",
+          "value": "&genre%5B%5D=shoujo-genres"
+        },
+        {
+          "label": "Shoujo Ai",
+          "value": "&genre%5B%5D=shoujo-ai-genre-hot"
+        },
+        {
+          "label": "Shounen",
+          "value": "&genre%5B%5D=shounen-genres"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "&genre%5B%5D=shounen-ai-genre-hot"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "&genre%5B%5D=slice-of-life-genres"
+        },
+        {
+          "label": "Smut",
+          "value": "&genre%5B%5D=smut-genre-hot"
+        },
+        {
+          "label": "Soft Yaoi",
+          "value": "&genre%5B%5D=soft-yaoi-genres"
+        },
+        {
+          "label": "Soft Yuri",
+          "value": "&genre%5B%5D=soft-yuri-genres"
+        },
+        {
+          "label": "Sports",
+          "value": "&genre%5B%5D=sports-genres"
+        },
+        {
+          "label": "Supernatural",
+          "value": "&genre%5B%5D=supernatural-genres"
+        },
+        {
+          "label": "Survival",
+          "value": "&genre%5B%5D=survival"
+        },
+        {
+          "label": "Time Travel",
+          "value": "&genre%5B%5D=time-travel"
+        },
+        {
+          "label": "Tragedy",
+          "value": "&genre%5B%5D=tragedy-genre-hot"
+        },
+        {
+          "label": "Webtoon",
+          "value": "&genre%5B%5D=webtoon-new-genre"
+        },
+        {
+          "label": "Webtoons",
+          "value": "&genre%5B%5D=webtoons"
+        },
+        {
+          "label": "Yaoi",
+          "value": "&genre%5B%5D=yaoi"
+        },
+        {
+          "label": "Yuri",
+          "value": "&genre%5B%5D=yuri"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "new",
+      "name": "New",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=new-manga"
+    },
+    {
+      "id": "rating",
+      "name": "Top rated",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=rating"
+    },
+    {
+      "id": "alphabet",
+      "name": "A to Z",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=alphabet"
+    },
+    {
+      "id": "completed",
+      "name": "Completed",
+      "filters": {
+        "status": "&status%5B%5D=end",
+        "order": "&m_orderby=views"
+      }
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {

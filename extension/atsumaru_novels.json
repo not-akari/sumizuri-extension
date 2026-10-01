@@ -13,15 +13,35 @@
     "pageSize": 24,
     "itemsPath": "items",
     "fields": {
-      "url": { "template": "/novel/{id}", "resolve": true },
-      "title": { "path": "title" },
+      "url": {
+        "template": "/novel/{id}",
+        "resolve": true
+      },
+      "title": {
+        "path": "title"
+      },
       "coverUrl": {
         "or": [
-          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "image" }], "separator": "/" },
-          { "path": "image" }
+          {
+            "join": [
+              {
+                "template": "https://cdn.atsu.moe/static"
+              },
+              {
+                "path": "image"
+              }
+            ],
+            "separator": "/"
+          },
+          {
+            "path": "image"
+          }
         ]
       },
-      "rating": { "path": "mbRating", "round": 1 }
+      "rating": {
+        "path": "mbRating",
+        "round": 1
+      }
     }
   },
   "latest": {
@@ -29,12 +49,29 @@
     "pageSize": 24,
     "itemsPath": "items",
     "fields": {
-      "url": { "template": "/novel/{id}", "resolve": true },
-      "title": { "path": "title" },
+      "url": {
+        "template": "/novel/{id}",
+        "resolve": true
+      },
+      "title": {
+        "path": "title"
+      },
       "coverUrl": {
         "or": [
-          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "image" }], "separator": "/" },
-          { "path": "image" }
+          {
+            "join": [
+              {
+                "template": "https://cdn.atsu.moe/static"
+              },
+              {
+                "path": "image"
+              }
+            ],
+            "separator": "/"
+          },
+          {
+            "path": "image"
+          }
         ]
       }
     }
@@ -46,79 +83,192 @@
     "fields": {
       "url": {
         "join": [
-          { "template": "{baseUrl}/novel" },
-          { "path": "document.id" }
+          {
+            "template": "{baseUrl}/novel"
+          },
+          {
+            "path": "document.id"
+          }
         ],
         "separator": "/"
       },
-      "title": { "path": "document.title" },
+      "title": {
+        "path": "document.title"
+      },
       "coverUrl": {
         "or": [
-          { "join": [{ "template": "https://cdn.atsu.moe" }, { "path": "document.poster" }], "separator": "" },
-          { "path": "document.poster" }
+          {
+            "join": [
+              {
+                "template": "https://cdn.atsu.moe"
+              },
+              {
+                "path": "document.poster"
+              }
+            ],
+            "separator": ""
+          },
+          {
+            "path": "document.poster"
+          }
         ]
       },
-      "rating": { "path": "document.mbRating", "round": 1 },
-      "status": { "path": "document.status" }
+      "rating": {
+        "path": "document.mbRating",
+        "round": 1
+      },
+      "status": {
+        "path": "document.status"
+      }
     }
   },
+  "catalogs": [
+    {
+      "id": "toprated",
+      "name": "Top rated",
+      "url": "{baseUrl}/api/home2/topRated?limit={pageSize}&offset={offset}&mediums=Novel"
+    },
+    {
+      "id": "added",
+      "name": "Recently added",
+      "url": "{baseUrl}/api/home2/recentlyAdded?limit={pageSize}&offset={offset}&mediums=Novel"
+    },
+    {
+      "id": "bookmarked",
+      "name": "Most bookmarked",
+      "url": "{baseUrl}/api/home2/mostBookmarked?limit={pageSize}&offset={offset}&mediums=Novel"
+    }
+  ],
   "details": {
     "url": "{baseUrl}/api/manga/page?id={entrySlug}",
     "itemsPath": "mangaPage",
     "fields": {
-      "url": { "template": "{baseUrl}/novel/{entrySlug}" },
-      "title": { "path": "title" },
+      "url": {
+        "template": "{baseUrl}/novel/{entrySlug}"
+      },
+      "title": {
+        "path": "title"
+      },
       "coverUrl": {
         "join": [
-          { "template": "https://cdn.atsu.moe/static" },
-          { "path": "poster.image" }
+          {
+            "template": "https://cdn.atsu.moe/static"
+          },
+          {
+            "path": "poster.image"
+          }
         ],
         "separator": "/"
       },
       "bannerUrl": {
         "or": [
-          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "banner.url" }], "separator": "/" },
-          { "join": [{ "template": "https://cdn.atsu.moe/static" }, { "path": "poster.image" }], "separator": "/" }
+          {
+            "join": [
+              {
+                "template": "https://cdn.atsu.moe/static"
+              },
+              {
+                "path": "banner.url"
+              }
+            ],
+            "separator": "/"
+          },
+          {
+            "join": [
+              {
+                "template": "https://cdn.atsu.moe/static"
+              },
+              {
+                "path": "poster.image"
+              }
+            ],
+            "separator": "/"
+          }
         ]
       },
-      "description": { "path": "synopsis" },
-      "author": { "or": [{ "path": "authors.0.name" }, { "path": "author" }] },
-      "rating": { "path": "avgRating", "round": 1 },
-      "status": { "path": "status" },
-      "genres": { "path": "genres", "map": "name" }
+      "description": {
+        "path": "synopsis"
+      },
+      "author": {
+        "or": [
+          {
+            "path": "authors.0.name"
+          },
+          {
+            "path": "author"
+          }
+        ]
+      },
+      "rating": {
+        "path": "avgRating",
+        "round": 1
+      },
+      "status": {
+        "path": "status"
+      },
+      "genres": {
+        "path": "genres",
+        "map": "name"
+      }
     }
   },
   "chapters": {
     "url": "{baseUrl}/api/manga/allChapters?mangaId={entrySlug}",
     "itemsPath": "chapters",
-    "sort": { "by": "number", "order": "desc" },
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
     "fields": {
-      "url": { "template": "{baseUrl}/api/read/novelChapter?mangaId={entrySlug}&chapterId={id}" },
+      "url": {
+        "template": "{baseUrl}/api/read/novelChapter?mangaId={entrySlug}&chapterId={id}"
+      },
       "title": {
         "or": [
-          { "path": "title" },
-          { "template": "Chapter {number}" }
+          {
+            "path": "title"
+          },
+          {
+            "template": "Chapter {number}"
+          }
         ]
       },
-      "number": { "path": "number" },
-      "dateUploaded": { "path": "createdAt", "transform": "unixTimestamp" }
+      "number": {
+        "path": "number"
+      },
+      "dateUploaded": {
+        "path": "createdAt",
+        "transform": "unixTimestamp"
+      }
     }
   },
   "pages": {
     "url": "{chapterUrl}",
     "itemsPath": "readNovelChapter.paragraphs",
     "fields": {
-      "text": { "path": "" }
+      "text": {
+        "path": ""
+      }
     }
   },
   "comments": {
     "url": "{baseUrl}/api/comments/v2/threads?sectionId=manga:{entrySlug}&maxDepth=2&sort=top",
     "itemsPath": "comments",
     "fields": {
-      "author": { "path": "user.usernameDisplay", "default": "Anonymous" },
-      "text": { "path": "content" },
-      "date": { "path": "createdAt", "transform": "unixTimestamp" },
-      "avatarUrl": { "path": "user.pfp" }
+      "author": {
+        "path": "user.usernameDisplay",
+        "default": "Anonymous"
+      },
+      "text": {
+        "path": "content"
+      },
+      "date": {
+        "path": "createdAt",
+        "transform": "unixTimestamp"
+      },
+      "avatarUrl": {
+        "path": "user.pfp"
+      }
     }
   }
 }

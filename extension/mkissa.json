@@ -94,6 +94,38 @@
       "body": "{\"query\":\"query { mangas(search: {query: \\\"{queryText}\\\"}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
     }
   },
+  "catalogs": [
+    {
+      "id": "top",
+      "name": "Top",
+      "body": "{\"query\":\"query { mangas(search: {sortBy: Top}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
+    },
+    {
+      "id": "updated",
+      "name": "Latest update",
+      "body": "{\"query\":\"query { mangas(search: {sortBy: Latest_Update}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
+    },
+    {
+      "id": "recent",
+      "name": "Recently added",
+      "body": "{\"query\":\"query { mangas(search: {sortBy: Recent}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
+    },
+    {
+      "id": "romance",
+      "name": "Romance",
+      "body": "{\"query\":\"query { mangas(search: {genres: [\\\"Romance\\\"], sortBy: Popular}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
+    },
+    {
+      "id": "action",
+      "name": "Action",
+      "body": "{\"query\":\"query { mangas(search: {genres: [\\\"Action\\\"], sortBy: Popular}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
+    },
+    {
+      "id": "fantasy",
+      "name": "Fantasy",
+      "body": "{\"query\":\"query { mangas(search: {genres: [\\\"Fantasy\\\"], sortBy: Popular}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
+    }
+  ],
   "details": {
     "url": "{baseUrl}",
     "method": "POST",

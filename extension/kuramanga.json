@@ -80,8 +80,48 @@
         "path": "status",
         "transform": "capitalize"
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/search?ajax=1&name={query}{status}&page={page}"
     }
   },
+  "filters": [
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Ongoing",
+          "value": "&status=ongoing"
+        },
+        {
+          "label": "Completed",
+          "value": "&status=completed"
+        },
+        {
+          "label": "Hiatus",
+          "value": "&status=hiatus"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "completed",
+      "name": "Completed",
+      "url": "{baseUrl}/search?ajax=1&status=completed&page={page}"
+    },
+    {
+      "id": "ongoing",
+      "name": "Ongoing",
+      "url": "{baseUrl}/search?ajax=1&status=ongoing&page={page}"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {

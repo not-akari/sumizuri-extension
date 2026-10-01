@@ -15,8 +15,13 @@
     "fields": {
       "url": {
         "join": [
-          { "template": "{baseUrl}/ajax/anime/tooltip" },
-          { "selector": "div.tip", "attr": "data-tip" }
+          {
+            "template": "{baseUrl}/ajax/anime/tooltip"
+          },
+          {
+            "selector": "div.tip",
+            "attr": "data-tip"
+          }
         ],
         "separator": "/"
       },
@@ -49,8 +54,13 @@
     "fields": {
       "url": {
         "join": [
-          { "template": "{baseUrl}/ajax/anime/tooltip" },
-          { "selector": "div.tip", "attr": "data-tip" }
+          {
+            "template": "{baseUrl}/ajax/anime/tooltip"
+          },
+          {
+            "selector": "div.tip",
+            "attr": "data-tip"
+          }
         ],
         "separator": "/"
       },
@@ -83,8 +93,13 @@
     "fields": {
       "url": {
         "join": [
-          { "template": "{baseUrl}/ajax/anime/tooltip" },
-          { "selector": "div.tip", "attr": "data-tip" }
+          {
+            "template": "{baseUrl}/ajax/anime/tooltip"
+          },
+          {
+            "selector": "div.tip",
+            "attr": "data-tip"
+          }
         ],
         "separator": "/"
       },
@@ -109,8 +124,591 @@
         "transform": "number",
         "round": 1
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/filter?keyword={query}&sort={sort}{type}{status}{language}{genre}{season}{year}&page={page}"
     }
   },
+  "filters": [
+    {
+      "key": "sort",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Default",
+          "value": "default"
+        },
+        {
+          "label": "Latest Updated",
+          "value": "latest-updated"
+        },
+        {
+          "label": "Latest Added",
+          "value": "latest-added"
+        },
+        {
+          "label": "Score",
+          "value": "score"
+        },
+        {
+          "label": "Name A-Z",
+          "value": "name-az"
+        },
+        {
+          "label": "Release Date",
+          "value": "release-date"
+        },
+        {
+          "label": "Most Viewed",
+          "value": "most-viewed"
+        },
+        {
+          "label": "Number of episodes",
+          "value": "number_of_episodes"
+        }
+      ]
+    },
+    {
+      "key": "type",
+      "name": "Type",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Movie",
+          "value": "&term_type%5B%5D=Movie"
+        },
+        {
+          "label": "Music",
+          "value": "&term_type%5B%5D=Music"
+        },
+        {
+          "label": "ONA",
+          "value": "&term_type%5B%5D=ONA"
+        },
+        {
+          "label": "OVA",
+          "value": "&term_type%5B%5D=OVA"
+        },
+        {
+          "label": "Special",
+          "value": "&term_type%5B%5D=Special"
+        },
+        {
+          "label": "TV",
+          "value": "&term_type%5B%5D=TV"
+        },
+        {
+          "label": "TV_SHORT",
+          "value": "&term_type%5B%5D=TV_SHORT"
+        },
+        {
+          "label": "TV Special",
+          "value": "&term_type%5B%5D=TV%20Special"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Finished Airing",
+          "value": "&status%5B%5D=finished-airing"
+        },
+        {
+          "label": "Currently Airing",
+          "value": "&status%5B%5D=currently-airing"
+        },
+        {
+          "label": "Not yet aired",
+          "value": "&status%5B%5D=not-yet-aired"
+        }
+      ]
+    },
+    {
+      "key": "language",
+      "name": "Language",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Sub",
+          "value": "&language%5B%5D=sub"
+        },
+        {
+          "label": "Dub",
+          "value": "&language%5B%5D=dub"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genres",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Action",
+          "value": "&genre%5B%5D=1"
+        },
+        {
+          "label": "Action & Adventure",
+          "value": "&genre%5B%5D=2344"
+        },
+        {
+          "label": "Adventure",
+          "value": "&genre%5B%5D=2"
+        },
+        {
+          "label": "Animation",
+          "value": "&genre%5B%5D=2345"
+        },
+        {
+          "label": "Award Winning",
+          "value": "&genre%5B%5D=2357"
+        },
+        {
+          "label": "Boys Love",
+          "value": "&genre%5B%5D=2330"
+        },
+        {
+          "label": "Cars",
+          "value": "&genre%5B%5D=538"
+        },
+        {
+          "label": "Comedy",
+          "value": "&genre%5B%5D=8"
+        },
+        {
+          "label": "Dementia",
+          "value": "&genre%5B%5D=453"
+        },
+        {
+          "label": "Demons",
+          "value": "&genre%5B%5D=119"
+        },
+        {
+          "label": "Drama",
+          "value": "&genre%5B%5D=62"
+        },
+        {
+          "label": "Ecchi",
+          "value": "&genre%5B%5D=214"
+        },
+        {
+          "label": "Erotica",
+          "value": "&genre%5B%5D=2322"
+        },
+        {
+          "label": "Fantasy",
+          "value": "&genre%5B%5D=3"
+        },
+        {
+          "label": "Game",
+          "value": "&genre%5B%5D=180"
+        },
+        {
+          "label": "Girls Love",
+          "value": "&genre%5B%5D=2328"
+        },
+        {
+          "label": "Gourmet",
+          "value": "&genre%5B%5D=2326"
+        },
+        {
+          "label": "Harem",
+          "value": "&genre%5B%5D=215"
+        },
+        {
+          "label": "Historical",
+          "value": "&genre%5B%5D=70"
+        },
+        {
+          "label": "Horror",
+          "value": "&genre%5B%5D=222"
+        },
+        {
+          "label": "Isekai",
+          "value": "&genre%5B%5D=74"
+        },
+        {
+          "label": "Josei",
+          "value": "&genre%5B%5D=404"
+        },
+        {
+          "label": "Kids",
+          "value": "&genre%5B%5D=46"
+        },
+        {
+          "label": "Magic",
+          "value": "&genre%5B%5D=203"
+        },
+        {
+          "label": "Mahou Shoujo",
+          "value": "&genre%5B%5D=2310"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "&genre%5B%5D=114"
+        },
+        {
+          "label": "Mecha",
+          "value": "&genre%5B%5D=123"
+        },
+        {
+          "label": "Military",
+          "value": "&genre%5B%5D=125"
+        },
+        {
+          "label": "Music",
+          "value": "&genre%5B%5D=242"
+        },
+        {
+          "label": "Mystery",
+          "value": "&genre%5B%5D=57"
+        },
+        {
+          "label": "Parody",
+          "value": "&genre%5B%5D=162"
+        },
+        {
+          "label": "Police",
+          "value": "&genre%5B%5D=136"
+        },
+        {
+          "label": "Psychological",
+          "value": "&genre%5B%5D=73"
+        },
+        {
+          "label": "Romance",
+          "value": "&genre%5B%5D=28"
+        },
+        {
+          "label": "Samurai",
+          "value": "&genre%5B%5D=163"
+        },
+        {
+          "label": "School",
+          "value": "&genre%5B%5D=14"
+        },
+        {
+          "label": "Sci-Fi",
+          "value": "&genre%5B%5D=12"
+        },
+        {
+          "label": "Sci-Fi & Fantasy",
+          "value": "&genre%5B%5D=2352"
+        },
+        {
+          "label": "Seinen",
+          "value": "&genre%5B%5D=50"
+        },
+        {
+          "label": "Shoujo",
+          "value": "&genre%5B%5D=252"
+        },
+        {
+          "label": "Shoujo Ai",
+          "value": "&genre%5B%5D=235"
+        },
+        {
+          "label": "Shounen",
+          "value": "&genre%5B%5D=15"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "&genre%5B%5D=233"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "&genre%5B%5D=35"
+        },
+        {
+          "label": "Space",
+          "value": "&genre%5B%5D=124"
+        },
+        {
+          "label": "Sports",
+          "value": "&genre%5B%5D=29"
+        },
+        {
+          "label": "Super Power",
+          "value": "&genre%5B%5D=16"
+        },
+        {
+          "label": "Supernatural",
+          "value": "&genre%5B%5D=9"
+        },
+        {
+          "label": "Suspense",
+          "value": "&genre%5B%5D=2316"
+        },
+        {
+          "label": "Thriller",
+          "value": "&genre%5B%5D=54"
+        },
+        {
+          "label": "unknown",
+          "value": "&genre%5B%5D=32"
+        },
+        {
+          "label": "Vampire",
+          "value": "&genre%5B%5D=58"
+        }
+      ]
+    },
+    {
+      "key": "season",
+      "name": "Season",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Fall",
+          "value": "&season%5B%5D=fall"
+        },
+        {
+          "label": "Summer",
+          "value": "&season%5B%5D=summer"
+        },
+        {
+          "label": "Spring",
+          "value": "&season%5B%5D=spring"
+        },
+        {
+          "label": "Winter",
+          "value": "&season%5B%5D=winter"
+        }
+      ]
+    },
+    {
+      "key": "year",
+      "name": "Year",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "2026",
+          "value": "&year%5B%5D=2026"
+        },
+        {
+          "label": "2025",
+          "value": "&year%5B%5D=2025"
+        },
+        {
+          "label": "2024",
+          "value": "&year%5B%5D=2024"
+        },
+        {
+          "label": "2023",
+          "value": "&year%5B%5D=2023"
+        },
+        {
+          "label": "2022",
+          "value": "&year%5B%5D=2022"
+        },
+        {
+          "label": "2021",
+          "value": "&year%5B%5D=2021"
+        },
+        {
+          "label": "2020",
+          "value": "&year%5B%5D=2020"
+        },
+        {
+          "label": "2019",
+          "value": "&year%5B%5D=2019"
+        },
+        {
+          "label": "2018",
+          "value": "&year%5B%5D=2018"
+        },
+        {
+          "label": "2017",
+          "value": "&year%5B%5D=2017"
+        },
+        {
+          "label": "2016",
+          "value": "&year%5B%5D=2016"
+        },
+        {
+          "label": "2015",
+          "value": "&year%5B%5D=2015"
+        },
+        {
+          "label": "2014",
+          "value": "&year%5B%5D=2014"
+        },
+        {
+          "label": "2013",
+          "value": "&year%5B%5D=2013"
+        },
+        {
+          "label": "2012",
+          "value": "&year%5B%5D=2012"
+        },
+        {
+          "label": "2011",
+          "value": "&year%5B%5D=2011"
+        },
+        {
+          "label": "2010",
+          "value": "&year%5B%5D=2010"
+        },
+        {
+          "label": "2009",
+          "value": "&year%5B%5D=2009"
+        },
+        {
+          "label": "2008",
+          "value": "&year%5B%5D=2008"
+        },
+        {
+          "label": "2007",
+          "value": "&year%5B%5D=2007"
+        },
+        {
+          "label": "2006",
+          "value": "&year%5B%5D=2006"
+        },
+        {
+          "label": "2005",
+          "value": "&year%5B%5D=2005"
+        },
+        {
+          "label": "2004",
+          "value": "&year%5B%5D=2004"
+        },
+        {
+          "label": "2003",
+          "value": "&year%5B%5D=2003"
+        },
+        {
+          "label": "2002",
+          "value": "&year%5B%5D=2002"
+        },
+        {
+          "label": "2001",
+          "value": "&year%5B%5D=2001"
+        },
+        {
+          "label": "2000",
+          "value": "&year%5B%5D=2000"
+        },
+        {
+          "label": "1999",
+          "value": "&year%5B%5D=1999"
+        },
+        {
+          "label": "1998",
+          "value": "&year%5B%5D=1998"
+        },
+        {
+          "label": "1997",
+          "value": "&year%5B%5D=1997"
+        },
+        {
+          "label": "1996",
+          "value": "&year%5B%5D=1996"
+        },
+        {
+          "label": "1995",
+          "value": "&year%5B%5D=1995"
+        },
+        {
+          "label": "1994",
+          "value": "&year%5B%5D=1994"
+        },
+        {
+          "label": "1993",
+          "value": "&year%5B%5D=1993"
+        },
+        {
+          "label": "1992",
+          "value": "&year%5B%5D=1992"
+        },
+        {
+          "label": "1991",
+          "value": "&year%5B%5D=1991"
+        },
+        {
+          "label": "1990",
+          "value": "&year%5B%5D=1990"
+        },
+        {
+          "label": "1989",
+          "value": "&year%5B%5D=1989"
+        },
+        {
+          "label": "1988",
+          "value": "&year%5B%5D=1988"
+        },
+        {
+          "label": "1987",
+          "value": "&year%5B%5D=1987"
+        },
+        {
+          "label": "1986",
+          "value": "&year%5B%5D=1986"
+        },
+        {
+          "label": "1985",
+          "value": "&year%5B%5D=1985"
+        },
+        {
+          "label": "1984",
+          "value": "&year%5B%5D=1984"
+        },
+        {
+          "label": "1983",
+          "value": "&year%5B%5D=1983"
+        },
+        {
+          "label": "1982",
+          "value": "&year%5B%5D=1982"
+        },
+        {
+          "label": "1981",
+          "value": "&year%5B%5D=1981"
+        },
+        {
+          "label": "1980",
+          "value": "&year%5B%5D=1980"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "new",
+      "name": "New releases",
+      "url": "{baseUrl}/new-release?page={page}"
+    },
+    {
+      "id": "score",
+      "name": "Top rated",
+      "url": "{baseUrl}/filter?keyword=&sort=score&page={page}"
+    },
+    {
+      "id": "airing",
+      "name": "Airing now",
+      "url": "{baseUrl}/filter?keyword=&sort=most-viewed&status%5B%5D=currently-airing&page={page}"
+    },
+    {
+      "id": "movies",
+      "name": "Movies",
+      "url": "{baseUrl}/filter?keyword=&sort=most-viewed&term_type%5B%5D=Movie&page={page}"
+    },
+    {
+      "id": "dub",
+      "name": "Dubbed",
+      "url": "{baseUrl}/filter?keyword=&sort=most-viewed&language%5B%5D=dub&page={page}"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {
@@ -147,8 +745,12 @@
     "fields": {
       "url": {
         "join": [
-          { "template": "{baseUrl}/ajax/server/list?servers=" },
-          { "attr": "data-ids" }
+          {
+            "template": "{baseUrl}/ajax/server/list?servers="
+          },
+          {
+            "attr": "data-ids"
+          }
         ],
         "separator": ""
       },
@@ -223,8 +825,13 @@
           },
           {
             "join": [
-              { "path": "tracks.0.file", "regex": "^(https?://[^/]+/anime/[^/]+/[^/]+)" },
-              { "template": "/master.m3u8" }
+              {
+                "path": "tracks.0.file",
+                "regex": "^(https?://[^/]+/anime/[^/]+/[^/]+)"
+              },
+              {
+                "template": "/master.m3u8"
+              }
             ],
             "separator": "",
             "requireAll": true
@@ -242,9 +849,16 @@
     "subtitles": {
       "itemsPath": "tracks",
       "fields": {
-        "url": { "path": "file" },
-        "label": { "path": "label" },
-        "language": { "path": "label", "transform": "lowercase" }
+        "url": {
+          "path": "file"
+        },
+        "label": {
+          "path": "label"
+        },
+        "language": {
+          "path": "label",
+          "transform": "lowercase"
+        }
       }
     }
   }

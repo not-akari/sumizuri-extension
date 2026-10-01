@@ -105,8 +105,284 @@
         "all": true,
         "transform": "trim"
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/search/page/{page}?q={query}&order={order}&genre={genre}"
     }
   },
+  "filters": [
+    {
+      "key": "order",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Popular",
+          "value": "POPULAR"
+        },
+        {
+          "label": "Latest update",
+          "value": "LATEST"
+        },
+        {
+          "label": "Newest",
+          "value": "NEW"
+        },
+        {
+          "label": "Completed",
+          "value": "COMPLETED"
+        },
+        {
+          "label": "A to Z",
+          "value": "ALPHABET"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genre",
+      "type": "select",
+      "options": [
+        {
+          "label": "All",
+          "value": "all"
+        },
+        {
+          "label": "Action",
+          "value": "action"
+        },
+        {
+          "label": "Adaptation",
+          "value": "adaptation"
+        },
+        {
+          "label": "Adult",
+          "value": "adult"
+        },
+        {
+          "label": "Adventure",
+          "value": "adventure"
+        },
+        {
+          "label": "Animals",
+          "value": "animals"
+        },
+        {
+          "label": "Award winning",
+          "value": "award-winning"
+        },
+        {
+          "label": "Comedy",
+          "value": "comedy"
+        },
+        {
+          "label": "Crime",
+          "value": "crime"
+        },
+        {
+          "label": "Delinquents",
+          "value": "delinquents"
+        },
+        {
+          "label": "Demons",
+          "value": "demons"
+        },
+        {
+          "label": "Drama",
+          "value": "drama"
+        },
+        {
+          "label": "Fantasy",
+          "value": "fantasy"
+        },
+        {
+          "label": "Full color",
+          "value": "full-color"
+        },
+        {
+          "label": "Ghosts",
+          "value": "ghosts"
+        },
+        {
+          "label": "Gore",
+          "value": "gore"
+        },
+        {
+          "label": "Harem",
+          "value": "harem"
+        },
+        {
+          "label": "Historical",
+          "value": "historical"
+        },
+        {
+          "label": "Horror",
+          "value": "horror"
+        },
+        {
+          "label": "Incest",
+          "value": "incest"
+        },
+        {
+          "label": "Isekai",
+          "value": "isekai"
+        },
+        {
+          "label": "Long strip",
+          "value": "long-strip"
+        },
+        {
+          "label": "Magic",
+          "value": "magic"
+        },
+        {
+          "label": "Manhua",
+          "value": "manhua"
+        },
+        {
+          "label": "Manhwa",
+          "value": "manhwa"
+        },
+        {
+          "label": "Martial arts",
+          "value": "martial-arts"
+        },
+        {
+          "label": "Mature",
+          "value": "mature"
+        },
+        {
+          "label": "Military",
+          "value": "military"
+        },
+        {
+          "label": "Monster girls",
+          "value": "monster-girls"
+        },
+        {
+          "label": "Monsters",
+          "value": "monsters"
+        },
+        {
+          "label": "Mystery",
+          "value": "mystery"
+        },
+        {
+          "label": "Pornographic",
+          "value": "pornographic"
+        },
+        {
+          "label": "Post-apocalyptic",
+          "value": "post-apocalyptic"
+        },
+        {
+          "label": "Psychological",
+          "value": "psychological"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "reincarnation"
+        },
+        {
+          "label": "Romance",
+          "value": "romance"
+        },
+        {
+          "label": "Safe",
+          "value": "safe"
+        },
+        {
+          "label": "School life",
+          "value": "school-life"
+        },
+        {
+          "label": "Sci-fi",
+          "value": "sci-fi"
+        },
+        {
+          "label": "Seinen",
+          "value": "seinen"
+        },
+        {
+          "label": "Sexual violence",
+          "value": "sexual-violence"
+        },
+        {
+          "label": "Shota",
+          "value": "shota"
+        },
+        {
+          "label": "Shounen",
+          "value": "shounen"
+        },
+        {
+          "label": "Slice of life",
+          "value": "slice-of-life"
+        },
+        {
+          "label": "Suggestive",
+          "value": "suggestive"
+        },
+        {
+          "label": "Superhero",
+          "value": "superhero"
+        },
+        {
+          "label": "Supernatural",
+          "value": "supernatural"
+        },
+        {
+          "label": "Survival",
+          "value": "survival"
+        },
+        {
+          "label": "Thriller",
+          "value": "thriller"
+        },
+        {
+          "label": "Time travel",
+          "value": "time-travel"
+        },
+        {
+          "label": "Tragedy",
+          "value": "tragedy"
+        },
+        {
+          "label": "Web comic",
+          "value": "web-comic"
+        },
+        {
+          "label": "Webtoons",
+          "value": "webtoons"
+        },
+        {
+          "label": "Wuxia",
+          "value": "wuxia"
+        },
+        {
+          "label": "Zombies",
+          "value": "zombies"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "new",
+      "name": "Newest",
+      "url": "{baseUrl}/new/page/{page}"
+    },
+    {
+      "id": "completed",
+      "name": "Completed",
+      "url": "{baseUrl}/completed/page/{page}"
+    },
+    {
+      "id": "alphabet",
+      "name": "A to Z",
+      "url": "{baseUrl}/search/page/{page}?q=&order=ALPHABET&genre=all"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {
@@ -125,8 +401,20 @@
         "resolve": true
       },
       "description": {
-        "selector": "div.ZyMp7, div#mangareader, div.manga-description",
-        "attr": "text",
+        "or": [
+          {
+            "selector": "p.ZyMp7, div.ZyMp7, div.manga-description",
+            "attr": "text"
+          },
+          {
+            "selector": "meta[property=\"og:description\"]",
+            "attr": "content"
+          },
+          {
+            "selector": "meta[name=\"description\"]",
+            "attr": "content"
+          }
+        ],
         "transform": "trim"
       },
       "author": {
@@ -181,6 +469,39 @@
       "imageUrl": {
         "attr": "src",
         "resolve": true
+      }
+    },
+    "upgrade": {
+      "resolve": [
+        {
+          "url": "{baseUrl}/",
+          "cookie": "mhub_access",
+          "as": "token"
+        },
+        {
+          "from": "chapterUrl",
+          "regex": "/chapter/([^/]+)/",
+          "as": "mangaSlug"
+        },
+        {
+          "from": "chapterUrl",
+          "regex": "chapter-([0-9]+(?:\\.[0-9]+)?)",
+          "as": "chapterNumber"
+        }
+      ],
+      "url": "https://api.mghcdn.com/graphql",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "x-mhub-access": "{token}",
+        "Origin": "https://mangahub.io"
+      },
+      "body": "{\"query\":\"{chapter(x:m01,slug:\\\"{mangaSlug}\\\",number:{chapterNumber}){pages}}\"}",
+      "itemsRegex": "\\\\\"([^\\\\\"/]+\\.(?:jpe?g|png|webp|gif))\\\\\"",
+      "fields": {
+        "imageUrl": {
+          "template": "https://imgx.mghcdn.com/{mangaSlug}/{chapterNumber}/{value}"
+        }
       }
     }
   }

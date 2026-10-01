@@ -7,7 +7,7 @@
       "lang": "en",
       "mediaType": "anime",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://anikototv.to/AnikotoTheme/assets/images/favicon.png",
       "baseUrl": "https://anikototv.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/anikoto.json"
@@ -18,7 +18,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://asurascans.com/icons/apple-touch-icon.png",
       "baseUrl": "https://api.asurascans.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/asurascans.json"
@@ -29,7 +29,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://atsu.moe/favicon/apple-touch-icon.png",
       "baseUrl": "https://atsu.moe",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/atsumaru.json"
@@ -40,7 +40,7 @@
       "lang": "en",
       "mediaType": "novel",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://atsu.moe/favicon/apple-touch-icon.png",
       "baseUrl": "https://atsu.moe",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/atsumaru_novels.json"
@@ -51,7 +51,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://chikari.moe/icon-192.png",
       "baseUrl": "https://chikari.moe",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/chikari.json"
@@ -62,7 +62,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://divascans.org/icon-192.png",
       "baseUrl": "https://divascans.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/divascans_comics.json"
@@ -73,7 +73,7 @@
       "lang": "en",
       "mediaType": "novel",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://divascans.org/icon-192.png",
       "baseUrl": "https://divascans.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/divascans_novels.json"
@@ -84,7 +84,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://galaxymanga.io/wp-content/uploads/2025/07/cropped-GALAXY-SHOUJO-LOGO-PIC-192x192.png",
       "baseUrl": "https://galaxymanga.io",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/galaxymanga.json"
@@ -95,7 +95,7 @@
       "lang": "en",
       "mediaType": "novel",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://novelfire.net/favicon.ico",
       "baseUrl": "https://novelfire.net",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/novelfire.json"
@@ -106,7 +106,7 @@
       "lang": "all",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://nhentai.net/favicon.png",
       "baseUrl": "https://nhentai.net",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/nhentai.json"
@@ -117,7 +117,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/weebcentral.png",
       "baseUrl": "https://weebcentral.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/weebcentral.json"
@@ -128,7 +128,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://kuramanga.com/apple-touch-icon.png",
       "baseUrl": "https://kuramanga.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/kuramanga.json"
@@ -139,7 +139,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://mangazin.org/wp-content/uploads/2020/02/cropped-IMG_20200222_225535-192x192.jpg",
       "baseUrl": "https://mangazin.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangazin.json"
@@ -150,7 +150,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangagg.png",
       "baseUrl": "https://mangagg.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangagg.json"
@@ -161,7 +161,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://madaradex.org/wp-content/uploads/cropped-logo.png",
       "baseUrl": "https://madaradex.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/madaradex.json"
@@ -172,7 +172,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/manhwatop.jpg",
       "baseUrl": "https://manhwatop.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatop.json"
@@ -183,7 +183,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 12,
+      "version": 13,
       "iconUrl": "https://cdn.manhwatoon.me/2026/06/manhwatoon-M-300x300.png",
       "baseUrl": "https://www.manhwatoon.me",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhwatoon.json"
@@ -205,7 +205,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://manhuascans.org/assets/images/Logo.png",
       "baseUrl": "https://manhuascans.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/manhuascans.json"
@@ -216,7 +216,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://mangakatana.com/static/img/fav.png",
       "baseUrl": "https://mangakatana.com",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangakatana.json"
@@ -227,7 +227,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangahub.png",
       "baseUrl": "https://mangahub.io",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangahub.json"
@@ -238,7 +238,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://mangak.io/static/sites/mangak/icons/android-chrome-192x192.png",
       "baseUrl": "https://mangak.io",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangak.json"
@@ -249,7 +249,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "js",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangataro.png",
       "baseUrl": "https://mangataro.org",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangataro.js"
@@ -260,7 +260,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://mkissa.to/favicon.ico",
       "baseUrl": "https://api.mkissa.net/api",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mkissa.json"
@@ -271,7 +271,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://mangaball.com/images/favicon.png",
       "baseUrl": "https://api.mangaball.com/api/v1",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangaball.json"
@@ -282,7 +282,7 @@
       "lang": "ja",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://weloma.net/favicon.ico",
       "baseUrl": "https://weloma.net",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/weloma.json"
@@ -293,7 +293,7 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 10,
+      "version": 11,
       "iconUrl": "https://mangafire.to/assets/mangafire/logo-sm.png",
       "baseUrl": "https://mangafire.to",
       "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangafire.json"

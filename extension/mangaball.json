@@ -24,8 +24,12 @@
         "or": [
           {
             "join": [
-              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
-              { "path": "image.cover.name" }
+              {
+                "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/"
+              },
+              {
+                "path": "image.cover.name"
+              }
             ],
             "separator": "",
             "requireAll": true
@@ -70,8 +74,12 @@
         "or": [
           {
             "join": [
-              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
-              { "path": "image.cover.name" }
+              {
+                "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/"
+              },
+              {
+                "path": "image.cover.name"
+              }
             ],
             "separator": "",
             "requireAll": true
@@ -116,8 +124,12 @@
         "or": [
           {
             "join": [
-              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
-              { "path": "image.cover.name" }
+              {
+                "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/"
+              },
+              {
+                "path": "image.cover.name"
+              }
             ],
             "separator": "",
             "requireAll": true
@@ -145,8 +157,126 @@
       "webUrl": {
         "template": "https://mangaball.com/title-detail/{id}"
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/title/search-advanced?keyword={query}&sort_by={sort}&status={status}&type={type}&page={page}&limit=20"
     }
   },
+  "filters": [
+    {
+      "key": "sort",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Most views",
+          "value": "views"
+        },
+        {
+          "label": "Latest update",
+          "value": "latest"
+        },
+        {
+          "label": "Rating",
+          "value": "rating"
+        },
+        {
+          "label": "Newly added",
+          "value": "created_at"
+        },
+        {
+          "label": "Most followed",
+          "value": "follows"
+        },
+        {
+          "label": "Name",
+          "value": "name"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Ongoing",
+          "value": "ongoing"
+        },
+        {
+          "label": "Completed",
+          "value": "completed"
+        },
+        {
+          "label": "Hiatus",
+          "value": "hiatus"
+        },
+        {
+          "label": "Cancelled",
+          "value": "cancelled"
+        }
+      ]
+    },
+    {
+      "key": "type",
+      "name": "Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Manga",
+          "value": "manga"
+        },
+        {
+          "label": "Manhwa",
+          "value": "manhwa"
+        },
+        {
+          "label": "Manhua",
+          "value": "manhua"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "rating",
+      "name": "Top rated",
+      "url": "{baseUrl}/title/search-advanced?sort_by=rating&page={page}&limit=20"
+    },
+    {
+      "id": "follows",
+      "name": "Most followed",
+      "url": "{baseUrl}/title/search-advanced?sort_by=follows&page={page}&limit=20"
+    },
+    {
+      "id": "new",
+      "name": "Newly added",
+      "url": "{baseUrl}/title/search-advanced?sort_by=created_at&page={page}&limit=20"
+    },
+    {
+      "id": "completed",
+      "name": "Completed",
+      "url": "{baseUrl}/title/search-advanced?sort_by=views&status=completed&page={page}&limit=20"
+    },
+    {
+      "id": "manhwa",
+      "name": "Manhwa",
+      "url": "{baseUrl}/title/search-advanced?sort_by=views&type=manhwa&page={page}&limit=20"
+    },
+    {
+      "id": "manga",
+      "name": "Manga",
+      "url": "{baseUrl}/title/search-advanced?sort_by=views&type=manga&page={page}&limit=20"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "itemsPath": "data",
@@ -162,8 +292,12 @@
         "or": [
           {
             "join": [
-              { "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/" },
-              { "path": "image.cover.name" }
+              {
+                "template": "https://bulbasaur.poke-black-and-white.net/covers/{id}/"
+              },
+              {
+                "path": "image.cover.name"
+              }
             ],
             "separator": "",
             "requireAll": true

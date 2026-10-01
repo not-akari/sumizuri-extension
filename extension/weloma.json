@@ -85,7 +85,7 @@
     }
   },
   "search": {
-    "url": "{baseUrl}/l/0OYCn?keyword={query}&page={page}",
+    "url": "{baseUrl}/l/0OYCn?name={query}&page={page}",
     "itemSelector": "div.thumb-item-flow",
     "fields": {
       "url": {
@@ -120,8 +120,921 @@
         ],
         "resolve": true
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/l/{genre}?name={queryPlus}&sort={sort}&page={page}"
     }
   },
+  "filters": [
+    {
+      "key": "sort",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Most views",
+          "value": "views"
+        },
+        {
+          "label": "Latest update",
+          "value": "last_update"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genre",
+      "type": "select",
+      "options": [
+        {
+          "label": "All",
+          "value": "0OYCn"
+        },
+        {
+          "label": "Action",
+          "value": "0zkHB"
+        },
+        {
+          "label": "Adult",
+          "value": "0zkRl"
+        },
+        {
+          "label": "Adventure",
+          "value": "0zkWS"
+        },
+        {
+          "label": "Comedy",
+          "value": "0zkPw"
+        },
+        {
+          "label": "Drama",
+          "value": "0zkUH"
+        },
+        {
+          "label": "Ecchi",
+          "value": "0zkbr"
+        },
+        {
+          "label": "Fantasy",
+          "value": "0zkxQ"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "0zk3Y"
+        },
+        {
+          "label": "Harem",
+          "value": "0zk47"
+        },
+        {
+          "label": "Historical",
+          "value": "0zkpP"
+        },
+        {
+          "label": "Horror",
+          "value": "0zko4"
+        },
+        {
+          "label": "Martial Art",
+          "value": "0zkBv"
+        },
+        {
+          "label": "Mature",
+          "value": "0zkC2"
+        },
+        {
+          "label": "Mecha",
+          "value": "0zkDa"
+        },
+        {
+          "label": "Mystery",
+          "value": "0zkAZ"
+        },
+        {
+          "label": "Psychological",
+          "value": "0zjfN"
+        },
+        {
+          "label": "Romance",
+          "value": "0zjas"
+        },
+        {
+          "label": "School Life",
+          "value": "0zjlD"
+        },
+        {
+          "label": "Sci-fi",
+          "value": "0zjhh"
+        },
+        {
+          "label": "Seinen",
+          "value": "0zk9J"
+        },
+        {
+          "label": "Shoujo",
+          "value": "0zk05"
+        },
+        {
+          "label": "Shojou Ai",
+          "value": "0zktW"
+        },
+        {
+          "label": "Shounen",
+          "value": "0zkr9"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "0zjQt"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "0zjJE"
+        },
+        {
+          "label": "Sports",
+          "value": "0zjYu"
+        },
+        {
+          "label": "Supernatural",
+          "value": "0zjEU"
+        },
+        {
+          "label": "Tragedy",
+          "value": "0zjzo"
+        },
+        {
+          "label": "Yuri",
+          "value": "0zjIz"
+        },
+        {
+          "label": "Josei",
+          "value": "0zjnX"
+        },
+        {
+          "label": "Smut",
+          "value": "0zjcb"
+        },
+        {
+          "label": "One Shot",
+          "value": "0zlaj"
+        },
+        {
+          "label": "Shotacon",
+          "value": "0zlnM"
+        },
+        {
+          "label": "Shonen",
+          "value": "0zljq"
+        },
+        {
+          "label": "Isekai",
+          "value": "0zlfF"
+        },
+        {
+          "label": "Gourmet",
+          "value": "0x50e"
+        },
+        {
+          "label": "Coming of Age",
+          "value": "0zllK"
+        },
+        {
+          "label": "Architecture",
+          "value": "0x5rt"
+        },
+        {
+          "label": "Engineering",
+          "value": "0x59E"
+        },
+        {
+          "label": "Crafting",
+          "value": "0zlJI"
+        },
+        {
+          "label": "Business",
+          "value": "0zlG6"
+        },
+        {
+          "label": "Updating",
+          "value": "0zlEx"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "0zlQ3"
+        },
+        {
+          "label": "Revenge",
+          "value": "0zlIn"
+        },
+        {
+          "label": "Child Protagonist",
+          "value": "0zlY1"
+        },
+        {
+          "label": "Healing",
+          "value": "0zlcd"
+        },
+        {
+          "label": "Magic",
+          "value": "0zlzC"
+        },
+        {
+          "label": "Parenting",
+          "value": "0zluA"
+        },
+        {
+          "label": "Modern Fantasy",
+          "value": "0zl6f"
+        },
+        {
+          "label": "Otome Game",
+          "value": "0zl1G"
+        },
+        {
+          "label": "Baseball",
+          "value": "0zlik"
+        },
+        {
+          "label": "Dark Fantasy",
+          "value": "0zlVL"
+        },
+        {
+          "label": "Thriller",
+          "value": "0zlX0"
+        },
+        {
+          "label": "Anthology",
+          "value": "0zlSR"
+        },
+        {
+          "label": "Rivalry",
+          "value": "0zlM8"
+        },
+        {
+          "label": "Medical",
+          "value": "0zkdy"
+        },
+        {
+          "label": "Cooking",
+          "value": "0zkmT"
+        },
+        {
+          "label": "Basketball",
+          "value": "0zkki"
+        },
+        {
+          "label": "Gore",
+          "value": "0zkgO"
+        },
+        {
+          "label": "Shoujo Ai",
+          "value": "0zlwp"
+        },
+        {
+          "label": "Yandere",
+          "value": "0zl5c"
+        },
+        {
+          "label": "Suspense",
+          "value": "0zl7V"
+        },
+        {
+          "label": "Kingdom Building",
+          "value": "0zlem"
+        },
+        {
+          "label": "Sumo",
+          "value": "0zgha"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "0zgfZ"
+        },
+        {
+          "label": "Shojo",
+          "value": "0zhqg"
+        },
+        {
+          "label": "Dungeon",
+          "value": "0zglB"
+        },
+        {
+          "label": "Animals",
+          "value": "0zh8l"
+        },
+        {
+          "label": "Game Lit",
+          "value": "0zh9S"
+        },
+        {
+          "label": "Regression",
+          "value": "0zh4w"
+        },
+        {
+          "label": "Gender Bender (TS)",
+          "value": "0zhtH"
+        },
+        {
+          "label": "Shojo/Seinen",
+          "value": "0zgEW"
+        },
+        {
+          "label": "Modern Setting",
+          "value": "0zgQ9"
+        },
+        {
+          "label": "Gore (Mild)",
+          "value": "0zgIY"
+        },
+        {
+          "label": "Historical Japanese Style",
+          "value": "0zgY7"
+        },
+        {
+          "label": "Rebirth/Regression",
+          "value": "0zgcP"
+        },
+        {
+          "label": "Girls' Love (GL)",
+          "value": "0zgz4"
+        },
+        {
+          "label": "Beastman",
+          "value": "0zgav"
+        },
+        {
+          "label": "Crime",
+          "value": "0zgn2"
+        },
+        {
+          "label": "Overpowered",
+          "value": "0zg1X"
+        },
+        {
+          "label": "Childcare",
+          "value": "0zgib"
+        },
+        {
+          "label": "Reincarnation/Villainess",
+          "value": "0zgVN"
+        },
+        {
+          "label": "Redemption",
+          "value": "0zgZs"
+        },
+        {
+          "label": "Post-Apocalyptic",
+          "value": "0zgSD"
+        },
+        {
+          "label": "Horror-Parody",
+          "value": "0zgNh"
+        },
+        {
+          "label": "Music",
+          "value": "0zgJJ"
+        },
+        {
+          "label": "Otaku Culture",
+          "value": "0zgG5"
+        },
+        {
+          "label": "RPG/System",
+          "value": "0zfke"
+        },
+        {
+          "label": "Magic School",
+          "value": "0zfgK"
+        },
+        {
+          "label": "Shonen/Shojo",
+          "value": "0zgwt"
+        },
+        {
+          "label": "Parody",
+          "value": "0zg5E"
+        },
+        {
+          "label": "Arts",
+          "value": "0zg7u"
+        },
+        {
+          "label": "Slapstick",
+          "value": "0zgeU"
+        },
+        {
+          "label": "Survival",
+          "value": "0zguo"
+        },
+        {
+          "label": "Food/Cooking (Dark)",
+          "value": "0zg6z"
+        },
+        {
+          "label": "Workplace",
+          "value": "0zjid"
+        },
+        {
+          "label": "Gag",
+          "value": "0zjuC"
+        },
+        {
+          "label": "BL (Boys' Love)",
+          "value": "0zjZj"
+        },
+        {
+          "label": "Tech/Cyber",
+          "value": "0zj1M"
+        },
+        {
+          "label": "Rom-Com",
+          "value": "0zjMq"
+        },
+        {
+          "label": "Shounen-ai / BL (Soft)",
+          "value": "0zjVF"
+        },
+        {
+          "label": "Time Loop",
+          "value": "0zjGe"
+        },
+        {
+          "label": "Action (Misunderstanding)",
+          "value": "0zjSK"
+        },
+        {
+          "label": "Isekai/Tensei",
+          "value": "0zhgR"
+        },
+        {
+          "label": "Modern Dungeon",
+          "value": "0zhd8"
+        },
+        {
+          "label": "Nariagari (Rising Stars)",
+          "value": "0zj5I"
+        },
+        {
+          "label": "Magical Girl",
+          "value": "0zhk6"
+        },
+        {
+          "label": "Gender Bender (Crossdressing)",
+          "value": "0zjex"
+        },
+        {
+          "label": "Seishun (Youth)",
+          "value": "0zjw3"
+        },
+        {
+          "label": "Seinen (Light)",
+          "value": "0zj6n"
+        },
+        {
+          "label": "Ecchi (Light)",
+          "value": "0zj71"
+        },
+        {
+          "label": "Shoujo/Shonen",
+          "value": "0zhWV"
+        },
+        {
+          "label": "Romantic",
+          "value": "0zhKm"
+        },
+        {
+          "label": "Shoujo/Josei",
+          "value": "0zhUA"
+        },
+        {
+          "label": "Wafu Fantasy",
+          "value": "0zhRf"
+        },
+        {
+          "label": "Iyashikei (Healing)",
+          "value": "0zhxG"
+        },
+        {
+          "label": "Cyberpunk",
+          "value": "0zhOk"
+        },
+        {
+          "label": "Romantic Comedy",
+          "value": "0zhmL"
+        },
+        {
+          "label": "Royalty",
+          "value": "0zhb0"
+        },
+        {
+          "label": "Lolicon",
+          "value": "0zhor"
+        },
+        {
+          "label": "Shoujo/Seinen",
+          "value": "0zh3Q"
+        },
+        {
+          "label": "Gender Bender (Tomboy/Crossdressing)",
+          "value": "0zhCy"
+        },
+        {
+          "label": "Isekai/Reincarnation",
+          "value": "0zhpT"
+        },
+        {
+          "label": "Seinen/Shonen",
+          "value": "0zhAi"
+        },
+        {
+          "label": "Girls' Love (GL/Yuri)",
+          "value": "0zhBO"
+        },
+        {
+          "label": "Suspenser",
+          "value": "0zhHp"
+        },
+        {
+          "label": "Fashion",
+          "value": "0zhDc"
+        },
+        {
+          "label": "Fashion",
+          "value": "0zhDc"
+        },
+        {
+          "label": "Military",
+          "value": "0zdZv"
+        },
+        {
+          "label": "War",
+          "value": "0zd12"
+        },
+        {
+          "label": "Dystopia",
+          "value": "0zdNa"
+        },
+        {
+          "label": "Meta",
+          "value": "0zdVZ"
+        },
+        {
+          "label": "Isekai (Vibe)",
+          "value": "0zdFg"
+        },
+        {
+          "label": "Sports (Baseball)",
+          "value": "0zdSB"
+        },
+        {
+          "label": "Original",
+          "value": "0zdLl"
+        },
+        {
+          "label": "Age Gap",
+          "value": "0zdJS"
+        },
+        {
+          "label": "Shonen/Shoujo",
+          "value": "0zd5J"
+        },
+        {
+          "label": "Police",
+          "value": "0zsk5"
+        },
+        {
+          "label": "Crossdressing",
+          "value": "0zdeW"
+        },
+        {
+          "label": "Super Power",
+          "value": "0zdw9"
+        },
+        {
+          "label": "Reverse Harem",
+          "value": "0zd6Y"
+        },
+        {
+          "label": "Shonen/Seinen",
+          "value": "0zd77"
+        },
+        {
+          "label": "Doting Father",
+          "value": "0zdiP"
+        },
+        {
+          "label": "Aristocrats",
+          "value": "0zdu4"
+        },
+        {
+          "label": "Boys Love",
+          "value": "0zsUo"
+        },
+        {
+          "label": "Time Travel/Rebirth",
+          "value": "0zsRz"
+        },
+        {
+          "label": "Urban Fantasy",
+          "value": "0zsxX"
+        },
+        {
+          "label": "Isekai/Fantasy",
+          "value": "0zsOb"
+        },
+        {
+          "label": "Farming",
+          "value": "0zsmN"
+        },
+        {
+          "label": "Meta-fiction",
+          "value": "0zsvs"
+        },
+        {
+          "label": "Isekai/Time Travel",
+          "value": "0zsgD"
+        },
+        {
+          "label": "Sengoku Period",
+          "value": "0zssh"
+        },
+        {
+          "label": "Gender Bender/Rebirth",
+          "value": "0zsCq"
+        },
+        {
+          "label": "Monsters",
+          "value": "0zspF"
+        },
+        {
+          "label": "Angst to Comfort",
+          "value": "0zsAe"
+        },
+        {
+          "label": "Sports (Horse Racing)",
+          "value": "0zsBK"
+        },
+        {
+          "label": "Gap Moe",
+          "value": "0zsHt"
+        },
+        {
+          "label": "Human Drama",
+          "value": "0zsDE"
+        },
+        {
+          "label": "Family",
+          "value": "0zsWu"
+        },
+        {
+          "label": "Time Travel",
+          "value": "0zsKU"
+        },
+        {
+          "label": "Idol",
+          "value": "0zfRn"
+        },
+        {
+          "label": "Delinquent",
+          "value": "0zfW1"
+        },
+        {
+          "label": "Otaku/Creator Culture",
+          "value": "0zfOd"
+        },
+        {
+          "label": "Enemies to Lovers",
+          "value": "0zfUC"
+        },
+        {
+          "label": "Boys' Love (BL)",
+          "value": "0zfvj"
+        },
+        {
+          "label": "Fake Relationship",
+          "value": "0zfxM"
+        },
+        {
+          "label": "Otaku/Gag",
+          "value": "0zfdq"
+        },
+        {
+          "label": "Political/Social Drama",
+          "value": "0zfmF"
+        },
+        {
+          "label": "Vigilante",
+          "value": "0zfpL"
+        },
+        {
+          "label": "Overpowered/Badass Heroine",
+          "value": "0zfo0"
+        },
+        {
+          "label": "Shoujo Ai / Yuri",
+          "value": "0zfBR"
+        },
+        {
+          "label": "Sports (Judo)",
+          "value": "0zfC8"
+        },
+        {
+          "label": "Onmyouji/Exorcist",
+          "value": "0zfDI"
+        },
+        {
+          "label": "Historical/Taisho-esque",
+          "value": "0zfA6"
+        },
+        {
+          "label": "Brotherhood",
+          "value": "0zfKx"
+        },
+        {
+          "label": "Steampunk",
+          "value": "0zfH3"
+        },
+        {
+          "label": "Thieves/Robin Hood",
+          "value": "0zdlp"
+        },
+        {
+          "label": "Rebellion",
+          "value": "0zdhc"
+        },
+        {
+          "label": "Post-Hero/Late Bloomer",
+          "value": "0zf9V"
+        },
+        {
+          "label": "Overpowered Main Character",
+          "value": "0zfqm"
+        },
+        {
+          "label": "Workplace/Office",
+          "value": "0zftA"
+        },
+        {
+          "label": "Goddess/Angel",
+          "value": "0zf8f"
+        },
+        {
+          "label": "Transformation/Henshin",
+          "value": "0zf3G"
+        },
+        {
+          "label": "Aristocrats/Nobility",
+          "value": "0zfyk"
+        },
+        {
+          "label": "Banished from the Party",
+          "value": "0zdYw"
+        },
+        {
+          "label": "Alchemy/Crafting",
+          "value": "0zdEH"
+        },
+        {
+          "label": "Cooldere",
+          "value": "0zdzr"
+        },
+        {
+          "label": "Slow Life",
+          "value": "0zdIQ"
+        },
+        {
+          "label": "Mecha-Meets-Sword",
+          "value": "0zdny"
+        },
+        {
+          "label": "Villain Noble (Akuyaku Reijou/Kizoku)",
+          "value": "0zdcT"
+        },
+        {
+          "label": "Reversal of Fortune (From Weak to Strong)",
+          "value": "0zdfi"
+        },
+        {
+          "label": "Kingdom Building/Territory Management",
+          "value": "0zdaO"
+        },
+        {
+          "label": "Family Conflict",
+          "value": "0zmOP"
+        },
+        {
+          "label": "Misunderstanding",
+          "value": "0zmU4"
+        },
+        {
+          "label": "Dungeon Crawling",
+          "value": "0zmvv"
+        },
+        {
+          "label": "Trash Skill Evolved",
+          "value": "0zmx2"
+        },
+        {
+          "label": "Reversal of Fortune",
+          "value": "0zmsa"
+        },
+        {
+          "label": "Otome Game/Isekai",
+          "value": "0zmmZ"
+        },
+        {
+          "label": "Yandere/Brocon",
+          "value": "0zmjg"
+        },
+        {
+          "label": "Taboo Love/Adoptive Siblings",
+          "value": "0zmgB"
+        },
+        {
+          "label": "Royalty/Aristocrats",
+          "value": "0zmBD"
+        },
+        {
+          "label": "Political Intrigue",
+          "value": "0zmXh"
+        },
+        {
+          "label": "Female Protagonist/Growth",
+          "value": "0zmDJ"
+        },
+        {
+          "label": "Crossdressing/Gender Bender",
+          "value": "0zmA5"
+        },
+        {
+          "label": "Bodyguard/Master-Servant",
+          "value": "0zmKW"
+        },
+        {
+          "label": "Fantasy/Supernatural",
+          "value": "0zmH9"
+        },
+        {
+          "label": "Historical/Meiji Era",
+          "value": "0zmRY"
+        },
+        {
+          "label": "Sci-Fi/Steampunk",
+          "value": "0zmW7"
+        },
+        {
+          "label": "Cooking/Gourmet",
+          "value": "0zm9u"
+        },
+        {
+          "label": "Beast-human",
+          "value": "0zmqU"
+        },
+        {
+          "label": "False Marriage/Roommates",
+          "value": "0zmto"
+        },
+        {
+          "label": "Post-Hero/After Defeating the Demon King",
+          "value": "0zm8z"
+        },
+        {
+          "label": "Maid/Master-Servant",
+          "value": "0zm3X"
+        },
+        {
+          "label": "First Love",
+          "value": "0zmyb"
+        },
+        {
+          "label": "Knight/Commoner",
+          "value": "0zmpN"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "action",
+      "name": "Action",
+      "url": "{baseUrl}/l/0zkHB?sort=views&page={page}"
+    },
+    {
+      "id": "romance",
+      "name": "Romance",
+      "url": "{baseUrl}/l/0zjas?sort=views&page={page}"
+    },
+    {
+      "id": "fantasy",
+      "name": "Fantasy",
+      "url": "{baseUrl}/l/0zkxQ?sort=views&page={page}"
+    },
+    {
+      "id": "comedy",
+      "name": "Comedy",
+      "url": "{baseUrl}/l/0zkPw?sort=views&page={page}"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {

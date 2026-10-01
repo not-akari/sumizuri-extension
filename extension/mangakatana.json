@@ -141,8 +141,264 @@
         "all": true,
         "transform": "trim"
       }
+    },
+    "upgrade": {
+      "emptyQueryUrl": "{baseUrl}/{genre}/page/{page}"
     }
   },
+  "filters": [
+    {
+      "key": "genre",
+      "name": "Genre (without search words)",
+      "type": "select",
+      "options": [
+        {
+          "label": "All",
+          "value": "manga"
+        },
+        {
+          "label": "4 koma",
+          "value": "genre/4-koma"
+        },
+        {
+          "label": "Action",
+          "value": "genre/action"
+        },
+        {
+          "label": "Adult",
+          "value": "genre/adult"
+        },
+        {
+          "label": "Adventure",
+          "value": "genre/adventure"
+        },
+        {
+          "label": "Artbook",
+          "value": "genre/artbook"
+        },
+        {
+          "label": "Award winning",
+          "value": "genre/award-winning"
+        },
+        {
+          "label": "Comedy",
+          "value": "genre/comedy"
+        },
+        {
+          "label": "Cooking",
+          "value": "genre/cooking"
+        },
+        {
+          "label": "Doujinshi",
+          "value": "genre/doujinshi"
+        },
+        {
+          "label": "Drama",
+          "value": "genre/drama"
+        },
+        {
+          "label": "Ecchi",
+          "value": "genre/ecchi"
+        },
+        {
+          "label": "Erotica",
+          "value": "genre/erotica"
+        },
+        {
+          "label": "Fantasy",
+          "value": "genre/fantasy"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "genre/gender-bender"
+        },
+        {
+          "label": "Gore",
+          "value": "genre/gore"
+        },
+        {
+          "label": "Harem",
+          "value": "genre/harem"
+        },
+        {
+          "label": "Historical",
+          "value": "genre/historical"
+        },
+        {
+          "label": "Horror",
+          "value": "genre/horror"
+        },
+        {
+          "label": "Isekai",
+          "value": "genre/isekai"
+        },
+        {
+          "label": "Josei",
+          "value": "genre/josei"
+        },
+        {
+          "label": "Loli",
+          "value": "genre/loli"
+        },
+        {
+          "label": "Manhua",
+          "value": "genre/manhua"
+        },
+        {
+          "label": "Manhwa",
+          "value": "genre/manhwa"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "genre/martial-arts"
+        },
+        {
+          "label": "Mecha",
+          "value": "genre/mecha"
+        },
+        {
+          "label": "Medical",
+          "value": "genre/medical"
+        },
+        {
+          "label": "Music",
+          "value": "genre/music"
+        },
+        {
+          "label": "Mystery",
+          "value": "genre/mystery"
+        },
+        {
+          "label": "One shot",
+          "value": "genre/one-shot"
+        },
+        {
+          "label": "Overpowered MC",
+          "value": "genre/overpowered-mc"
+        },
+        {
+          "label": "Psychological",
+          "value": "genre/psychological"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "genre/reincarnation"
+        },
+        {
+          "label": "Romance",
+          "value": "genre/romance"
+        },
+        {
+          "label": "School Life",
+          "value": "genre/school-life"
+        },
+        {
+          "label": "Sci-fi",
+          "value": "genre/sci-fi"
+        },
+        {
+          "label": "Seinen",
+          "value": "genre/seinen"
+        },
+        {
+          "label": "Sexual violence",
+          "value": "genre/sexual-violence"
+        },
+        {
+          "label": "Shota",
+          "value": "genre/shota"
+        },
+        {
+          "label": "Shoujo",
+          "value": "genre/shoujo"
+        },
+        {
+          "label": "Shoujo Ai",
+          "value": "genre/shoujo-ai"
+        },
+        {
+          "label": "Shounen",
+          "value": "genre/shounen"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "genre/shounen-ai"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "genre/slice-of-life"
+        },
+        {
+          "label": "Sports",
+          "value": "genre/sports"
+        },
+        {
+          "label": "Super power",
+          "value": "genre/super-power"
+        },
+        {
+          "label": "Supernatural",
+          "value": "genre/supernatural"
+        },
+        {
+          "label": "Survival",
+          "value": "genre/survival"
+        },
+        {
+          "label": "Time Travel",
+          "value": "genre/time-travel"
+        },
+        {
+          "label": "Tragedy",
+          "value": "genre/tragedy"
+        },
+        {
+          "label": "Webtoon",
+          "value": "genre/webtoon"
+        },
+        {
+          "label": "Yaoi",
+          "value": "genre/yaoi"
+        },
+        {
+          "label": "Yuri",
+          "value": "genre/yuri"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "chapters",
+      "name": "Most chapters",
+      "url": "{baseUrl}/manga/page/{page}?filter=1&order=numc"
+    },
+    {
+      "id": "manhwa",
+      "name": "Manhwa",
+      "url": "{baseUrl}/genre/manhwa/page/{page}"
+    },
+    {
+      "id": "manhua",
+      "name": "Manhua",
+      "url": "{baseUrl}/genre/manhua/page/{page}"
+    },
+    {
+      "id": "romance",
+      "name": "Romance",
+      "url": "{baseUrl}/genre/romance/page/{page}"
+    },
+    {
+      "id": "action",
+      "name": "Action",
+      "url": "{baseUrl}/genre/action/page/{page}"
+    },
+    {
+      "id": "isekai",
+      "name": "Isekai",
+      "url": "{baseUrl}/genre/isekai/page/{page}"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {

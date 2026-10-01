@@ -80,28 +80,6 @@
       }
     }
   },
-  "catalogs": [
-    {
-      "id": "trending",
-      "name": "Trending",
-      "url": "{baseUrl}/manga/page/{page}/?m_orderby=trending"
-    },
-    {
-      "id": "new",
-      "name": "New",
-      "url": "{baseUrl}/manga/page/{page}/?m_orderby=new-manga"
-    },
-    {
-      "id": "rating",
-      "name": "Top rated",
-      "url": "{baseUrl}/manga/page/{page}/?m_orderby=rating"
-    },
-    {
-      "id": "alphabet",
-      "name": "A to Z",
-      "url": "{baseUrl}/manga/page/{page}/?m_orderby=alphabet"
-    }
-  ],
   "search": {
     "url": "{baseUrl}/page/{page}/?s={query}&post_type=wp-manga",
     "itemSelector": "div.c-tabs-item__content, div.page-item-detail.manga, div.page-item-detail",
@@ -136,8 +114,589 @@
         "transform": "number",
         "round": 1
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/page/{page}/?s={queryPlus}&post_type=wp-manga{order}{status}{genre}"
     }
   },
+  "filters": [
+    {
+      "key": "order",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Relevance",
+          "value": ""
+        },
+        {
+          "label": "Latest update",
+          "value": "&m_orderby=latest"
+        },
+        {
+          "label": "Most views",
+          "value": "&m_orderby=views"
+        },
+        {
+          "label": "Trending",
+          "value": "&m_orderby=trending"
+        },
+        {
+          "label": "Rating",
+          "value": "&m_orderby=rating"
+        },
+        {
+          "label": "New",
+          "value": "&m_orderby=new-manga"
+        },
+        {
+          "label": "A to Z",
+          "value": "&m_orderby=alphabet"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Ongoing",
+          "value": "&status%5B%5D=on-going"
+        },
+        {
+          "label": "Completed",
+          "value": "&status%5B%5D=end"
+        },
+        {
+          "label": "Canceled",
+          "value": "&status%5B%5D=canceled"
+        },
+        {
+          "label": "On Hold",
+          "value": "&status%5B%5D=on-hold"
+        },
+        {
+          "label": "Upcoming",
+          "value": "&status%5B%5D=upcoming"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genres",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Action",
+          "value": "&genre%5B%5D=action"
+        },
+        {
+          "label": "Adaptation",
+          "value": "&genre%5B%5D=adaptation"
+        },
+        {
+          "label": "Adult",
+          "value": "&genre%5B%5D=adult"
+        },
+        {
+          "label": "Adventure",
+          "value": "&genre%5B%5D=adventure"
+        },
+        {
+          "label": "Anime",
+          "value": "&genre%5B%5D=anime"
+        },
+        {
+          "label": "Beauty Mark",
+          "value": "&genre%5B%5D=beauty-mark"
+        },
+        {
+          "label": "Big Breasts",
+          "value": "&genre%5B%5D=big-breasts"
+        },
+        {
+          "label": "Cartoon",
+          "value": "&genre%5B%5D=cartoon"
+        },
+        {
+          "label": "Cheating",
+          "value": "&genre%5B%5D=cheating"
+        },
+        {
+          "label": "Comedy",
+          "value": "&genre%5B%5D=comedy"
+        },
+        {
+          "label": "Comic",
+          "value": "&genre%5B%5D=comic"
+        },
+        {
+          "label": "Completed",
+          "value": "&genre%5B%5D=completed"
+        },
+        {
+          "label": "Cooking",
+          "value": "&genre%5B%5D=cooking"
+        },
+        {
+          "label": "Crime",
+          "value": "&genre%5B%5D=crime"
+        },
+        {
+          "label": "Crossdressin",
+          "value": "&genre%5B%5D=crossdressin"
+        },
+        {
+          "label": "Delinquents",
+          "value": "&genre%5B%5D=delinquents"
+        },
+        {
+          "label": "Demons",
+          "value": "&genre%5B%5D=demons"
+        },
+        {
+          "label": "Detective",
+          "value": "&genre%5B%5D=detective"
+        },
+        {
+          "label": "Doujinshi",
+          "value": "&genre%5B%5D=doujinshi"
+        },
+        {
+          "label": "Drama",
+          "value": "&genre%5B%5D=drama"
+        },
+        {
+          "label": "Dungeons",
+          "value": "&genre%5B%5D=dungeons"
+        },
+        {
+          "label": "Ecchi",
+          "value": "&genre%5B%5D=ecchi"
+        },
+        {
+          "label": "ecchi 2",
+          "value": "&genre%5B%5D=ecchi-2"
+        },
+        {
+          "label": "Fantasy",
+          "value": "&genre%5B%5D=fantasy"
+        },
+        {
+          "label": "Full Color",
+          "value": "&genre%5B%5D=full-color"
+        },
+        {
+          "label": "Game",
+          "value": "&genre%5B%5D=game"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "&genre%5B%5D=gender-bender"
+        },
+        {
+          "label": "Ghosts",
+          "value": "&genre%5B%5D=ghosts"
+        },
+        {
+          "label": "Gore",
+          "value": "&genre%5B%5D=gore"
+        },
+        {
+          "label": "Handjob",
+          "value": "&genre%5B%5D=handjob"
+        },
+        {
+          "label": "Harem",
+          "value": "&genre%5B%5D=harem"
+        },
+        {
+          "label": "Hentai",
+          "value": "&genre%5B%5D=hentai"
+        },
+        {
+          "label": "Historical",
+          "value": "&genre%5B%5D=historical"
+        },
+        {
+          "label": "Horror",
+          "value": "&genre%5B%5D=horror"
+        },
+        {
+          "label": "Incest",
+          "value": "&genre%5B%5D=incest"
+        },
+        {
+          "label": "Isekai",
+          "value": "&genre%5B%5D=isekai"
+        },
+        {
+          "label": "Josei",
+          "value": "&genre%5B%5D=josei"
+        },
+        {
+          "label": "Kids",
+          "value": "&genre%5B%5D=kids"
+        },
+        {
+          "label": "Kissing",
+          "value": "&genre%5B%5D=kissing"
+        },
+        {
+          "label": "Life",
+          "value": "&genre%5B%5D=life"
+        },
+        {
+          "label": "Live action",
+          "value": "&genre%5B%5D=live-action"
+        },
+        {
+          "label": "Long strip",
+          "value": "&genre%5B%5D=long-strip"
+        },
+        {
+          "label": "Love &amp; Romance",
+          "value": "&genre%5B%5D=love-romance"
+        },
+        {
+          "label": "Magic",
+          "value": "&genre%5B%5D=magic"
+        },
+        {
+          "label": "Magical",
+          "value": "&genre%5B%5D=magical"
+        },
+        {
+          "label": "Manga",
+          "value": "&genre%5B%5D=manga"
+        },
+        {
+          "label": "Manhua",
+          "value": "&genre%5B%5D=manhua"
+        },
+        {
+          "label": "Manhwa",
+          "value": "&genre%5B%5D=manhwa"
+        },
+        {
+          "label": "Manhwa Hot",
+          "value": "&genre%5B%5D=manhwa-hot"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "&genre%5B%5D=martial-arts"
+        },
+        {
+          "label": "Mature",
+          "value": "&genre%5B%5D=mature"
+        },
+        {
+          "label": "Mecha",
+          "value": "&genre%5B%5D=mecha"
+        },
+        {
+          "label": "Medical",
+          "value": "&genre%5B%5D=medical"
+        },
+        {
+          "label": "MILF",
+          "value": "&genre%5B%5D=milf"
+        },
+        {
+          "label": "Military",
+          "value": "&genre%5B%5D=military"
+        },
+        {
+          "label": "Monsters",
+          "value": "&genre%5B%5D=monsters"
+        },
+        {
+          "label": "Mother",
+          "value": "&genre%5B%5D=mother"
+        },
+        {
+          "label": "Murim",
+          "value": "&genre%5B%5D=murim"
+        },
+        {
+          "label": "Music",
+          "value": "&genre%5B%5D=music"
+        },
+        {
+          "label": "Mystery",
+          "value": "&genre%5B%5D=mystery"
+        },
+        {
+          "label": "Nakadashi / Creampie",
+          "value": "&genre%5B%5D=nakadashi-creampie"
+        },
+        {
+          "label": "Netorare",
+          "value": "&genre%5B%5D=netorare"
+        },
+        {
+          "label": "of",
+          "value": "&genre%5B%5D=of"
+        },
+        {
+          "label": "Office Workers",
+          "value": "&genre%5B%5D=office-workers"
+        },
+        {
+          "label": "One shot",
+          "value": "&genre%5B%5D=one-shot"
+        },
+        {
+          "label": "Philosophical",
+          "value": "&genre%5B%5D=philosophical"
+        },
+        {
+          "label": "Police",
+          "value": "&genre%5B%5D=police"
+        },
+        {
+          "label": "Possessive",
+          "value": "&genre%5B%5D=possessive"
+        },
+        {
+          "label": "Post apocalyptic",
+          "value": "&genre%5B%5D=post-apocalyptic"
+        },
+        {
+          "label": "Prostitution",
+          "value": "&genre%5B%5D=prostitution"
+        },
+        {
+          "label": "Psychological",
+          "value": "&genre%5B%5D=psychological"
+        },
+        {
+          "label": "Raw",
+          "value": "&genre%5B%5D=raw"
+        },
+        {
+          "label": "Rebirth",
+          "value": "&genre%5B%5D=rebirth"
+        },
+        {
+          "label": "Regression",
+          "value": "&genre%5B%5D=regression"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "&genre%5B%5D=reincarnation"
+        },
+        {
+          "label": "Returner",
+          "value": "&genre%5B%5D=returner"
+        },
+        {
+          "label": "Revenge",
+          "value": "&genre%5B%5D=revenge"
+        },
+        {
+          "label": "Reverse",
+          "value": "&genre%5B%5D=reverse"
+        },
+        {
+          "label": "Reverse harem",
+          "value": "&genre%5B%5D=reverse-harem"
+        },
+        {
+          "label": "Romance",
+          "value": "&genre%5B%5D=romance"
+        },
+        {
+          "label": "Royal family",
+          "value": "&genre%5B%5D=royal-family"
+        },
+        {
+          "label": "Royalty",
+          "value": "&genre%5B%5D=royalty"
+        },
+        {
+          "label": "School",
+          "value": "&genre%5B%5D=school"
+        },
+        {
+          "label": "School Life",
+          "value": "&genre%5B%5D=school-life"
+        },
+        {
+          "label": "Sci-fi",
+          "value": "&genre%5B%5D=sci-fi"
+        },
+        {
+          "label": "Seinen",
+          "value": "&genre%5B%5D=seinen"
+        },
+        {
+          "label": "Shoujo",
+          "value": "&genre%5B%5D=shoujo"
+        },
+        {
+          "label": "Shoujo Ai",
+          "value": "&genre%5B%5D=shoujo-ai"
+        },
+        {
+          "label": "Shounen",
+          "value": "&genre%5B%5D=shounen"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "&genre%5B%5D=shounen-ai"
+        },
+        {
+          "label": "Slice",
+          "value": "&genre%5B%5D=slice"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "&genre%5B%5D=slice-of-life"
+        },
+        {
+          "label": "Smut",
+          "value": "&genre%5B%5D=smut"
+        },
+        {
+          "label": "Soft Yaoi",
+          "value": "&genre%5B%5D=soft-yaoi"
+        },
+        {
+          "label": "Soft Yuri",
+          "value": "&genre%5B%5D=soft-yuri"
+        },
+        {
+          "label": "Sole Female",
+          "value": "&genre%5B%5D=sole-female"
+        },
+        {
+          "label": "Sole Male",
+          "value": "&genre%5B%5D=sole-male"
+        },
+        {
+          "label": "Sports",
+          "value": "&genre%5B%5D=sports"
+        },
+        {
+          "label": "Super power",
+          "value": "&genre%5B%5D=super-power"
+        },
+        {
+          "label": "Superhero",
+          "value": "&genre%5B%5D=superhero"
+        },
+        {
+          "label": "Supernatural",
+          "value": "&genre%5B%5D=supernatural"
+        },
+        {
+          "label": "Survival",
+          "value": "&genre%5B%5D=survival"
+        },
+        {
+          "label": "Thriller",
+          "value": "&genre%5B%5D=thriller"
+        },
+        {
+          "label": "Time Travel",
+          "value": "&genre%5B%5D=time-travel"
+        },
+        {
+          "label": "Tragedy",
+          "value": "&genre%5B%5D=tragedy"
+        },
+        {
+          "label": "Transmigration",
+          "value": "&genre%5B%5D=transmigration"
+        },
+        {
+          "label": "Uncensored",
+          "value": "&genre%5B%5D=uncensored"
+        },
+        {
+          "label": "Vampire",
+          "value": "&genre%5B%5D=vampire"
+        },
+        {
+          "label": "Video Games",
+          "value": "&genre%5B%5D=video-games"
+        },
+        {
+          "label": "Villainess",
+          "value": "&genre%5B%5D=villainess"
+        },
+        {
+          "label": "Virtual Reality",
+          "value": "&genre%5B%5D=virtual-reality"
+        },
+        {
+          "label": "Web comic",
+          "value": "&genre%5B%5D=web-comic"
+        },
+        {
+          "label": "Webtoon",
+          "value": "&genre%5B%5D=webtoon"
+        },
+        {
+          "label": "Webtoons",
+          "value": "&genre%5B%5D=webtoons"
+        },
+        {
+          "label": "Wuxia",
+          "value": "&genre%5B%5D=wuxia"
+        },
+        {
+          "label": "Yaoi",
+          "value": "&genre%5B%5D=yaoi"
+        },
+        {
+          "label": "Yuri",
+          "value": "&genre%5B%5D=yuri"
+        },
+        {
+          "label": "Zombies",
+          "value": "&genre%5B%5D=zombies"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "trending",
+      "name": "Trending",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=trending"
+    },
+    {
+      "id": "new",
+      "name": "New",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=new-manga"
+    },
+    {
+      "id": "rating",
+      "name": "Top rated",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=rating"
+    },
+    {
+      "id": "alphabet",
+      "name": "A to Z",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=alphabet"
+    },
+    {
+      "id": "completed",
+      "name": "Completed",
+      "filters": {
+        "status": "&status%5B%5D=end",
+        "order": "&m_orderby=views"
+      }
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {

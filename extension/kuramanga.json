@@ -109,18 +109,26 @@
       "description": {
         "or": [
           {
+            "selector": ".summary-inner",
+            "attr": "text"
+          },
+          {
             "selector": "div#summary-text",
-            "attr": "text",
-            "transform": "trim"
+            "attr": "text"
           },
           {
             "selector": "meta[property=\"og:description\"]",
             "attr": "content"
           }
-        ]
+        ],
+        "transform": "trim"
       },
       "author": {
         "or": [
+          {
+            "selector": ".mp-cred:contains(\"Author\") .mp-cred-v",
+            "attr": "text"
+          },
           {
             "selector": ".mp-byline .mp-cred-v",
             "attr": "text",
@@ -131,12 +139,18 @@
             "attr": "text",
             "regex": "\"author\":\\s*\\{[^}]*\"name\":\\s*\"([^\"]+)\""
           }
-        ]
+        ],
+        "transform": "trim"
       },
       "genres": {
         "selector": "div.genre-list a.genre-chip",
         "attr": "text",
         "all": true,
+        "transform": "trim"
+      },
+      "status": {
+        "selector": "span.mp-status",
+        "attr": "text",
         "transform": "trim"
       }
     }

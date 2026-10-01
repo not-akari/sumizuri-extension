@@ -161,6 +161,10 @@
       "description": {
         "or": [
           {
+            "selector": ".series-summary .summary-content",
+            "attr": "text"
+          },
+          {
             "selector": ".series-synopsis",
             "attr": "text"
           },
@@ -172,29 +176,69 @@
         "transform": "trim"
       },
       "status": {
-        "selector": ".series-status",
-        "attr": "text",
+        "or": [
+          {
+            "selector": "li:contains(\"Status\") a",
+            "attr": "text"
+          },
+          {
+            "selector": ".series-status",
+            "attr": "text"
+          }
+        ],
         "transform": "capitalize",
         "default": "Ongoing"
+      },
+      "author": {
+        "selector": "li:contains(\"Author\") small a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": "li:contains(\"Genre\") small a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
       }
     }
   },
   "chapters": {
     "url": "{entryUrl}",
-    "itemSelector": "a[href*=\"/c/\"]",
+    "itemSelector": "ul.list-chapters a[href*=\"/c/\"]",
     "fields": {
       "url": {
         "attr": "href",
         "resolve": true
       },
       "title": {
-        "attr": "text",
+        "or": [
+          {
+            "selector": ".chapter-name",
+            "attr": "text"
+          },
+          {
+            "attr": "title"
+          }
+        ],
         "transform": "trim"
       },
       "number": {
-        "attr": "text",
-        "regex": "([0-9.]+)",
+        "or": [
+          {
+            "selector": ".chapter-name",
+            "attr": "text"
+          },
+          {
+            "attr": "title"
+          }
+        ],
+        "regex": "([0-9]+(?:\\.[0-9]+)?)",
         "transform": "number"
+      },
+      "dateUploaded": {
+        "selector": ".chapter-time",
+        "attr": "text",
+        "transform": "parseDate"
       }
     }
   },

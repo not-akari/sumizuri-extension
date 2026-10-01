@@ -232,6 +232,15 @@
         "attr": "data-src",
         "resolve": true
       }
+    },
+    "upgrade": {
+      "render": false,
+      "itemsRegex": "'(https://i\\d+\\.mangakatana\\.com/token/[^']+)'",
+      "fields": {
+        "imageUrl": {
+          "path": ""
+        }
+      }
     }
   }
 }

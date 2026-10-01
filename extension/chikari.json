@@ -8,11 +8,24 @@
     "pageSize": 24,
     "itemsPath": "items",
     "fields": {
-      "url": { "template": "/series/{slug}", "resolve": true },
-      "title": { "path": "title" },
-      "coverUrl": { "path": "cover_url" },
-      "rating": { "path": "rating", "round": 1 },
-      "status": { "path": "status", "transform": "capitalize" }
+      "url": {
+        "template": "/series/{slug}",
+        "resolve": true
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "cover_url"
+      },
+      "rating": {
+        "path": "rating",
+        "round": 1
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
     }
   },
   "latest": {
@@ -20,11 +33,24 @@
     "pageSize": 24,
     "itemsPath": "items",
     "fields": {
-      "url": { "template": "/series/{slug}", "resolve": true },
-      "title": { "path": "title" },
-      "coverUrl": { "path": "cover_url" },
-      "rating": { "path": "rating", "round": 1 },
-      "status": { "path": "status", "transform": "capitalize" }
+      "url": {
+        "template": "/series/{slug}",
+        "resolve": true
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "cover_url"
+      },
+      "rating": {
+        "path": "rating",
+        "round": 1
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
     }
   },
   "search": {
@@ -32,26 +58,314 @@
     "pageSize": 24,
     "itemsPath": "items",
     "fields": {
-      "url": { "template": "/series/{slug}", "resolve": true },
-      "title": { "path": "title" },
-      "coverUrl": { "path": "cover_url" },
-      "rating": { "path": "rating", "round": 1 },
-      "status": { "path": "status", "transform": "capitalize" }
+      "url": {
+        "template": "/series/{slug}",
+        "resolve": true
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "cover_url"
+      },
+      "rating": {
+        "path": "rating",
+        "round": 1
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/api/series?q={query}{sort}{type}{status}{genre}&offset={offset}&limit={pageSize}"
     }
   },
+  "filters": [
+    {
+      "key": "sort",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Latest",
+          "value": ""
+        },
+        {
+          "label": "Popular",
+          "value": "&sort=popular"
+        }
+      ]
+    },
+    {
+      "key": "type",
+      "name": "Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Manhwa",
+          "value": "&type=manhwa"
+        },
+        {
+          "label": "Manga",
+          "value": "&type=manga"
+        },
+        {
+          "label": "Manhua",
+          "value": "&type=manhua"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Releasing",
+          "value": "&status=releasing"
+        },
+        {
+          "label": "Completed",
+          "value": "&status=completed"
+        },
+        {
+          "label": "Hiatus",
+          "value": "&status=hiatus"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genres (all of)",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Action",
+          "value": "&genre=action"
+        },
+        {
+          "label": "Adult",
+          "value": "&genre=adult"
+        },
+        {
+          "label": "Adventure",
+          "value": "&genre=adventure"
+        },
+        {
+          "label": "Award Winning",
+          "value": "&genre=award_winning"
+        },
+        {
+          "label": "Boys Love",
+          "value": "&genre=boys_love"
+        },
+        {
+          "label": "Comedy",
+          "value": "&genre=comedy"
+        },
+        {
+          "label": "Doujinshi",
+          "value": "&genre=doujinshi"
+        },
+        {
+          "label": "Drama",
+          "value": "&genre=drama"
+        },
+        {
+          "label": "Ecchi",
+          "value": "&genre=ecchi"
+        },
+        {
+          "label": "Erotica",
+          "value": "&genre=erotica"
+        },
+        {
+          "label": "Fantasy",
+          "value": "&genre=fantasy"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "&genre=gender_bender"
+        },
+        {
+          "label": "Girls Love",
+          "value": "&genre=girls_love"
+        },
+        {
+          "label": "Gourmet",
+          "value": "&genre=gourmet"
+        },
+        {
+          "label": "Harem",
+          "value": "&genre=harem"
+        },
+        {
+          "label": "Historical",
+          "value": "&genre=historical"
+        },
+        {
+          "label": "Horror",
+          "value": "&genre=horror"
+        },
+        {
+          "label": "Josei",
+          "value": "&genre=josei"
+        },
+        {
+          "label": "Mahou Shoujo",
+          "value": "&genre=mahou_shoujo"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "&genre=martial_arts"
+        },
+        {
+          "label": "Mature",
+          "value": "&genre=mature"
+        },
+        {
+          "label": "Mecha",
+          "value": "&genre=mecha"
+        },
+        {
+          "label": "Music",
+          "value": "&genre=music"
+        },
+        {
+          "label": "Mystery",
+          "value": "&genre=mystery"
+        },
+        {
+          "label": "Psychological",
+          "value": "&genre=psychological"
+        },
+        {
+          "label": "Romance",
+          "value": "&genre=romance"
+        },
+        {
+          "label": "School Life",
+          "value": "&genre=school_life"
+        },
+        {
+          "label": "Sci Fi",
+          "value": "&genre=sci-fi"
+        },
+        {
+          "label": "Seinen",
+          "value": "&genre=seinen"
+        },
+        {
+          "label": "Shoujo",
+          "value": "&genre=shoujo"
+        },
+        {
+          "label": "Shoujo Ai",
+          "value": "&genre=shoujo_ai"
+        },
+        {
+          "label": "Shounen",
+          "value": "&genre=shounen"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "&genre=shounen_ai"
+        },
+        {
+          "label": "Slice Of Life",
+          "value": "&genre=slice_of_life"
+        },
+        {
+          "label": "Smut",
+          "value": "&genre=smut"
+        },
+        {
+          "label": "Sports",
+          "value": "&genre=sports"
+        },
+        {
+          "label": "Supernatural",
+          "value": "&genre=supernatural"
+        },
+        {
+          "label": "Suspense",
+          "value": "&genre=suspense"
+        },
+        {
+          "label": "Thriller",
+          "value": "&genre=thriller"
+        },
+        {
+          "label": "Tragedy",
+          "value": "&genre=tragedy"
+        },
+        {
+          "label": "Yaoi",
+          "value": "&genre=yaoi"
+        },
+        {
+          "label": "Yuri",
+          "value": "&genre=yuri"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "completed",
+      "name": "Completed",
+      "url": "{baseUrl}/api/series?sort=popular&status=completed&offset={offset}&limit={pageSize}"
+    },
+    {
+      "id": "manga",
+      "name": "Manga",
+      "url": "{baseUrl}/api/series?sort=popular&type=manga&offset={offset}&limit={pageSize}"
+    },
+    {
+      "id": "manhua",
+      "name": "Manhua",
+      "url": "{baseUrl}/api/series?sort=popular&type=manhua&offset={offset}&limit={pageSize}"
+    }
+  ],
   "chapters": {
     "url": "{baseUrl}/api/series/{entrySlug}/chapters?limit=200",
     "itemsPath": "items",
-    "sort": { "by": "number", "order": "desc" },
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
     "fields": {
-      "url": { "template": "{baseUrl}/api/series/{entrySlug}/chapters/{number}" },
-      "title": {
-        "if": { "path": "title", "is": "truthy" },
-        "then": { "template": "Chapter {number} - {title}" },
-        "else": { "template": "Chapter {number}" }
+      "url": {
+        "template": "{baseUrl}/api/series/{entrySlug}/chapters/{number}"
       },
-      "number": { "path": "number" },
-      "dateUploaded": { "path": "created_at" }
+      "title": {
+        "if": {
+          "path": "title",
+          "is": "truthy"
+        },
+        "then": {
+          "template": "Chapter {number} - {title}"
+        },
+        "else": {
+          "template": "Chapter {number}"
+        }
+      },
+      "number": {
+        "path": "number"
+      },
+      "dateUploaded": {
+        "path": "created_at"
+      }
     }
   },
   "pages": {
@@ -60,43 +374,100 @@
     "fields": {
       "imageUrl": {
         "if": "string",
-        "then": { "path": "" },
-        "else": { "path": "url" }
+        "then": {
+          "path": ""
+        },
+        "else": {
+          "path": "url"
+        }
       }
     }
   },
   "details": {
     "url": "{baseUrl}/api/series/{entrySlug}",
     "fields": {
-      "url": { "template": "{baseUrl}/series/{entrySlug}" },
-      "title": { "path": "title" },
-      "coverUrl": { "path": "cover_url" },
-      "bannerUrl": { "or": [ { "path": "banner_url" }, { "path": "cover_url" } ] },
-      "description": { "path": "description" },
-      "author": { "or": [ { "path": "authors.0.name" }, { "path": "author" } ] },
-      "rating": { "path": "rating", "round": 1 },
-      "status": { "path": "status", "transform": "capitalize" },
-      "genres": { "path": "genres", "map": "name" }
+      "url": {
+        "template": "{baseUrl}/series/{entrySlug}"
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "cover_url"
+      },
+      "bannerUrl": {
+        "or": [
+          {
+            "path": "banner_url"
+          },
+          {
+            "path": "cover_url"
+          }
+        ]
+      },
+      "description": {
+        "path": "description"
+      },
+      "author": {
+        "or": [
+          {
+            "path": "authors.0.name"
+          },
+          {
+            "path": "author"
+          }
+        ]
+      },
+      "rating": {
+        "path": "rating",
+        "round": 1
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      },
+      "genres": {
+        "path": "genres",
+        "map": "name"
+      }
     }
   },
   "comments": {
     "url": "{baseUrl}/api/series/{entrySlug}/comments?sort={sort}",
     "itemsPath": "comments",
     "fields": {
-      "author": { "path": "author.username", "default": "Anonymous" },
-      "text": { "path": "body" },
-      "date": { "path": "created_at" },
-      "avatarUrl": { "path": "author.avatar_url" }
+      "author": {
+        "path": "author.username",
+        "default": "Anonymous"
+      },
+      "text": {
+        "path": "body"
+      },
+      "date": {
+        "path": "created_at"
+      },
+      "avatarUrl": {
+        "path": "author.avatar_url"
+      }
     }
   },
   "chapterComments": {
     "url": "{chapterUrl}/comments?sort={sort}",
     "itemsPath": "comments",
     "fields": {
-      "author": { "path": "author.username", "default": "Anonymous" },
-      "text": { "path": "body" },
-      "date": { "path": "created_at" },
-      "avatarUrl": { "path": "author.avatar_url" }
+      "author": {
+        "path": "author.username",
+        "default": "Anonymous"
+      },
+      "text": {
+        "path": "body"
+      },
+      "date": {
+        "path": "created_at"
+      },
+      "avatarUrl": {
+        "path": "author.avatar_url"
+      }
     }
   }
 }

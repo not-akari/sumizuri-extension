@@ -10,61 +10,647 @@
     "url": "{baseUrl}/manga/?page={page}&order=popular",
     "itemSelector": "div.bsx",
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": ".tt", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".tt",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": "img", "attr": "src" },
-          { "selector": "img", "attr": "data-src" },
-          { "selector": "img", "attr": "data-lazy-src" }
+          {
+            "selector": "img",
+            "attr": "src"
+          },
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "data-lazy-src"
+          }
         ],
         "resolve": true
       },
-      "rating": { "selector": ".numscore", "attr": "text", "transform": "number", "round": 1 }
+      "rating": {
+        "selector": ".numscore",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
     }
   },
   "latest": {
     "url": "{baseUrl}/manga/?page={page}&order=update",
     "itemSelector": "div.bsx",
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": ".tt", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".tt",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": "img", "attr": "src" },
-          { "selector": "img", "attr": "data-src" },
-          { "selector": "img", "attr": "data-lazy-src" }
+          {
+            "selector": "img",
+            "attr": "src"
+          },
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "data-lazy-src"
+          }
         ],
         "resolve": true
       },
-      "rating": { "selector": ".numscore", "attr": "text", "transform": "number", "round": 1 }
+      "rating": {
+        "selector": ".numscore",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
     }
   },
   "search": {
     "url": "{baseUrl}/manga/?page={page}&title={query}",
     "itemSelector": "div.bsx",
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": ".tt", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".tt",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": "img", "attr": "src" },
-          { "selector": "img", "attr": "data-src" },
-          { "selector": "img", "attr": "data-lazy-src" }
+          {
+            "selector": "img",
+            "attr": "src"
+          },
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "data-lazy-src"
+          }
         ],
         "resolve": true
       },
-      "rating": { "selector": ".numscore", "attr": "text", "transform": "number", "round": 1 }
+      "rating": {
+        "selector": ".numscore",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/manga/?page={page}&title={query}&order={order}&status={status}&type={type}{genre}"
     }
   },
+  "filters": [
+    {
+      "key": "order",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Default",
+          "value": ""
+        },
+        {
+          "label": "A-Z",
+          "value": "title"
+        },
+        {
+          "label": "Z-A",
+          "value": "titlereverse"
+        },
+        {
+          "label": "Update",
+          "value": "update"
+        },
+        {
+          "label": "Added",
+          "value": "latest"
+        },
+        {
+          "label": "Popular",
+          "value": "popular"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "All",
+          "value": ""
+        },
+        {
+          "label": "Ongoing",
+          "value": "ongoing"
+        },
+        {
+          "label": "Completed",
+          "value": "completed"
+        },
+        {
+          "label": "Hiatus",
+          "value": "hiatus"
+        }
+      ]
+    },
+    {
+      "key": "type",
+      "name": "Type",
+      "type": "select",
+      "options": [
+        {
+          "label": "All",
+          "value": ""
+        },
+        {
+          "label": "Manga",
+          "value": "manga"
+        },
+        {
+          "label": "Manhwa",
+          "value": "manhwa"
+        },
+        {
+          "label": "Manhua",
+          "value": "manhua"
+        },
+        {
+          "label": "Comic",
+          "value": "comic"
+        },
+        {
+          "label": "Novel",
+          "value": "novel"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genres",
+      "type": "multiSelect",
+      "join": "",
+      "options": [
+        {
+          "label": "Action",
+          "value": "&genre%5B%5D=3"
+        },
+        {
+          "label": "Adaptation",
+          "value": "&genre%5B%5D=35"
+        },
+        {
+          "label": "Adult",
+          "value": "&genre%5B%5D=56"
+        },
+        {
+          "label": "Adventure",
+          "value": "&genre%5B%5D=4"
+        },
+        {
+          "label": "Animal",
+          "value": "&genre%5B%5D=487"
+        },
+        {
+          "label": "Bloody",
+          "value": "&genre%5B%5D=591"
+        },
+        {
+          "label": "Childhood Friends",
+          "value": "&genre%5B%5D=799"
+        },
+        {
+          "label": "College life",
+          "value": "&genre%5B%5D=765"
+        },
+        {
+          "label": "Comedy",
+          "value": "&genre%5B%5D=38"
+        },
+        {
+          "label": "Comic",
+          "value": "&genre%5B%5D=1393"
+        },
+        {
+          "label": "Cooking",
+          "value": "&genre%5B%5D=269"
+        },
+        {
+          "label": "Crime",
+          "value": "&genre%5B%5D=990"
+        },
+        {
+          "label": "Crossdressin",
+          "value": "&genre%5B%5D=436"
+        },
+        {
+          "label": "Delinquents",
+          "value": "&genre%5B%5D=1138"
+        },
+        {
+          "label": "Demon",
+          "value": "&genre%5B%5D=294"
+        },
+        {
+          "label": "Demons",
+          "value": "&genre%5B%5D=70"
+        },
+        {
+          "label": "Doujinshi",
+          "value": "&genre%5B%5D=276"
+        },
+        {
+          "label": "Drama",
+          "value": "&genre%5B%5D=11"
+        },
+        {
+          "label": "Dungeons",
+          "value": "&genre%5B%5D=601"
+        },
+        {
+          "label": "Ecchi",
+          "value": "&genre%5B%5D=904"
+        },
+        {
+          "label": "Emperor's daughte",
+          "value": "&genre%5B%5D=1414"
+        },
+        {
+          "label": "Fantasy",
+          "value": "&genre%5B%5D=5"
+        },
+        {
+          "label": "Full Color",
+          "value": "&genre%5B%5D=790"
+        },
+        {
+          "label": "Game",
+          "value": "&genre%5B%5D=270"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "&genre%5B%5D=194"
+        },
+        {
+          "label": "Genius MC",
+          "value": "&genre%5B%5D=6"
+        },
+        {
+          "label": "Gyaru",
+          "value": "&genre%5B%5D=1128"
+        },
+        {
+          "label": "Harem",
+          "value": "&genre%5B%5D=117"
+        },
+        {
+          "label": "Historical",
+          "value": "&genre%5B%5D=14"
+        },
+        {
+          "label": "Horror",
+          "value": "&genre%5B%5D=341"
+        },
+        {
+          "label": "Isekai",
+          "value": "&genre%5B%5D=39"
+        },
+        {
+          "label": "Josei",
+          "value": "&genre%5B%5D=15"
+        },
+        {
+          "label": "Josei(W)",
+          "value": "&genre%5B%5D=1411"
+        },
+        {
+          "label": "Kids",
+          "value": "&genre%5B%5D=475"
+        },
+        {
+          "label": "Loli",
+          "value": "&genre%5B%5D=1100"
+        },
+        {
+          "label": "LONG STRIP",
+          "value": "&genre%5B%5D=1007"
+        },
+        {
+          "label": "Magic",
+          "value": "&genre%5B%5D=28"
+        },
+        {
+          "label": "Magical",
+          "value": "&genre%5B%5D=92"
+        },
+        {
+          "label": "Manga",
+          "value": "&genre%5B%5D=83"
+        },
+        {
+          "label": "Manhua",
+          "value": "&genre%5B%5D=93"
+        },
+        {
+          "label": "Manhwa",
+          "value": "&genre%5B%5D=29"
+        },
+        {
+          "label": "Manhwa Hot",
+          "value": "&genre%5B%5D=44"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "&genre%5B%5D=420"
+        },
+        {
+          "label": "Mature",
+          "value": "&genre%5B%5D=21"
+        },
+        {
+          "label": "mature - 2",
+          "value": "&genre%5B%5D=1460"
+        },
+        {
+          "label": "Mecha",
+          "value": "&genre%5B%5D=1139"
+        },
+        {
+          "label": "Medical",
+          "value": "&genre%5B%5D=1367"
+        },
+        {
+          "label": "Military",
+          "value": "&genre%5B%5D=744"
+        },
+        {
+          "label": "Monster",
+          "value": "&genre%5B%5D=969"
+        },
+        {
+          "label": "Monster Girls",
+          "value": "&genre%5B%5D=1142"
+        },
+        {
+          "label": "Monsters",
+          "value": "&genre%5B%5D=738"
+        },
+        {
+          "label": "Music",
+          "value": "&genre%5B%5D=597"
+        },
+        {
+          "label": "Mystery",
+          "value": "&genre%5B%5D=31"
+        },
+        {
+          "label": "Office Workers",
+          "value": "&genre%5B%5D=187"
+        },
+        {
+          "label": "One shot",
+          "value": "&genre%5B%5D=60"
+        },
+        {
+          "label": "Philosophical",
+          "value": "&genre%5B%5D=1136"
+        },
+        {
+          "label": "Psychological",
+          "value": "&genre%5B%5D=16"
+        },
+        {
+          "label": "Regression",
+          "value": "&genre%5B%5D=1418"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "&genre%5B%5D=40"
+        },
+        {
+          "label": "Revenge",
+          "value": "&genre%5B%5D=57"
+        },
+        {
+          "label": "Reverse",
+          "value": "&genre%5B%5D=1156"
+        },
+        {
+          "label": "Reverse Harem",
+          "value": "&genre%5B%5D=523"
+        },
+        {
+          "label": "Romance",
+          "value": "&genre%5B%5D=17"
+        },
+        {
+          "label": "Royal family",
+          "value": "&genre%5B%5D=53"
+        },
+        {
+          "label": "Royalty",
+          "value": "&genre%5B%5D=1415"
+        },
+        {
+          "label": "Samurai",
+          "value": "&genre%5B%5D=1130"
+        },
+        {
+          "label": "School Life",
+          "value": "&genre%5B%5D=72"
+        },
+        {
+          "label": "Sci-fi",
+          "value": "&genre%5B%5D=154"
+        },
+        {
+          "label": "Seinen",
+          "value": "&genre%5B%5D=12"
+        },
+        {
+          "label": "Shoujo",
+          "value": "&genre%5B%5D=18"
+        },
+        {
+          "label": "Shoujo ai",
+          "value": "&genre%5B%5D=469"
+        },
+        {
+          "label": "Shounen",
+          "value": "&genre%5B%5D=7"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "&genre%5B%5D=701"
+        },
+        {
+          "label": "Showbiz",
+          "value": "&genre%5B%5D=271"
+        },
+        {
+          "label": "Si-fi",
+          "value": "&genre%5B%5D=1504"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "&genre%5B%5D=76"
+        },
+        {
+          "label": "Smut",
+          "value": "&genre%5B%5D=58"
+        },
+        {
+          "label": "Sports",
+          "value": "&genre%5B%5D=8"
+        },
+        {
+          "label": "Super power",
+          "value": "&genre%5B%5D=188"
+        },
+        {
+          "label": "Superhero",
+          "value": "&genre%5B%5D=991"
+        },
+        {
+          "label": "Supernatural",
+          "value": "&genre%5B%5D=45"
+        },
+        {
+          "label": "Survival",
+          "value": "&genre%5B%5D=1143"
+        },
+        {
+          "label": "Thriller",
+          "value": "&genre%5B%5D=342"
+        },
+        {
+          "label": "Time travel",
+          "value": "&genre%5B%5D=41"
+        },
+        {
+          "label": "Tragedy",
+          "value": "&genre%5B%5D=97"
+        },
+        {
+          "label": "Transmigration",
+          "value": "&genre%5B%5D=249"
+        },
+        {
+          "label": "Unknown",
+          "value": "&genre%5B%5D=493"
+        },
+        {
+          "label": "Vampire",
+          "value": "&genre%5B%5D=661"
+        },
+        {
+          "label": "Video Games",
+          "value": "&genre%5B%5D=1140"
+        },
+        {
+          "label": "Villainess",
+          "value": "&genre%5B%5D=46"
+        },
+        {
+          "label": "Virtual Game",
+          "value": "&genre%5B%5D=9"
+        },
+        {
+          "label": "Webtoon",
+          "value": "&genre%5B%5D=261"
+        },
+        {
+          "label": "Webtoons",
+          "value": "&genre%5B%5D=32"
+        },
+        {
+          "label": "Yaoi",
+          "value": "&genre%5B%5D=1281"
+        },
+        {
+          "label": "Yaoi(BL)",
+          "value": "&genre%5B%5D=1553"
+        },
+        {
+          "label": "Yuri",
+          "value": "&genre%5B%5D=287"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "added",
+      "name": "Newly added",
+      "url": "{baseUrl}/manga/?page={page}&order=latest"
+    },
+    {
+      "id": "manhua",
+      "name": "Manhua",
+      "url": "{baseUrl}/manga/?page={page}&order=popular&type=manhua"
+    },
+    {
+      "id": "manga",
+      "name": "Manga",
+      "url": "{baseUrl}/manga/?page={page}&order=popular&type=manga"
+    },
+    {
+      "id": "alphabet",
+      "name": "A to Z",
+      "url": "{baseUrl}/manga/?page={page}&order=title"
+    }
+  ],
   "chapters": {
     "url": "{entryUrl}",
     "itemSelector": "#chapterlist ul li",
-    "sort": { "by": "number", "order": "desc" },
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": ".chapternum", "attr": "text", "transform": "trim" },
-      "number": { "selector": ".chapternum", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".chapternum",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "selector": ".chapternum",
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
       "dateUploaded": {
         "selector": ".chapterdate",
         "attr": "text",
@@ -74,13 +660,11 @@
   },
   "pages": {
     "url": "{chapterUrl}",
-    "itemSelector": "#readerarea img, .readerarea img",
+    "jsonRegex": "ts_reader\\.run\\((\\{[\\s\\S]*?\\})\\);",
+    "itemsPath": "sources.0.images",
     "fields": {
       "imageUrl": {
-        "or": [
-          { "attr": "data-src" },
-          { "attr": "src" }
-        ],
+        "path": "",
         "resolve": true
       }
     }
@@ -88,26 +672,62 @@
   "details": {
     "url": "{entryUrl}",
     "fields": {
-      "url": { "template": "{entryUrl}" },
-      "title": { "selector": "h1.entry-title", "attr": "text", "transform": "trim" },
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "h1.entry-title",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": ".thumb img", "attr": "src" },
-          { "selector": ".thumb img", "attr": "data-src" },
-          { "selector": ".thumb img", "attr": "data-lazy-src" }
+          {
+            "selector": ".thumb img",
+            "attr": "src"
+          },
+          {
+            "selector": ".thumb img",
+            "attr": "data-src"
+          },
+          {
+            "selector": ".thumb img",
+            "attr": "data-lazy-src"
+          }
         ],
         "resolve": true
       },
       "bannerUrl": {
         "or": [
-          { "selector": ".bigbanner", "attr": "style", "regex": "url\\(['\"]?([^'\")]+)['\"]?\\)" },
-          { "selector": ".thumb img", "attr": "src" }
+          {
+            "selector": ".bigbanner",
+            "attr": "style",
+            "regex": "url\\(['\"]?([^'\")]+)['\"]?\\)"
+          },
+          {
+            "selector": ".thumb img",
+            "attr": "src"
+          }
         ],
         "resolve": true
       },
-      "description": { "selector": ".entry-content p", "attr": "text", "transform": "trim" },
-      "rating": { "selector": ".rating .numscore", "attr": "text", "transform": "number", "round": 1 },
-      "status": { "selector": ".tsinfo", "attr": "text", "regex": "Status\\s+([A-Za-z]+)", "transform": "capitalize" },
+      "description": {
+        "selector": ".entry-content p",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "rating": {
+        "selector": ".rating .numscore",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      },
+      "status": {
+        "selector": ".tsinfo",
+        "attr": "text",
+        "regex": "Status\\s+([A-Za-z]+)",
+        "transform": "capitalize"
+      },
       "genres": {
         "selector": ".mgen a",
         "attr": "text",
@@ -120,20 +740,50 @@
     "url": "{entryUrl}",
     "itemSelector": "#comments .comment-body, .commentlist li",
     "fields": {
-      "author": { "selector": ".fn, .author", "attr": "text", "transform": "trim" },
-      "text": { "selector": ".comment-content, p", "attr": "text", "transform": "trim" },
-      "avatarUrl": { "selector": "img.avatar", "attr": "src", "resolve": true },
-      "date": { "selector": "time", "attr": "datetime" }
+      "author": {
+        "selector": ".fn, .author",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "text": {
+        "selector": ".comment-content, p",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "avatarUrl": {
+        "selector": "img.avatar",
+        "attr": "src",
+        "resolve": true
+      },
+      "date": {
+        "selector": "time",
+        "attr": "datetime"
+      }
     }
   },
   "chapterComments": {
     "url": "{chapterUrl}",
     "itemSelector": "#comments .comment-body, .commentlist li",
     "fields": {
-      "author": { "selector": ".fn, .author", "attr": "text", "transform": "trim" },
-      "text": { "selector": ".comment-content, p", "attr": "text", "transform": "trim" },
-      "avatarUrl": { "selector": "img.avatar", "attr": "src", "resolve": true },
-      "date": { "selector": "time", "attr": "datetime" }
+      "author": {
+        "selector": ".fn, .author",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "text": {
+        "selector": ".comment-content, p",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "avatarUrl": {
+        "selector": "img.avatar",
+        "attr": "src",
+        "resolve": true
+      },
+      "date": {
+        "selector": "time",
+        "attr": "datetime"
+      }
     }
   }
 }

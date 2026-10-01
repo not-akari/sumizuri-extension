@@ -194,11 +194,10 @@
       "lang": "en",
       "mediaType": "manga",
       "engineKind": "json",
-      "version": 11,
+      "version": 12,
       "iconUrl": "https://toonily.com/favicon.ico",
       "baseUrl": "https://toonily.com",
-      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/toonily.json",
-      "minEngine": 2
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/toonily.json"
     },
     {
       "id": "manhuascans",
@@ -249,11 +248,11 @@
       "name": "MangaTaro",
       "lang": "en",
       "mediaType": "manga",
-      "engineKind": "json",
+      "engineKind": "js",
       "version": 10,
       "iconUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/docs/icons/mangataro.png",
       "baseUrl": "https://mangataro.org",
-      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangataro.json"
+      "fileUrl": "https://raw.githubusercontent.com/not-akari/Sumizuri-Extension/main/extension/mangataro.js"
     },
     {
       "id": "mkissa",

@@ -13,17 +13,27 @@
     "pageSize": 25,
     "itemsPath": "result",
     "fields": {
-      "url": { "template": "{baseUrl}/g/{id}" },
+      "url": {
+        "template": "{baseUrl}/g/{id}"
+      },
       "title": {
         "or": [
-          { "path": "english_title" },
-          { "path": "japanese_title" }
+          {
+            "path": "english_title"
+          },
+          {
+            "path": "japanese_title"
+          }
         ]
       },
       "coverUrl": {
         "join": [
-          { "template": "https://t.nhentai.net" },
-          { "path": "thumbnail" }
+          {
+            "template": "https://t.nhentai.net"
+          },
+          {
+            "path": "thumbnail"
+          }
         ],
         "separator": "/"
       }
@@ -34,17 +44,27 @@
     "pageSize": 25,
     "itemsPath": "result",
     "fields": {
-      "url": { "template": "{baseUrl}/g/{id}" },
+      "url": {
+        "template": "{baseUrl}/g/{id}"
+      },
       "title": {
         "or": [
-          { "path": "english_title" },
-          { "path": "japanese_title" }
+          {
+            "path": "english_title"
+          },
+          {
+            "path": "japanese_title"
+          }
         ]
       },
       "coverUrl": {
         "join": [
-          { "template": "https://t.nhentai.net" },
-          { "path": "thumbnail" }
+          {
+            "template": "https://t.nhentai.net"
+          },
+          {
+            "path": "thumbnail"
+          }
         ],
         "separator": "/"
       }
@@ -55,37 +75,128 @@
     "pageSize": 25,
     "itemsPath": "result",
     "fields": {
-      "url": { "template": "{baseUrl}/g/{id}" },
+      "url": {
+        "template": "{baseUrl}/g/{id}"
+      },
       "title": {
         "or": [
-          { "path": "english_title" },
-          { "path": "japanese_title" }
+          {
+            "path": "english_title"
+          },
+          {
+            "path": "japanese_title"
+          }
         ]
       },
       "coverUrl": {
         "join": [
-          { "template": "https://t.nhentai.net" },
-          { "path": "thumbnail" }
+          {
+            "template": "https://t.nhentai.net"
+          },
+          {
+            "path": "thumbnail"
+          }
         ],
         "separator": "/"
       }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/api/v2/search?query={query}{sort}&page={page}",
+      "emptyQueryUrl": "{baseUrl}/api/v2/search?query=*{sort}&page={page}"
     }
   },
+  "filters": [
+    {
+      "key": "sort",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Best match",
+          "value": ""
+        },
+        {
+          "label": "Popular",
+          "value": "&sort=popular"
+        },
+        {
+          "label": "Popular today",
+          "value": "&sort=popular-today"
+        },
+        {
+          "label": "Popular this week",
+          "value": "&sort=popular-week"
+        },
+        {
+          "label": "Popular this month",
+          "value": "&sort=popular-month"
+        },
+        {
+          "label": "Newest",
+          "value": "&sort=date"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "today",
+      "name": "Popular today",
+      "url": "{baseUrl}/api/v2/search?query=*&sort=popular-today&page={page}"
+    },
+    {
+      "id": "week",
+      "name": "Popular this week",
+      "url": "{baseUrl}/api/v2/search?query=*&sort=popular-week&page={page}"
+    },
+    {
+      "id": "month",
+      "name": "Popular this month",
+      "url": "{baseUrl}/api/v2/search?query=*&sort=popular-month&page={page}"
+    },
+    {
+      "id": "english",
+      "name": "English",
+      "url": "{baseUrl}/api/v2/search?query=language:english&sort=popular&page={page}"
+    },
+    {
+      "id": "japanese",
+      "name": "Japanese",
+      "url": "{baseUrl}/api/v2/search?query=language:japanese&sort=popular&page={page}"
+    },
+    {
+      "id": "chinese",
+      "name": "Chinese",
+      "url": "{baseUrl}/api/v2/search?query=language:chinese&sort=popular&page={page}"
+    }
+  ],
   "details": {
     "url": "{baseUrl}/api/v2/galleries/{entrySlug}",
     "fields": {
-      "url": { "template": "{baseUrl}/g/{id}" },
+      "url": {
+        "template": "{baseUrl}/g/{id}"
+      },
       "title": {
         "or": [
-          { "path": "title.pretty" },
-          { "path": "title.english" },
-          { "path": "title.japanese" }
+          {
+            "path": "title.pretty"
+          },
+          {
+            "path": "title.english"
+          },
+          {
+            "path": "title.japanese"
+          }
         ]
       },
       "coverUrl": {
         "join": [
-          { "template": "https://t.nhentai.net" },
-          { "path": "cover.path" }
+          {
+            "template": "https://t.nhentai.net"
+          },
+          {
+            "path": "cover.path"
+          }
         ],
         "separator": "/"
       },
@@ -102,14 +213,22 @@
     "url": "{baseUrl}/api/v2/galleries/{entrySlug}",
     "itemsPath": "",
     "fields": {
-      "url": { "template": "{baseUrl}/api/v2/galleries/{id}" },
+      "url": {
+        "template": "{baseUrl}/api/v2/galleries/{id}"
+      },
       "title": {
         "or": [
-          { "path": "title.pretty" },
-          { "template": "Read Gallery" }
+          {
+            "path": "title.pretty"
+          },
+          {
+            "template": "Read Gallery"
+          }
         ]
       },
-      "number": { "default": 1 },
+      "number": {
+        "default": 1
+      },
       "dateUploaded": {
         "path": "upload_date",
         "transform": "unixTimestamp"
@@ -122,8 +241,12 @@
     "fields": {
       "imageUrl": {
         "join": [
-          { "template": "https://i.nhentai.net" },
-          { "path": "path" }
+          {
+            "template": "https://i.nhentai.net"
+          },
+          {
+            "path": "path"
+          }
         ],
         "separator": "/"
       }
@@ -137,17 +260,26 @@
         "path": "poster.username",
         "default": "Anonymous"
       },
-      "text": { "path": "body" },
+      "text": {
+        "path": "body"
+      },
       "date": {
         "path": "post_date",
         "transform": "unixTimestamp"
       },
       "avatarUrl": {
-        "if": { "path": "poster.avatar_url", "is": "truthy" },
+        "if": {
+          "path": "poster.avatar_url",
+          "is": "truthy"
+        },
         "then": {
           "join": [
-            { "template": "https://i.nhentai.net" },
-            { "path": "poster.avatar_url" }
+            {
+              "template": "https://i.nhentai.net"
+            },
+            {
+              "path": "poster.avatar_url"
+            }
           ],
           "separator": "/"
         }
@@ -162,17 +294,26 @@
         "path": "poster.username",
         "default": "Anonymous"
       },
-      "text": { "path": "body" },
+      "text": {
+        "path": "body"
+      },
       "date": {
         "path": "post_date",
         "transform": "unixTimestamp"
       },
       "avatarUrl": {
-        "if": { "path": "poster.avatar_url", "is": "truthy" },
+        "if": {
+          "path": "poster.avatar_url",
+          "is": "truthy"
+        },
         "then": {
           "join": [
-            { "template": "https://i.nhentai.net" },
-            { "path": "poster.avatar_url" }
+            {
+              "template": "https://i.nhentai.net"
+            },
+            {
+              "path": "poster.avatar_url"
+            }
           ],
           "separator": "/"
         }

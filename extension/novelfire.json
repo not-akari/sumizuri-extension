@@ -10,12 +10,28 @@
     "url": "{baseUrl}/genre-all/sort-popular/status-all/all-novel?page={page}",
     "itemSelector": "ul.novel-list li.novel-item",
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": ".novel-title", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".novel-title",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": "figure.novel-cover img", "attr": "data-src", "resolve": true },
-          { "selector": "figure.novel-cover img", "attr": "src", "resolve": true }
+          {
+            "selector": "figure.novel-cover img",
+            "attr": "data-src",
+            "resolve": true
+          },
+          {
+            "selector": "figure.novel-cover img",
+            "attr": "src",
+            "resolve": true
+          }
         ]
       }
     }
@@ -24,12 +40,28 @@
     "url": "{baseUrl}/genre-all/sort-latest-release/status-all/all-novel?page={page}",
     "itemSelector": "ul.novel-list li.novel-item",
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": ".novel-title", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".novel-title",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": "figure.novel-cover img", "attr": "data-src", "resolve": true },
-          { "selector": "figure.novel-cover img", "attr": "src", "resolve": true }
+          {
+            "selector": "figure.novel-cover img",
+            "attr": "data-src",
+            "resolve": true
+          },
+          {
+            "selector": "figure.novel-cover img",
+            "attr": "src",
+            "resolve": true
+          }
         ]
       }
     }
@@ -38,26 +70,400 @@
     "url": "{baseUrl}/search?keyword={query}&page={page}",
     "itemSelector": "ul.novel-list li.novel-item",
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": ".novel-title", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".novel-title",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": "figure.novel-cover img", "attr": "data-src", "resolve": true },
-          { "selector": "figure.novel-cover img", "attr": "src", "resolve": true }
+          {
+            "selector": "figure.novel-cover img",
+            "attr": "data-src",
+            "resolve": true
+          },
+          {
+            "selector": "figure.novel-cover img",
+            "attr": "src",
+            "resolve": true
+          }
         ]
       }
+    },
+    "upgrade": {
+      "emptyQueryUrl": "{baseUrl}/genre-{genre}/sort-{sort}/status-{status}/{lang}?page={page}"
     }
   },
+  "filters": [
+    {
+      "key": "sort",
+      "name": "Sort by (without search words)",
+      "type": "select",
+      "options": [
+        {
+          "label": "Popular",
+          "value": "popular"
+        },
+        {
+          "label": "Newest",
+          "value": "new"
+        },
+        {
+          "label": "Latest release",
+          "value": "latest-release"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": "all"
+        },
+        {
+          "label": "Ongoing",
+          "value": "ongoing"
+        },
+        {
+          "label": "Completed",
+          "value": "completed"
+        }
+      ]
+    },
+    {
+      "key": "lang",
+      "name": "Origin",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": "all-novel"
+        },
+        {
+          "label": "Chinese",
+          "value": "chinese-novel"
+        },
+        {
+          "label": "Korean",
+          "value": "korean-novel"
+        },
+        {
+          "label": "Japanese",
+          "value": "japanese-novel"
+        },
+        {
+          "label": "English",
+          "value": "english-novel"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genre",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": "all"
+        },
+        {
+          "label": "Action",
+          "value": "action"
+        },
+        {
+          "label": "Adult",
+          "value": "adult"
+        },
+        {
+          "label": "Adventure",
+          "value": "adventure"
+        },
+        {
+          "label": "Anime",
+          "value": "anime"
+        },
+        {
+          "label": "Arts",
+          "value": "arts"
+        },
+        {
+          "label": "Comedy",
+          "value": "comedy"
+        },
+        {
+          "label": "Drama",
+          "value": "drama"
+        },
+        {
+          "label": "Eastern",
+          "value": "eastern"
+        },
+        {
+          "label": "Ecchi",
+          "value": "ecchi"
+        },
+        {
+          "label": "Fan Fiction",
+          "value": "fan-fiction"
+        },
+        {
+          "label": "Fantasy",
+          "value": "fantasy"
+        },
+        {
+          "label": "Game",
+          "value": "game"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "gender-bender"
+        },
+        {
+          "label": "Harem",
+          "value": "harem"
+        },
+        {
+          "label": "Historical",
+          "value": "historical"
+        },
+        {
+          "label": "Horror",
+          "value": "horror"
+        },
+        {
+          "label": "Isekai",
+          "value": "isekai"
+        },
+        {
+          "label": "Josei",
+          "value": "josei"
+        },
+        {
+          "label": "Lgbt",
+          "value": "lgbt"
+        },
+        {
+          "label": "Magic",
+          "value": "magic"
+        },
+        {
+          "label": "Magical Realism",
+          "value": "magical-realism"
+        },
+        {
+          "label": "Manhua",
+          "value": "manhua"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "martial-arts"
+        },
+        {
+          "label": "Mature",
+          "value": "mature"
+        },
+        {
+          "label": "Mecha",
+          "value": "mecha"
+        },
+        {
+          "label": "Military",
+          "value": "military"
+        },
+        {
+          "label": "Modern Life",
+          "value": "modern-life"
+        },
+        {
+          "label": "Movies",
+          "value": "movies"
+        },
+        {
+          "label": "Mystery",
+          "value": "mystery"
+        },
+        {
+          "label": "Other",
+          "value": "other"
+        },
+        {
+          "label": "Psychological",
+          "value": "psychological"
+        },
+        {
+          "label": "Realistic Fiction",
+          "value": "realistic-fiction"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "reincarnation"
+        },
+        {
+          "label": "Romance",
+          "value": "romance"
+        },
+        {
+          "label": "School Life",
+          "value": "school-life"
+        },
+        {
+          "label": "Sci Fi",
+          "value": "sci-fi"
+        },
+        {
+          "label": "Seinen",
+          "value": "seinen"
+        },
+        {
+          "label": "Shoujo",
+          "value": "shoujo"
+        },
+        {
+          "label": "Shoujo Ai",
+          "value": "shoujo-ai"
+        },
+        {
+          "label": "Shounen",
+          "value": "shounen"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "shounen-ai"
+        },
+        {
+          "label": "Slice Of Life",
+          "value": "slice-of-life"
+        },
+        {
+          "label": "Smut",
+          "value": "smut"
+        },
+        {
+          "label": "Sports",
+          "value": "sports"
+        },
+        {
+          "label": "Supernatural",
+          "value": "supernatural"
+        },
+        {
+          "label": "System",
+          "value": "system"
+        },
+        {
+          "label": "Tragedy",
+          "value": "tragedy"
+        },
+        {
+          "label": "Urban",
+          "value": "urban"
+        },
+        {
+          "label": "Urban Life",
+          "value": "urban-life"
+        },
+        {
+          "label": "Video Games",
+          "value": "video-games"
+        },
+        {
+          "label": "War",
+          "value": "war"
+        },
+        {
+          "label": "Wuxia",
+          "value": "wuxia"
+        },
+        {
+          "label": "Xianxia",
+          "value": "xianxia"
+        },
+        {
+          "label": "Xuanhuan",
+          "value": "xuanhuan"
+        },
+        {
+          "label": "Yaoi",
+          "value": "yaoi"
+        },
+        {
+          "label": "Yuri",
+          "value": "yuri"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "new",
+      "name": "Newest",
+      "url": "{baseUrl}/genre-all/sort-new/status-all/all-novel?page={page}"
+    },
+    {
+      "id": "completed",
+      "name": "Completed",
+      "url": "{baseUrl}/genre-all/sort-popular/status-completed/all-novel?page={page}"
+    },
+    {
+      "id": "chinese",
+      "name": "Chinese",
+      "url": "{baseUrl}/genre-all/sort-popular/status-all/chinese-novel?page={page}"
+    },
+    {
+      "id": "korean",
+      "name": "Korean",
+      "url": "{baseUrl}/genre-all/sort-popular/status-all/korean-novel?page={page}"
+    },
+    {
+      "id": "japanese",
+      "name": "Japanese",
+      "url": "{baseUrl}/genre-all/sort-popular/status-all/japanese-novel?page={page}"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {
-      "url": { "template": "{entryUrl}" },
-      "title": { "selector": "h1.novel-title", "attr": "text", "transform": "trim" },
-      "coverUrl": { "selector": "figure.cover img", "attr": "src", "resolve": true },
-      "author": { "selector": "span[itemprop=\"author\"]", "attr": "text", "transform": "trim" },
-      "description": { "selector": "div.summary div.content", "attr": "html", "transform": "htmlToText" },
-      "status": { "selector": ".header-stats strong.ongoing, .header-stats strong.completed", "attr": "text", "transform": "trim" },
-      "rating": { "selector": ".main-head .rating strong.nub", "attr": "text", "transform": "number" },
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "h1.novel-title",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "figure.cover img",
+        "attr": "src",
+        "resolve": true
+      },
+      "author": {
+        "selector": "span[itemprop=\"author\"]",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "description": {
+        "selector": "div.summary div.content",
+        "attr": "html",
+        "transform": "htmlToText"
+      },
+      "status": {
+        "selector": ".header-stats strong.ongoing, .header-stats strong.completed",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "rating": {
+        "selector": ".main-head .rating strong.nub",
+        "attr": "text",
+        "transform": "number"
+      },
       "genres": {
         "selector": ".categories ul li a",
         "attr": "text",
@@ -74,17 +480,34 @@
       "maxPages": 50
     },
     "fields": {
-      "url": { "attr": "href", "resolve": true },
-      "title": { "selector": ".chapter-title", "attr": "text", "transform": "trim" },
-      "number": { "selector": ".chapter-no", "attr": "text", "transform": "number" },
-      "dateUploaded": { "selector": ".chapter-update", "attr": "datetime" }
+      "url": {
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".chapter-title",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "selector": ".chapter-no",
+        "attr": "text",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "selector": ".chapter-update",
+        "attr": "datetime"
+      }
     }
   },
   "pages": {
     "url": "{chapterUrl}",
     "itemSelector": "div#content",
     "fields": {
-      "text": { "attr": "html", "transform": "htmlToText" }
+      "text": {
+        "attr": "html",
+        "transform": "htmlToText"
+      }
     }
   }
 }

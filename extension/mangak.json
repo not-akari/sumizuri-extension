@@ -6,84 +6,88 @@
   "rateLimitMs": 800,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Referer": "https://mangak.io/"
+    "Referer": "https://mangak.io/",
+    "Origin": "https://mangak.io"
   },
   "popular": {
-    "url": "{baseUrl}/trending/manga",
-    "itemSelector": "article",
+    "url": "https://api.mangak.io/trending/titles?offset={offset}&limit={pageSize}",
+    "pageSize": 20,
+    "itemsPath": "data.items",
     "fields": {
       "url": {
-        "selector": "a[title]",
-        "attr": "href",
-        "resolve": true
+        "template": "{baseUrl}{url}"
       },
       "title": {
-        "selector": "a[title] span",
-        "attr": "text",
+        "path": "name",
         "transform": "trim"
       },
       "coverUrl": {
-        "selector": "img[src*=\"resmk.org\"], img",
-        "attr": "src",
-        "resolve": true
+        "path": "cover"
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
       }
     }
   },
   "latest": {
-    "url": "{baseUrl}/latest?page={page}",
-    "itemSelector": "article",
+    "url": "https://api.mangak.io/trending/top-update?offset={offset}&limit={pageSize}",
+    "pageSize": 20,
+    "itemsPath": "data.items",
     "fields": {
       "url": {
-        "selector": "a[title]",
-        "attr": "href",
-        "resolve": true
+        "template": "{baseUrl}{url}"
       },
       "title": {
-        "selector": "a[title] span",
-        "attr": "text",
+        "path": "name",
         "transform": "trim"
       },
       "coverUrl": {
-        "selector": "img[src*=\"resmk.org\"], img",
-        "attr": "src",
-        "resolve": true
+        "path": "cover"
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
       }
     }
   },
   "search": {
-    "url": "{baseUrl}/search?q={query}",
-    "render": true,
-    "itemSelector": "article, div.grid > div",
+    "url": "https://api.mangak.io/titles/search?q={query}&page={page}",
+    "itemsPath": "data.items",
     "fields": {
       "url": {
-        "selector": "a",
-        "attr": "href",
-        "resolve": true
+        "template": "{baseUrl}{url}"
       },
       "title": {
-        "or": [
-          {
-            "selector": "a[title] span",
-            "attr": "text"
-          },
-          {
-            "selector": "a[title]",
-            "attr": "title"
-          },
-          {
-            "selector": "h2, h3, a",
-            "attr": "text"
-          }
-        ],
+        "path": "name",
         "transform": "trim"
       },
       "coverUrl": {
-        "selector": "img",
-        "attr": "src",
-        "resolve": true
+        "path": "cover"
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
       }
     }
   },
+  "catalogs": [
+    {
+      "id": "rising",
+      "name": "Rising",
+      "url": "https://api.mangak.io/trending/rising?offset={offset}&limit={pageSize}",
+      "itemsPath": "data"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {
@@ -133,6 +137,43 @@
         "transform": "capitalize",
         "default": "Ongoing"
       }
+    },
+    "upgrade": {
+      "render": false,
+      "url": "{entryUrl}",
+      "jsonRegex": "<script id=\"__NEXT_DATA__\" type=\"application/json\">([\\s\\S]*?)</script>",
+      "itemsPath": "props.pageProps.initialManga",
+      "fields": {
+        "url": {
+          "template": "{entryUrl}"
+        },
+        "title": {
+          "path": "name"
+        },
+        "coverUrl": {
+          "path": "cover"
+        },
+        "description": {
+          "path": "summary",
+          "transform": "trim"
+        },
+        "author": {
+          "path": "authors",
+          "map": "name",
+          "separator": ", "
+        },
+        "genres": {
+          "path": "genres",
+          "map": "name"
+        },
+        "status": {
+          "path": "status",
+          "transform": "capitalize"
+        },
+        "rating": {
+          "path": "rating"
+        }
+      }
     }
   },
   "chapters": {
@@ -156,6 +197,34 @@
         ],
         "transform": "trim"
       }
+    },
+    "upgrade": {
+      "render": false,
+      "url": "{entryUrl}",
+      "jsonRegex": "<script id=\"__NEXT_DATA__\" type=\"application/json\">([\\s\\S]*?)</script>",
+      "itemsPath": "props.pageProps.initialManga.chapters",
+      "sort": {
+        "by": "number",
+        "order": "desc"
+      },
+      "fields": {
+        "url": {
+          "template": "{baseUrl}{url}"
+        },
+        "title": {
+          "path": "name"
+        },
+        "number": {
+          "path": "number"
+        },
+        "scanlator": {
+          "path": "group.name"
+        },
+        "dateUploaded": {
+          "path": "updatedAt",
+          "transform": "parseDate"
+        }
+      }
     }
   },
   "pages": {
@@ -166,6 +235,17 @@
       "imageUrl": {
         "attr": "src",
         "resolve": true
+      }
+    },
+    "upgrade": {
+      "render": false,
+      "url": "{chapterUrl}",
+      "jsonRegex": "<script id=\"__NEXT_DATA__\" type=\"application/json\">([\\s\\S]*?)</script>",
+      "itemsPath": "props.pageProps.initialChapter.images",
+      "fields": {
+        "imageUrl": {
+          "path": ""
+        }
       }
     }
   }

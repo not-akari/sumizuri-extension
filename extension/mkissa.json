@@ -70,7 +70,7 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "body": "{\"query\":\"query { mangas(search: {name: \\\"{query}\\\"}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}",
+    "body": "{\"query\":\"query { mangas(search: {query: \\\"{query}\\\"}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}",
     "itemsPath": "data.mangas.edges",
     "fields": {
       "url": {
@@ -89,6 +89,9 @@
         "transform": "capitalize",
         "default": "Ongoing"
       }
+    },
+    "upgrade": {
+      "body": "{\"query\":\"query { mangas(search: {query: \\\"{queryText}\\\"}, limit: 24, page: {page}) { edges { _id name englishName thumbnail score status } } }\"}"
     }
   },
   "details": {
@@ -142,6 +145,32 @@
         "attr": "text",
         "regex": "([0-9.]+)",
         "transform": "number"
+      }
+    },
+    "upgrade": {
+      "render": false,
+      "url": "{baseUrl}",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"query\":\"query { manga(_id: \\\"{entrySlug}\\\") { _id availableChaptersDetail } }\"}",
+      "itemsPath": "data.manga.availableChaptersDetail.sub",
+      "fields": {
+        "url": {
+          "template": "{entryUrl}/chapter-{value}-sub"
+        },
+        "title": {
+          "template": "Chapter {value}"
+        },
+        "number": {
+          "path": "",
+          "transform": "number"
+        }
+      },
+      "sort": {
+        "by": "number",
+        "order": "desc"
       }
     }
   },

@@ -6,7 +6,6 @@
   "rateLimitMs": 1000,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Referer": "https://toonily.com/",
     "Cookie": "toonily-mature=1"
   },
   "popular": {
@@ -80,7 +79,11 @@
     }
   },
   "search": {
-    "url": "{baseUrl}/search/{query}/page/{page}/?m_orderby={order}{status}{genre}",
+    "url": "{baseUrl}/search/{query}/page/{page}/",
+    "upgrade": {
+      "url": "{baseUrl}/search/{querySlug}/page/{page}/?m_orderby={order}{status}{genre}",
+      "emptyQueryUrl": "{baseUrl}/search/page/{page}/?m_orderby={order}{status}{genre}"
+    },
     "itemSelector": "div.c-tabs-item__content, div.page-item-detail.manga, div.page-item-detail",
     "fields": {
       "url": {
@@ -112,8 +115,7 @@
         "transform": "number",
         "round": 1
       }
-    },
-    "emptyQueryUrl": "{baseUrl}/search/page/{page}/?m_orderby={order}{status}{genre}"
+    }
   },
   "filters": [
     {
@@ -389,7 +391,7 @@
         "transform": "trim"
       },
       "status": {
-        "selector": "div.post-status div.summary-content",
+        "selector": "div.post-content_item:contains(\"Status\") div.summary-content",
         "attr": "text",
         "transform": "trim"
       },
@@ -398,6 +400,12 @@
         "attr": "text",
         "all": true,
         "transform": "trim"
+      },
+      "rating": {
+        "selector": "#averagerate",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
       }
     }
   },
@@ -430,8 +438,16 @@
         "transform": "number"
       },
       "dateUploaded": {
-        "selector": "span.chapter-release-date",
-        "attr": "text",
+        "or": [
+          {
+            "selector": "span.chapter-release-date a",
+            "attr": "title"
+          },
+          {
+            "selector": "span.chapter-release-date",
+            "attr": "text"
+          }
+        ],
         "transform": "parseDate"
       }
     }

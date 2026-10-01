@@ -12,87 +12,238 @@
     "url": "{baseUrl}/manga/page/{page}/?m_orderby=views",
     "itemSelector": "div.page-item-detail.manga, div.page-item-detail",
     "fields": {
-      "url": { "selector": ".post-title a", "attr": "href", "resolve": true },
-      "title": { "selector": ".post-title a", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": ".post-title a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".post-title a",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
-        "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "or": [
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
         "transform": "trim",
         "resolve": true
       },
-      "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
+      "rating": {
+        "selector": ".score",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
     }
   },
   "latest": {
     "url": "{baseUrl}/manga/page/{page}/?m_orderby=latest",
     "itemSelector": "div.page-item-detail.manga, div.page-item-detail",
     "fields": {
-      "url": { "selector": ".post-title a", "attr": "href", "resolve": true },
-      "title": { "selector": ".post-title a", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": ".post-title a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".post-title a",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
-        "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "or": [
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
         "transform": "trim",
         "resolve": true
       },
-      "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
+      "rating": {
+        "selector": ".score",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
     }
   },
   "catalogs": [
-    { "id": "trending", "name": "Trending", "url": "{baseUrl}/manga/page/{page}/?m_orderby=trending" },
-    { "id": "new", "name": "New", "url": "{baseUrl}/manga/page/{page}/?m_orderby=new-manga" },
-    { "id": "rating", "name": "Top rated", "url": "{baseUrl}/manga/page/{page}/?m_orderby=rating" },
-    { "id": "alphabet", "name": "A to Z", "url": "{baseUrl}/manga/page/{page}/?m_orderby=alphabet" }
+    {
+      "id": "trending",
+      "name": "Trending",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=trending"
+    },
+    {
+      "id": "new",
+      "name": "New",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=new-manga"
+    },
+    {
+      "id": "rating",
+      "name": "Top rated",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=rating"
+    },
+    {
+      "id": "alphabet",
+      "name": "A to Z",
+      "url": "{baseUrl}/manga/page/{page}/?m_orderby=alphabet"
+    }
   ],
   "search": {
     "url": "{baseUrl}/page/{page}/?s={query}&post_type=wp-manga",
     "itemSelector": "div.c-tabs-item__content, div.page-item-detail.manga, div.page-item-detail",
     "fields": {
-      "url": { "selector": ".post-title a, h3.h4 a", "attr": "href", "resolve": true },
-      "title": { "selector": ".post-title a, h3.h4 a", "attr": "text", "transform": "trim" },
+      "url": {
+        "selector": ".post-title a, h3.h4 a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": ".post-title a, h3.h4 a",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
-        "or": [{ "selector": "img", "attr": "data-src" }, { "selector": "img", "attr": "src" }],
+        "or": [
+          {
+            "selector": "img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "img",
+            "attr": "src"
+          }
+        ],
         "transform": "trim",
         "resolve": true
       },
-      "rating": { "selector": ".score", "attr": "text", "transform": "number", "round": 1 }
+      "rating": {
+        "selector": ".score",
+        "attr": "text",
+        "transform": "number",
+        "round": 1
+      }
     }
   },
   "details": {
     "url": "{entryUrl}",
     "fields": {
-      "url": { "template": "{entryUrl}" },
-      "title": { "selector": "div.post-title h1", "attr": "text", "transform": "trim" },
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "div.post-title h1",
+        "attr": "text",
+        "transform": "trim"
+      },
       "coverUrl": {
         "or": [
-          { "selector": "div.summary_image img", "attr": "data-src" },
-          { "selector": "meta[property=\"og:image\"]", "attr": "content" },
-          { "selector": "div.summary_image img", "attr": "src" }
+          {
+            "selector": "div.summary_image img",
+            "attr": "data-src"
+          },
+          {
+            "selector": "meta[property=\"og:image\"]",
+            "attr": "content"
+          },
+          {
+            "selector": "div.summary_image img",
+            "attr": "src"
+          }
         ],
         "transform": "trim",
         "resolve": true
       },
       "description": {
         "or": [
-          { "selector": "div.content-area div.summary__content", "attr": "text", "transform": "trim" },
-          { "selector": "div.description-summary", "attr": "text", "transform": "trim" },
-          { "selector": "meta[property=\"og:description\"]", "attr": "content" }
+          {
+            "selector": "div.content-area div.summary__content",
+            "attr": "text",
+            "transform": "trim"
+          },
+          {
+            "selector": "div.description-summary",
+            "attr": "text",
+            "transform": "trim"
+          },
+          {
+            "selector": "meta[property=\"og:description\"]",
+            "attr": "content"
+          }
         ]
       },
-      "author": { "selector": "div.author-content a", "attr": "text", "transform": "trim" },
-      "status": { "selector": "div.post-status div.summary-content", "attr": "text", "transform": "trim" },
-      "genres": { "selector": "div.genres-content a", "attr": "text", "all": true, "transform": "trim" }
+      "author": {
+        "selector": "div.author-content a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "status": {
+        "selector": "div.post-content_item:contains(\"Status\") div.summary-content",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "genres": {
+        "selector": "div.genres-content a",
+        "attr": "text",
+        "all": true,
+        "transform": "trim"
+      }
     }
   },
   "chapters": {
     "url": "{entryUrl}ajax/chapters/",
     "method": "POST",
-    "headers": { "X-Requested-With": "XMLHttpRequest" },
+    "headers": {
+      "X-Requested-With": "XMLHttpRequest"
+    },
     "itemSelector": "li.wp-manga-chapter",
-    "sort": { "by": "number", "order": "desc" },
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
     "fields": {
-      "url": { "selector": "a", "attr": "href", "resolve": true },
-      "title": { "selector": "a", "attr": "text", "transform": "trim" },
-      "number": { "selector": "a", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
-      "dateUploaded": { "selector": "span.chapter-release-date", "attr": "text", "transform": "parseDate" }
+      "url": {
+        "selector": "a",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "selector": "a",
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "or": [
+          {
+            "selector": "span.chapter-release-date a",
+            "attr": "title"
+          },
+          {
+            "selector": "span.chapter-release-date",
+            "attr": "text"
+          }
+        ],
+        "transform": "parseDate"
+      }
     }
   },
   "pages": {
@@ -100,7 +251,17 @@
     "itemSelector": "div.reading-content img, div.page-break img, img.wp-manga-chapter-img",
     "fields": {
       "imageUrl": {
-        "or": [{ "attr": "data-src" }, { "attr": "data-lazy-src" }, { "attr": "src" }],
+        "or": [
+          {
+            "attr": "data-src"
+          },
+          {
+            "attr": "data-lazy-src"
+          },
+          {
+            "attr": "src"
+          }
+        ],
         "transform": "trim",
         "resolve": true
       }

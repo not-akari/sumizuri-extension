@@ -13,43 +13,592 @@
     "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=popular",
     "itemsPath": "data",
     "fields": {
-      "url": { "template": "{baseUrl}/series/comic/{slug}" },
-      "title": { "path": "title" },
-      "coverUrl": { "path": "coverImage", "resolve": true },
-      "rating": { "path": "rating" },
-      "status": { "path": "status", "transform": "capitalize" }
+      "url": {
+        "template": "{baseUrl}/series/comic/{slug}"
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "coverImage",
+        "resolve": true
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
     }
   },
   "latest": {
     "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=latest",
     "itemsPath": "data",
     "fields": {
-      "url": { "template": "{baseUrl}/series/comic/{slug}" },
-      "title": { "path": "title" },
-      "coverUrl": { "path": "coverImage", "resolve": true },
-      "rating": { "path": "rating" },
-      "status": { "path": "status", "transform": "capitalize" }
+      "url": {
+        "template": "{baseUrl}/series/comic/{slug}"
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "coverImage",
+        "resolve": true
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
     }
   },
   "search": {
     "url": "{baseUrl}/api/series?q={query}&page={page}&type=MANHWA",
     "itemsPath": "data",
     "fields": {
-      "url": { "template": "{baseUrl}/series/comic/{slug}" },
-      "title": { "path": "title" },
-      "coverUrl": { "path": "coverImage", "resolve": true },
-      "rating": { "path": "rating" },
-      "status": { "path": "status", "transform": "capitalize" }
+      "url": {
+        "template": "{baseUrl}/series/comic/{slug}"
+      },
+      "title": {
+        "path": "title"
+      },
+      "coverUrl": {
+        "path": "coverImage",
+        "resolve": true
+      },
+      "rating": {
+        "path": "rating"
+      },
+      "status": {
+        "path": "status",
+        "transform": "capitalize"
+      }
+    },
+    "upgrade": {
+      "url": "{baseUrl}/api/series?q={query}&page={page}&type=MANHWA&sort={sort}&status={status}&genre={genre}"
     }
   },
+  "filters": [
+    {
+      "key": "sort",
+      "name": "Sort by",
+      "type": "select",
+      "options": [
+        {
+          "label": "Popular",
+          "value": "popular"
+        },
+        {
+          "label": "Latest",
+          "value": "latest"
+        },
+        {
+          "label": "Trending",
+          "value": "trending"
+        },
+        {
+          "label": "Rating",
+          "value": "rating"
+        },
+        {
+          "label": "Most viewed",
+          "value": "views"
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "name": "Status",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Ongoing",
+          "value": "ONGOING"
+        },
+        {
+          "label": "Completed",
+          "value": "COMPLETED"
+        },
+        {
+          "label": "Hiatus",
+          "value": "HIATUS"
+        }
+      ]
+    },
+    {
+      "key": "genre",
+      "name": "Genre",
+      "type": "select",
+      "options": [
+        {
+          "label": "Any",
+          "value": ""
+        },
+        {
+          "label": "Action",
+          "value": "action"
+        },
+        {
+          "label": "Adult",
+          "value": "adult"
+        },
+        {
+          "label": "Adult Romance",
+          "value": "adult-romance"
+        },
+        {
+          "label": "Adult/Mature",
+          "value": "adultmature"
+        },
+        {
+          "label": "Adventure",
+          "value": "adventure"
+        },
+        {
+          "label": "Animals",
+          "value": "animals"
+        },
+        {
+          "label": "Anthology",
+          "value": "anthology"
+        },
+        {
+          "label": "Apocalypse",
+          "value": "apocalypse"
+        },
+        {
+          "label": "Bdsm",
+          "value": "bdsm"
+        },
+        {
+          "label": "Beastfolk",
+          "value": "beastfolk"
+        },
+        {
+          "label": "Bl",
+          "value": "bl"
+        },
+        {
+          "label": "Boys Love (Bl)",
+          "value": "boys-love-bl"
+        },
+        {
+          "label": "Business",
+          "value": "business"
+        },
+        {
+          "label": "Campus",
+          "value": "campus"
+        },
+        {
+          "label": "Cohabitation",
+          "value": "cohabitation"
+        },
+        {
+          "label": "Comedy",
+          "value": "comedy"
+        },
+        {
+          "label": "Coming Of Age",
+          "value": "coming-of-age"
+        },
+        {
+          "label": "Contemporary",
+          "value": "contemporary"
+        },
+        {
+          "label": "Contemporary Drama",
+          "value": "contemporary-drama"
+        },
+        {
+          "label": "Contemporary Romance",
+          "value": "contemporary-romance"
+        },
+        {
+          "label": "Contract Marriage",
+          "value": "contract-marriage"
+        },
+        {
+          "label": "Crime",
+          "value": "crime"
+        },
+        {
+          "label": "Cyberpunk",
+          "value": "cyberpunk"
+        },
+        {
+          "label": "Dark Fantasy",
+          "value": "dark-fantasy"
+        },
+        {
+          "label": "Dark Romance",
+          "value": "dark-romance"
+        },
+        {
+          "label": "Drama",
+          "value": "drama"
+        },
+        {
+          "label": "Ecchi",
+          "value": "ecchi"
+        },
+        {
+          "label": "Erotica",
+          "value": "erotica"
+        },
+        {
+          "label": "Fantasy",
+          "value": "fantasy"
+        },
+        {
+          "label": "Fantasy Romance",
+          "value": "fantasy-romance"
+        },
+        {
+          "label": "First Love",
+          "value": "first-love"
+        },
+        {
+          "label": "Folklore",
+          "value": "folklore"
+        },
+        {
+          "label": "Game",
+          "value": "game"
+        },
+        {
+          "label": "Gender Bender",
+          "value": "gender-bender"
+        },
+        {
+          "label": "Harem",
+          "value": "harem"
+        },
+        {
+          "label": "Harem/Ecchi",
+          "value": "haremecchi"
+        },
+        {
+          "label": "Healing",
+          "value": "healing"
+        },
+        {
+          "label": "Historical",
+          "value": "historical"
+        },
+        {
+          "label": "Historical Fantasy",
+          "value": "historical-fantasy"
+        },
+        {
+          "label": "Historical Fiction",
+          "value": "historical-fiction"
+        },
+        {
+          "label": "Historical Romance",
+          "value": "historical-romance"
+        },
+        {
+          "label": "Horror",
+          "value": "horror"
+        },
+        {
+          "label": "Isekai",
+          "value": "isekai"
+        },
+        {
+          "label": "Josei",
+          "value": "josei"
+        },
+        {
+          "label": "Love Triangle",
+          "value": "love-triangle"
+        },
+        {
+          "label": "Marriage Romance",
+          "value": "marriage-romance"
+        },
+        {
+          "label": "Martial Arts",
+          "value": "martial-arts"
+        },
+        {
+          "label": "Mature",
+          "value": "mature"
+        },
+        {
+          "label": "Medical",
+          "value": "medical"
+        },
+        {
+          "label": "Melodrama",
+          "value": "melodrama"
+        },
+        {
+          "label": "Military",
+          "value": "military"
+        },
+        {
+          "label": "Military Drama",
+          "value": "military-drama"
+        },
+        {
+          "label": "Music",
+          "value": "music"
+        },
+        {
+          "label": "Mystery",
+          "value": "mystery"
+        },
+        {
+          "label": "Nobility/Aristocracy",
+          "value": "nobilityaristocracy"
+        },
+        {
+          "label": "Noir",
+          "value": "noir"
+        },
+        {
+          "label": "Office",
+          "value": "office"
+        },
+        {
+          "label": "Office Romance",
+          "value": "office-romance"
+        },
+        {
+          "label": "Omegaverse",
+          "value": "omegaverse"
+        },
+        {
+          "label": "Political",
+          "value": "political"
+        },
+        {
+          "label": "Political Intrigue",
+          "value": "political-intrigue"
+        },
+        {
+          "label": "Psychological",
+          "value": "psychological"
+        },
+        {
+          "label": "Psychological Drama",
+          "value": "psychological-drama"
+        },
+        {
+          "label": "Psychological Romance",
+          "value": "psychological-romance"
+        },
+        {
+          "label": "Psychological Thriller",
+          "value": "psychological-thriller"
+        },
+        {
+          "label": "Regression",
+          "value": "regression"
+        },
+        {
+          "label": "Reincarnation",
+          "value": "reincarnation"
+        },
+        {
+          "label": "Relationship",
+          "value": "relationship"
+        },
+        {
+          "label": "Reunion Romance",
+          "value": "reunion-romance"
+        },
+        {
+          "label": "Revenge",
+          "value": "revenge"
+        },
+        {
+          "label": "Reverse Harem",
+          "value": "reverse-harem"
+        },
+        {
+          "label": "Romance",
+          "value": "romance"
+        },
+        {
+          "label": "Romance Fantasy",
+          "value": "romance-fantasy"
+        },
+        {
+          "label": "Romantic Comedy",
+          "value": "romantic-comedy"
+        },
+        {
+          "label": "Royalty",
+          "value": "royalty"
+        },
+        {
+          "label": "Royalty/Aristocracy",
+          "value": "royaltyaristocracy"
+        },
+        {
+          "label": "School",
+          "value": "school"
+        },
+        {
+          "label": "School Life",
+          "value": "school-life"
+        },
+        {
+          "label": "Sci-Fi",
+          "value": "sci-fi"
+        },
+        {
+          "label": "Science Fiction",
+          "value": "science-fiction"
+        },
+        {
+          "label": "Seinen",
+          "value": "seinen"
+        },
+        {
+          "label": "Shonen",
+          "value": "shonen"
+        },
+        {
+          "label": "Shoujo",
+          "value": "shoujo"
+        },
+        {
+          "label": "Shounen Ai",
+          "value": "shounen-ai"
+        },
+        {
+          "label": "Slice of Life",
+          "value": "slice-of-life"
+        },
+        {
+          "label": "Smut",
+          "value": "smut"
+        },
+        {
+          "label": "Sports",
+          "value": "sports"
+        },
+        {
+          "label": "Supernatural",
+          "value": "supernatural"
+        },
+        {
+          "label": "Supernatural Romance",
+          "value": "supernatural-romance"
+        },
+        {
+          "label": "Survival",
+          "value": "survival"
+        },
+        {
+          "label": "Suspense",
+          "value": "suspense"
+        },
+        {
+          "label": "Thriller",
+          "value": "thriller"
+        },
+        {
+          "label": "Time Regression",
+          "value": "time-regression"
+        },
+        {
+          "label": "Time Travel",
+          "value": "time-travel"
+        },
+        {
+          "label": "Tragedy",
+          "value": "tragedy"
+        },
+        {
+          "label": "Urban Fantasy",
+          "value": "urban-fantasy"
+        },
+        {
+          "label": "Virtual Reality",
+          "value": "virtual-reality"
+        },
+        {
+          "label": "Webtoon",
+          "value": "webtoon"
+        },
+        {
+          "label": "Western Fantasy",
+          "value": "western-fantasy"
+        },
+        {
+          "label": "Western Setting",
+          "value": "western-setting"
+        },
+        {
+          "label": "Wuxia",
+          "value": "wuxia"
+        },
+        {
+          "label": "Youth",
+          "value": "youth"
+        }
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "trending",
+      "name": "Trending",
+      "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=trending"
+    },
+    {
+      "id": "rating",
+      "name": "Top rated",
+      "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=rating"
+    },
+    {
+      "id": "views",
+      "name": "Most viewed",
+      "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=views"
+    },
+    {
+      "id": "completed",
+      "name": "Completed",
+      "url": "{baseUrl}/api/series?page={page}&type=MANHWA&sort=popular&status=COMPLETED"
+    }
+  ],
   "details": {
     "url": "{entryUrl}",
     "fields": {
-      "url": { "template": "{entryUrl}" },
-      "title": { "selector": "h1", "attr": "text", "transform": "trim" },
-      "coverUrl": { "selector": "meta[property=\"og:image\"]", "attr": "content" },
-      "description": { "selector": "meta[property=\"og:description\"]", "attr": "content" },
-      "rating": { "selector": "span:has(svg.lucide-star)", "attr": "text", "regex": "([0-9.]+)", "transform": "number" },
+      "url": {
+        "template": "{entryUrl}"
+      },
+      "title": {
+        "selector": "h1",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "coverUrl": {
+        "selector": "meta[property=\"og:image\"]",
+        "attr": "content"
+      },
+      "description": {
+        "selector": "meta[property=\"og:description\"]",
+        "attr": "content"
+      },
+      "rating": {
+        "selector": "span:has(svg.lucide-star)",
+        "attr": "text",
+        "regex": "([0-9.]+)",
+        "transform": "number"
+      },
       "genres": {
         "selector": "a[href*=\"genre=\"]",
         "attr": "text",
@@ -60,24 +609,71 @@
   },
   "chapters": {
     "url": "{entryUrl}",
-    "itemSelector": "a.grid[href*='/chapter/']",
-    "sort": { "by": "number", "order": "desc" },
+    "itemSelector": "div[data-chapter-row]",
+    "sort": {
+      "by": "number",
+      "order": "desc"
+    },
     "fields": {
-      "url": { "attr": "href", "resolve": true },
-      "title": { "selector": "span.font-medium", "attr": "text", "transform": "trim" },
-      "number": { "selector": "span.font-medium", "regex": "(?:Chapter|Ch\\.?)\\s*([0-9.]+)", "transform": "number" }
+      "url": {
+        "selector": "a[href*='/chapter/']",
+        "attr": "href",
+        "resolve": true
+      },
+      "title": {
+        "selector": "a[href*='/chapter/'] span.font-medium",
+        "attr": "text",
+        "transform": "trim"
+      },
+      "number": {
+        "selector": "a[href*='/chapter/'] span.font-medium",
+        "attr": "text",
+        "regex": "(?:Chapter|Ch.?)s*([0-9.]+)",
+        "transform": "number"
+      },
+      "dateUploaded": {
+        "selector": "div.text-xs span.inline-flex span",
+        "attr": "text",
+        "transform": "parseDate"
+      }
+    },
+    "upgrade": {
+      "fields": {
+        "url": {
+          "selector": "a[href*='/chapter/']",
+          "attr": "href",
+          "resolve": true
+        },
+        "title": {
+          "selector": "a[href*='/chapter/'] span.font-medium",
+          "attr": "text",
+          "transform": "trim"
+        },
+        "number": {
+          "selector": "a[href*='/chapter/'] span.font-medium",
+          "attr": "text",
+          "regex": "(?:Chapter|Ch.?)s*([0-9.]+)",
+          "transform": "number"
+        },
+        "dateUploaded": {
+          "selector": "div.text-xs span.inline-flex span",
+          "attr": "text",
+          "transform": "parseDate"
+        },
+        "locked": {
+          "selector": "span.sr-only:contains(\"Locked\")",
+          "attr": "text",
+          "transform": "exists"
+        }
+      }
     }
   },
   "pages": {
     "url": "{chapterUrl}",
-    "itemSelector": "div.reader-image img, div#reader img, img.chapter-image, div.page-image img",
+    "itemsRegex": "imageUrl\\\\\":\\\\\"(https?://[^\\\\\"]+)",
     "fields": {
       "imageUrl": {
-        "or": [
-          { "attr": "data-src" },
-          { "attr": "src" }
-        ],
-        "resolve": true
+        "path": ""
       }
     }
   }
